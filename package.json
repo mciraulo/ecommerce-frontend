@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "yarn install && next build && next start"
+    "start": "npm install && next build && next start"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^1.2.2",
