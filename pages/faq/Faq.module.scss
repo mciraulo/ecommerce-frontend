@@ -1,0 +1,7 @@
+@import "styles/app";
+
+.btn {
+  &:hover, &:focus {
+    color: theme-color("primary") !important;
+  }
+}

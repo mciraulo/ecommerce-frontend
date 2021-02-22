@@ -1,0 +1,666 @@
+import React from "react";
+import { Container, Row, Col, Button, Modal } from "reactstrap";
+import s from "pages/index.module.scss";
+import Link from "next/link";
+import axios from "axios";
+import Carousel from "react-bootstrap/Carousel";
+import Head from "next/head";
+
+import car from "public/images/e-commerce/home/car.svg";
+import call from "public/images/e-commerce/home/headphones.svg";
+import moneyBack from "public/images/e-commerce/home/Sync.svg";
+
+import article1 from "public/images/e-commerce/home/article1.png";
+import article2 from "public/images/e-commerce/home/article2.png";
+import article3 from "public/images/e-commerce/home/article3.png";
+
+import insta1 from "public/images/e-commerce/home/insta1.png";
+import insta2 from "public/images/e-commerce/home/insta2.png";
+import insta3 from "public/images/e-commerce/home/insta3.png";
+import insta4 from "public/images/e-commerce/home/insta4.png";
+import insta5 from "public/images/e-commerce/home/insta5.png";
+import insta6 from "public/images/e-commerce/home/insta6.png";
+import { toast, ToastContainer } from "react-toastify";
+import { useSelector } from "react-redux";
+
+import Countdown from "./home/Countdown";
+
+const Index = ({ products: serverSideProducts }) => {
+  const openReducer = (state, action) => {
+    switch (action.type) {
+      case "open0":
+        return {
+          ...state,
+
+          open0: !state.open0,
+        };
+      case "open1":
+        return {
+          ...state,
+          open1: !state.open1,
+        };
+      case "open2":
+        return {
+          ...state,
+
+          open2: !state.open2,
+        };
+      case "open3":
+        return {
+          ...state,
+
+          open3: !state.open3,
+        };
+      case "open4":
+        return {
+          ...state,
+
+          open4: !state.open4,
+        };
+      case "open5":
+        return {
+          ...state,
+
+          open5: !state.open5,
+        };
+      case "open6":
+        return {
+          ...state,
+
+          open6: !state.open6,
+        };
+      case "open7":
+        return {
+          ...state,
+
+          open7: !state.open6,
+        };
+      case "open8":
+        return {
+          ...state,
+
+          open8: !state.open8,
+        };
+    }
+  };
+  const [secs, setSecs] = React.useState(23);
+  const [products, setProducts] = React.useState(serverSideProducts);
+
+  const [openState, dispatch] = React.useReducer(openReducer, {
+    open0: false,
+    open1: false,
+    open2: false,
+    open3: false,
+    open4: false,
+    open5: false,
+    open6: false,
+    open7: false,
+    open8: false,
+  });
+  const currentUser = useSelector((store) => store.auth.currentUser);
+
+  const addToCart = (id) => {
+    if (currentUser) {
+      axios.post(`/orders/`, {
+        data: {
+          amount: 1,
+          order_date: new Date(),
+          product: id,
+          status: "in cart",
+          user: currentUser.id,
+        },
+      });
+      return;
+    }
+    const localProducts =
+      (typeof window !== "undefined" &&
+        JSON.parse(localStorage.getItem("products"))) ||
+      [];
+    localProducts.push({
+      amount: 1,
+      order_date: new Date(),
+      product: id,
+      status: "in cart",
+    });
+    typeof window !== "undefined" &&
+      localStorage.setItem("products", JSON.stringify(localProducts));
+  };
+
+  const addToWishlist = (id) => {
+    if (currentUser) {
+      axios.put(`/users/${currentUser.id}`, {
+        id: currentUser.id,
+        data: {
+          ...currentUser,
+          wishlist: [id],
+        },
+      });
+    }
+    const localWishlist =
+      (typeof window !== "undefined" &&
+        JSON.parse(localStorage.getItem("wishlist"))) ||
+      [];
+    localWishlist.push({ amount: 1, product: id });
+    typeof window !== "undefined" &&
+      localStorage.setItem("wishlist", JSON.stringify(localWishlist));
+  };
+
+  const secsInterval = () => {
+    let secsInt = setInterval(() => {
+      if (secs === 0) {
+        clearInterval(secsInt);
+      }
+      setSecs((prev) => --prev);
+    }, 1000);
+  };
+
+  React.useEffect(() => {
+    secsInterval();
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Home</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <ToastContainer />
+      <Carousel prevLabel="prev" nextLabel="next">
+        <Carousel.Item interval={1000}>
+          <section className={s.carousel}>
+            <Container className={"h-100"}>
+              <Row className={"h-100"}>
+                <Col
+                  sm={12}
+                  className={
+                    "h-100 d-flex flex-column justify-content-center align-items-center align-items-md-start"
+                  }
+                >
+                  <p className={"text-uppercase text-primary fw-bold mb-2"}>
+                    chair
+                  </p>
+                  <h2 className={"mb-2"}>get all</h2>
+                  <h1 className={"text-uppercase fw-bold mt-1"}>
+                    the good stuff
+                  </h1>
+                  <Link href={"/shop"}>
+                    {typeof window !== "undefined" &&
+                    window.innerWidth <= 768 ? (
+                      <Button
+                        color="primary"
+                        className={"text-uppercase mt-4 mr-auto fw-bold"}
+                      >
+                        view more
+                      </Button>
+                    ) : (
+                      <Button
+                        outline
+                        color="primary"
+                        className={`text-uppercase mt-4 mr-auto fw-bold d-flex align-items-center ${s.viewMoreBtn}`}
+                      >
+                        <p className={"mb-0"}>view more</p>{" "}
+                        <div className={`ml-2 ${s.arrowRight}`} />
+                      </Button>
+                    )}
+                  </Link>
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </Carousel.Item>
+        <Carousel.Item interval={3000}>
+          <section className={s.carousel}>
+            <Container className={"h-100"}>
+              <Row className={"h-100"}>
+                <Col
+                  sm={12}
+                  className={
+                    "h-100 d-flex flex-column justify-content-center align-items-center align-items-md-start"
+                  }
+                >
+                  <p className={"text-uppercase text-primary fw-bold mb-2"}>
+                    chair
+                  </p>
+                  <h2 className={"mb-2"}>get all</h2>
+                  <h1 className={"text-uppercase fw-bold mt-1"}>
+                    the good stuff
+                  </h1>
+                  <Link href={"/shop"}>
+                    {typeof window !== "undefined" &&
+                    window.innerWidth <= 768 ? (
+                      <Button
+                        color="primary"
+                        className={"text-uppercase mt-4 mr-auto fw-bold"}
+                      >
+                        view more
+                      </Button>
+                    ) : (
+                      <Button
+                        outline
+                        color="primary"
+                        className={`text-uppercase mt-4 mr-auto fw-bold d-flex align-items-center ${s.viewMoreBtn}`}
+                      >
+                        <p className={"mb-0"}>view more</p>{" "}
+                        <div className={`ml-2 ${s.arrowRight}`} />
+                      </Button>
+                    )}
+                  </Link>
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </Carousel.Item>
+        <Carousel.Item interval={5000}>
+          <section className={s.carousel}>
+            <Container className={"h-100"}>
+              <Row className={"h-100"}>
+                <Col
+                  sm={12}
+                  className={
+                    "h-100 d-flex flex-column justify-content-center align-items-center align-items-md-start"
+                  }
+                >
+                  <p className={"text-uppercase text-primary fw-bold mb-2"}>
+                    chair
+                  </p>
+                  <h2 className={"mb-2"}>get all</h2>
+                  <h1 className={"text-uppercase fw-bold mt-1"}>
+                    the good stuff
+                  </h1>
+                  <Link href={"/shop"}>
+                    {typeof window !== "undefined" &&
+                    window.innerWidth <= 768 ? (
+                      <Button
+                        color="primary"
+                        className={"text-uppercase mt-4 mr-auto fw-bold"}
+                      >
+                        view more
+                      </Button>
+                    ) : (
+                      <Button
+                        outline
+                        color="primary"
+                        className={`text-uppercase mt-4 mr-auto fw-bold d-flex align-items-center ${s.viewMoreBtn}`}
+                      >
+                        <p className={"mb-0"}>view more</p>{" "}
+                        <div className={`ml-2 ${s.arrowRight}`} />
+                      </Button>
+                    )}
+                  </Link>
+                </Col>
+              </Row>
+            </Container>
+          </section>
+        </Carousel.Item>
+      </Carousel>
+      <Container style={{ marginTop: 80, marginBottom: 80 }}>
+        <h3 className={`text-center fw-bold mb-4`}>New Arrivals</h3>
+        <Row className={"justify-content-center mb-2"}>
+          <Col sm={8}>
+            <p className={"text-center text-muted mb-4"}>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          {products.map((item, index) => (
+            <Col xs={6} md={3} className={`mb-4 ${s.product}`} key={index}>
+              <Modal
+                isOpen={openState[`open${index}`]}
+                toggle={() => dispatch({ type: `open${index}` })}
+              >
+                <img src={item.image[0].publicUrl} />
+              </Modal>
+              <div style={{ position: "relative" }}>
+                <Link href={`/products/${item.id}`}>
+                  <a>
+                    <img
+                      src={item.image[0].publicUrl}
+                      className={"img-fluid"}
+                      alt={"pic"}
+                    />
+                  </a>
+                </Link>
+                <div
+                  className={`d-flex flex-column justify-content-center ${s.product__actions}`}
+                  style={{
+                    position: "absolute",
+                    height: "100%",
+                    top: 0,
+                    right: 15,
+                  }}
+                >
+                  <Button
+                    className={"p-0 bg-transparent border-0"}
+                    onClick={() => {
+                      addToWishlist(item.id);
+                      toast.info(
+                        "products successfully added to your wishlist"
+                      );
+                    }}
+                  >
+                    <div className={`mb-4 ${s.product__actions__heart}`} />
+                  </Button>
+                  <Button
+                    className={"p-0 bg-transparent border-0"}
+                    onClick={() => {
+                      dispatch({ type: `open${index}` });
+                    }}
+                  >
+                    <div className={`mb-4 ${s.product__actions__max}`} />
+                  </Button>
+                  <Button
+                    className={"p-0 bg-transparent border-0"}
+                    onClick={() => {
+                      addToCart(item.id);
+                      toast.info("products successfully added to your cart");
+                    }}
+                  >
+                    <div className={`mb-4 ${s.product__actions__cart}`} />
+                  </Button>
+                </div>
+              </div>
+              <p className={"mt-3 text-muted mb-0"}>
+                {item.categories[0].title[0].toUpperCase() +
+                  item.categories[0].title.slice(1)}
+              </p>
+              <Link href={`/products/${item.id}`}>
+                <a>
+                  <h6
+                    className={"fw-bold font-size-base mt-1"}
+                    style={{ fontSize: 16 }}
+                  >
+                    {item.title}
+                  </h6>
+                </a>
+              </Link>
+              <h6 style={{ fontSize: 16 }}>${item.price}</h6>
+            </Col>
+          ))}
+        </Row>
+        <Row className={"d-flex justify-content-center"}>
+          <Link href={"/shop"}>
+            <Button
+              outline
+              color="primary"
+              className={"text-uppercase mx-auto mt-5 fw-bold"}
+            >
+              view more
+            </Button>
+          </Link>
+        </Row>
+      </Container>
+      <section className={s.promo}>
+        <Container className={"h-100"}>
+          <Row className={"h-100"}>
+            <Col
+              md={6}
+              xs={12}
+              className={
+                "h-100 d-flex flex-column justify-content-center align-items-center align-items-md-start"
+              }
+            >
+              <h5 className={"text-uppercase fw-bold mb-3"}>
+                news and inspiration
+              </h5>
+              <h1
+                className={`text-uppercase fw-bold mb-0 ${s.newArrivals}`}
+                style={{ fontSize: 50 }}
+              >
+                new arrivals
+              </h1>
+              <div
+                className={`${s.stroke} mt-4`}
+                style={{ marginBottom: 30 }}
+              />
+              <Countdown />
+              <section className={"d-flex mt-5 align-itens-center"}>
+                <h2
+                  className={"text-muted mr-3 mb-0 d-flex align-items-center"}
+                >
+                  <del>$ 140,56</del>
+                </h2>
+                <h1 className={"text-primary fw-bold mb-0"}>$ 70</h1>
+              </section>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <Container style={{ marginTop: 80, marginBottom: 80 }}>
+        <h3 className={"text-center fw-bold mb-4"}>Top Selling Products</h3>
+        <Row className={"justify-content-center mb-2"}>
+          <Col sm={8}>
+            <p className={"text-center text-muted mb-4"}>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={6}>
+            <section className={`${s.top_first} img-fluid`}>
+              <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
+              <h2 className={"fw-bold"}>SPRING THINGS</h2>
+              <div className={s.stroke} />
+              <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
+            </section>
+          </Col>
+          <Col xs={12} md={6}>
+            <Row>
+              <Col xs={12} md={6} className={s.topMargin}>
+                <div className={`${s.top2} img-fluid`}>
+                  <div>
+                    <h6 className={"text-primary fw-bold"}>Online Exclusive</h6>
+                    <p>
+                      <u>shop now</u>
+                    </p>
+                  </div>
+                </div>
+                <div className={`${s.top4} img-fluid`}>
+                  <div className={`${s.label}`}>
+                    <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
+                      spring sale
+                    </h6>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={6}>
+                <div className={`${s.top3} img-fluid`}>
+                  <div className={`${s.label}`}>
+                    <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
+                      70% SALE
+                    </h6>
+                  </div>
+                </div>
+                <div className={`${s.top5} img-fluid`}>
+                  <div>
+                    <div className={s.stroke} />
+                    <div>
+                      <p className={"mb-0"}>collection</p>
+                      <h5 className={"fw-bold text-primary text-uppercase"}>
+                        summer
+                      </h5>
+                    </div>
+                    <div className={s.stroke} />
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+      <hr />
+      <div className={s.info}>
+        <Container className={"h-100"}>
+          <Row
+            className={
+              "h-100 justify-content-between flex-column flex-md-row align-items-center"
+            }
+          >
+            <Col
+              xs={12}
+              md={4}
+              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
+            >
+              <section className={"d-flex align-items-center"}>
+                <img src={car} className={"mr-3"} />
+                <div>
+                  <h5 className={"fw-bold text-uppercase"}>free shipping</h5>
+                  <p className={"text-muted mb-0"}>On all orders of $ 150</p>
+                </div>
+              </section>
+            </Col>
+            <Col
+              xs={12}
+              md={4}
+              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
+            >
+              <section className={"d-flex align-items-center"}>
+                <img src={call} className={"mr-3"} />
+                <div>
+                  <h5 className={"fw-bold text-uppercase"}>24/7 support</h5>
+                  <p className={"text-muted mb-0"}>Get help when you need it</p>
+                </div>
+              </section>
+            </Col>
+            <Col
+              xs={12}
+              md={4}
+              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
+            >
+              <section className={"d-flex align-items-center"}>
+                <img src={moneyBack} className={"mr-3"} />
+                <div>
+                  <h5 className={"fw-bold text-uppercase"}>100% money back</h5>
+                  <p className={"text-muted mb-0"}>
+                    30 day money back guarantee
+                  </p>
+                </div>
+              </section>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <hr />
+      <Container style={{ marginTop: 80, marginBottom: 80 }}>
+        <h3 className={"text-center fw-bold mb-4"}>From Our Blogs</h3>
+        <Row className={"justify-content-center mb-2"}>
+          <Col sm={8}>
+            <p className={"text-center text-muted mb-4"}>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={12}
+            md={4}
+            className={"mb-4 d-flex flex-column align-items-center"}
+          >
+            <div className={s.imgAnimation}>
+              <img src={article1} className={"img-fluid"} />
+            </div>
+            <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
+            <h6
+              className={"fw-bold font-size-base mt-1"}
+              style={{ fontSize: 16 }}
+            >
+              What is Lorem Ipsum?
+            </h6>
+            <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
+              Read More
+            </h6>
+          </Col>
+          <Col
+            xs={12}
+            md={4}
+            className={"mb-4 d-flex flex-column align-items-center"}
+          >
+            <div className={s.imgAnimation}>
+              <img src={article2} className={"img-fluid"} />
+            </div>
+            <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
+            <h6
+              className={"fw-bold font-size-base mt-1"}
+              style={{ fontSize: 16 }}
+            >
+              What is Lorem Ipsum?
+            </h6>
+            <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
+              Read More
+            </h6>
+          </Col>
+          <Col
+            xs={12}
+            md={4}
+            className={"mb-4 d-flex flex-column align-items-center"}
+          >
+            <div className={s.imgAnimation}>
+              <img src={article3} className={"img-fluid"} />
+            </div>
+            <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
+            <h6
+              className={"fw-bold font-size-base mt-1"}
+              style={{ fontSize: 16 }}
+            >
+              What is Lorem Ipsum?
+            </h6>
+            <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
+              Read More
+            </h6>
+          </Col>
+        </Row>
+        <Row className={"d-flex justify-content-center"}>
+          <Link href={"/blog"}>
+            <Button
+              outline
+              color="primary"
+              className={"text-uppercase mx-auto mt-5 fw-bold"}
+            >
+              view more
+            </Button>
+          </Link>
+        </Row>
+      </Container>
+      <section style={{ marginTop: 80, marginBottom: 80 }}>
+        <h3 className={"text-center fw-bold mb-4"}>Follow us on Instagram</h3>
+        <Row className={"no-gutters"}>
+          <Col md={2} xs={12}>
+            <img src={insta1} className={"w-100"} />
+          </Col>
+          <Col md={2} xs={12}>
+            <img src={insta2} className={"w-100"} />
+          </Col>
+          <Col md={2} xs={12}>
+            <img src={insta3} className={"w-100"} />
+          </Col>
+          <Col md={2} xs={12}>
+            <img src={insta4} className={"w-100"} />
+          </Col>
+          <Col md={2} xs={12}>
+            <img src={insta5} className={"w-100"} />
+          </Col>
+          <Col md={2} xs={12}>
+            <img src={insta6} className={"w-100"} />
+          </Col>
+        </Row>
+      </section>
+    </>
+  );
+};
+
+export async function getServerSideProps(context) {
+  const res = await axios.get("/products");
+  const products = res.data.rows;
+
+  return {
+    props: { products }, // will be passed to the page component as props
+  };
+}
+
+export default Index;

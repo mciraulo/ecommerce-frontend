@@ -1,0 +1,25 @@
+import auth from "./auth";
+import alerts from "./auth";
+import navigation from "./navigation";
+import layout from "./layout";
+import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
+
+import products from "./products/productsReducers";
+
+import categories from "./categories/categoriesReducers";
+
+import orders from "./orders/ordersReducers";
+
+import users from "./users/usersReducers";
+
+export default combineReducers({
+    layout,
+    alerts,
+    auth,
+    navigation,
+    products,
+    categories,
+    orders,
+    users,
+  });

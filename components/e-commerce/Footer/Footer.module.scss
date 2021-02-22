@@ -1,0 +1,11 @@
+@import "../../../styles/app";
+
+.footer {
+  height: 100%;
+  background-color: $text-color;
+  padding-top: 24px;
+
+  &__hr {
+    border-top: 1px solid #434343;
+  }
+}
