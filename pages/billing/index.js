@@ -51,7 +51,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
 
   const processPayment = async () => {
     const session = await axios.post(
-        'http://localhost:8080/payment/session-initiate',
+        'https://flatlogic-ecommerce-backend.herokuapp.com/payment/session-initiate',
         {
           customerEmail: 'example@gmail.com',
           clientReferenceId:
@@ -59,7 +59,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
           lineItem: {
             name: 'My Name',
             description: 'My Description',
-            images: ['https://flatlogic-ecommerce-backend,herokuapp.com/images/1.png'],
+            images: ['https://flatlogic-ecommerce-backend.herokuapp.com/images/products/1.png'],
             amount: 100,
             currency: 'eur',
             quantity: 1,
