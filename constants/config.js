@@ -1,10 +1,10 @@
 const hostApi =
   process.env.NODE_ENV === "development"
     ? "http://localhost"
-    : "https://flatlogic-ecommerce-backend.herokuapp.com/api";
+    : "https://flatlogic-ecommerce-backend.herokuapp.com";
 const portApi =
   process.env.NODE_ENV === "development" ? "8080" : '41521';
-const baseURLApi = `${hostApi}${portApi ? `:${portApi}` : ``}/api`;
+const baseURLApi = `${hostApi}/api`;
 
 export default {
   hostApi,
