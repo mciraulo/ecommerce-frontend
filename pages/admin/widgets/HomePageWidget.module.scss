@@ -43,13 +43,13 @@
 }
 
 .tabFooter {
-  color: var(--primary-color);
+  color: theme-color("primary");
   position: absolute;
   bottom: 10px;
 }
 
 .tabItemActive {
-  color: var(--primary-color);
+  color: theme-color("primary");
   background: #fff;
   position: relative;
   font-style: normal;
@@ -77,7 +77,7 @@
     width: 3px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-    background-color: var(--primary-color);
+    background-color: theme-color("primary");
   }
 }
 

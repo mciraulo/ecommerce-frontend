@@ -52,8 +52,6 @@ const Index = () => {
     }
   }, []);
 
-  console.log(products)
-
   React.useEffect(() => {
     let total = 0;
     products.map((item) => {
@@ -83,15 +81,15 @@ const Index = () => {
         .then((res) => {
           console.log(1);
         });
-    } else if (typeof window !== 'undefined') {
+    } else if (typeof window !== "undefined") {
       const product = products[index];
       if (product.amount > 1) product.amount -= 1;
       setProducts((prevState) => {
         prevState[index] = product;
         return prevState;
       });
-      localStorage.setItem("products", JSON.stringify(products))
-      setProducts(JSON.parse(localStorage.getItem("products")))
+      localStorage.setItem("products", JSON.stringify(products));
+      setProducts(JSON.parse(localStorage.getItem("products")));
     }
   };
 
@@ -104,27 +102,27 @@ const Index = () => {
         return prevState;
       });
       axios
-          .put(`/orders/${currentUser.id}`, {
-            data: {
-              product: product.id,
-              amount: product.amount,
-              status: "in cart",
-              user: currentUser.id,
-            },
-            id: currentUser.id,
-          })
-          .then((res) => {
-            console.log(1);
-          });
-    } else if (typeof window !== 'undefined') {
+        .put(`/orders/${currentUser.id}`, {
+          data: {
+            product: product.id,
+            amount: product.amount,
+            status: "in cart",
+            user: currentUser.id,
+          },
+          id: currentUser.id,
+        })
+        .then((res) => {
+          console.log(1);
+        });
+    } else if (typeof window !== "undefined") {
       const product = products[index];
       product.amount += 1;
       setProducts((prevState) => {
         prevState[index] = product;
         return prevState;
       });
-      localStorage.setItem("products", JSON.stringify(products))
-      setProducts(JSON.parse(localStorage.getItem("products")))
+      localStorage.setItem("products", JSON.stringify(products));
+      setProducts(JSON.parse(localStorage.getItem("products")));
     }
   };
 
@@ -139,9 +137,20 @@ const Index = () => {
       });
       setTest(true);
     } else if (typeof window !== "undefined") {
-      localStorage.removeItem("products")
-      const products = JSON.parse(localStorage.getItem("products"));
-      setProducts(products)
+      let count = 0;
+      // localStorage.removeItem("products")
+      // const products = JSON.parse(localStorage.getItem("products"));
+      // setProducts(products)
+      const newProducts = products.filter((item) => {
+        if (item.id === id) {
+          if (count >= 1) return true;
+          count += 1;
+          return false;
+        }
+        return true;
+      });
+      localStorage.setItem("products", JSON.stringify(newProducts));
+      setProducts(newProducts);
     }
   };
 
@@ -248,12 +257,14 @@ const Index = () => {
               </h5>
               <h5 className={"fw-bold"}>{totalPrice}$</h5>
             </div>
-            <Button
-              color={"primary"}
-              className={`${s.checkOutBtn} text-uppercase mt-auto fw-bold`}
-            >
-              <Link href={"/billing"}>Check out</Link>
-            </Button>
+            <Link href={"/billing"}>
+              <Button
+                color={"primary"}
+                className={`${s.checkOutBtn} text-uppercase mt-auto fw-bold`}
+              >
+                Check out
+              </Button>
+            </Link>
           </section>
         </Col>
       </Row>
@@ -266,7 +277,7 @@ export async function getServerSideProps(context) {
   // const products = res.data.rows;
 
   return {
-    props: {  }, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as props
   };
 }
 

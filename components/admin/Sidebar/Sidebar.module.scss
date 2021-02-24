@@ -9,7 +9,7 @@
   border-right: $sidebar-border;
   // background-color: var(--sidebar-bg-color);
   background-color: #fff;
-  color: var(--sidebar-color);
+  color: theme-color("primary");
   overflow-y: auto;
   @include scroll-bar($sidebar-scrollbar-bg);
 }
@@ -40,7 +40,7 @@
   font-size: 20px;
   & > i {
     font-style: normal;
-    color: var(--primary-color);
+    color: theme-color("primary");
   }
 }
 

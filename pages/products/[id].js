@@ -8,14 +8,16 @@ import {
   PaginationItem,
   PaginationLink,
   Toast,
-  ToastBody, Modal,
+  ToastBody,
+  Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter, Input
+  ModalFooter,
+  Input,
 } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { useRouter } from "next/router";
+import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import product from "public/images/e-commerce/home/product5.png";
 import productRight from "public/images/e-commerce/details/1-right.png";
@@ -42,10 +44,11 @@ import insta6 from "public/images/e-commerce/home/insta6.png";
 import closeIcon from "public/images/e-commerce/details/close.svg";
 import axios from "axios";
 import close from "public/images/e-commerce/close.svg";
-import chevronRightIcon from "public/images/e-commerce/details/chevron-right.svg"
-import chevronLeftIcon from "public/images/e-commerce/details/chevron-left.svg"
+import chevronRightIcon from "public/images/e-commerce/details/chevron-right.svg";
+import chevronLeftIcon from "public/images/e-commerce/details/chevron-left.svg";
 import actions from "redux/actions/products/productsFormActions";
 import Head from "next/head";
+import productsListActions from "../../redux/actions/products/productsListActions";
 
 const products = [
   {
@@ -66,8 +69,8 @@ const products = [
   },
 ];
 
-const Id = ({product: serverSideProduct}) => {
-  const [isOpen, setOpen] = React.useState(false)
+const Id = ({ product: serverSideProduct }) => {
+  const [isOpen, setOpen] = React.useState(false);
   const currentUser = useSelector((state) => state.auth.currentUser);
   const dispatch = useDispatch();
   const [product, setProduct] = React.useState({
@@ -78,13 +81,13 @@ const Id = ({product: serverSideProduct}) => {
     ],
     categories: [
       {
-        title: 'Category'
-      }
-    ]
+        title: "Category",
+      },
+    ],
   });
   const [quantity, setQuantity] = React.useState(1);
-  const router = useRouter()
-  const { id } = router.query
+  const router = useRouter();
+  const { id } = router.query;
 
   React.useEffect(() => {
     axios.get(`/products/${router.query.id}`).then((res) => {
@@ -93,10 +96,9 @@ const Id = ({product: serverSideProduct}) => {
   }, []);
 
   const addToCart = () => {
-    dispatch(actions.doFind(id))
+    dispatch(actions.doFind(id));
     if (currentUser) {
-    axios
-      .post(`/orders/`, {
+      axios.post(`/orders/`, {
         data: {
           amount: quantity,
           order_date: new Date(),
@@ -104,15 +106,22 @@ const Id = ({product: serverSideProduct}) => {
           status: "in cart",
           user: currentUser.id,
         },
-      })
+      });
       return;
     }
-    const localProducts = typeof window !== "undefined" && JSON.parse(localStorage.getItem("products")) || [];
-    localProducts.push({amount: quantity,
+    const localProducts =
+      (typeof window !== "undefined" &&
+        JSON.parse(localStorage.getItem("products"))) ||
+      [];
+    localProducts.push({
+      amount: quantity,
       order_date: new Date(),
       product: id,
-      status: "in cart",})
-    typeof window !== "undefined" && localStorage.setItem("products", JSON.stringify(localProducts))
+      status: "in cart",
+    });
+    typeof window !== "undefined" &&
+      localStorage.setItem("products", JSON.stringify(localProducts));
+    dispatch(productsListActions.doAdd(localProducts))
   };
 
   return (
@@ -124,11 +133,15 @@ const Id = ({product: serverSideProduct}) => {
       <ToastContainer />
       <Container>
         <Row className={"mb-5"} style={{ marginTop: 32 }}>
-          <Col xs={12} lg={product.image.length > 1 ? 7 : 6} className={"d-flex"}>
+          <Col
+            xs={12}
+            lg={product.image.length > 1 ? 7 : 6}
+            className={"d-flex"}
+          >
             <img
               src={product.image[0].publicUrl}
               alt="product"
-              style={{height: 480}}
+              style={{ height: 480 }}
               className={"mr-3 img-fluid w-100"}
             />
             {product.image.length > 1 ? (
@@ -147,7 +160,10 @@ const Id = ({product: serverSideProduct}) => {
             lg={product.image.length > 1 ? 5 : 6}
             className={"d-flex flex-column justify-content-between"}
           >
-            <h6 className={`text-muted ${s.detailCategory}`}>{product.categories[0].title[0].toUpperCase() + product.categories[0].title.slice(1)}</h6>
+            <h6 className={`text-muted ${s.detailCategory}`}>
+              {product.categories[0].title[0].toUpperCase() +
+                product.categories[0].title.slice(1)}
+            </h6>
             <h4 className={"fw-bold"}>{product.title}</h4>
             <div className={"d-flex align-items-center"}>
               <img src={rating} className={s.detailRating} />
@@ -202,20 +218,24 @@ const Id = ({product: serverSideProduct}) => {
               </div>
             </div>
             <div className={"d-flex mt-5"}>
-                <Button
-                  outline
-                  color={"primary"}
-                  className={"flex-fill mr-4 text-uppercase fw-bold"}
-                  style={{width: '50%'}}
-                  onClick={() => {
-                    toast.info("products successfully added to your cart");
-                    addToCart();
-                  }}
-                >
-                  Add to Cart
-                </Button>
+              <Button
+                outline
+                color={"primary"}
+                className={"flex-fill mr-4 text-uppercase fw-bold"}
+                style={{ width: "50%" }}
+                onClick={() => {
+                  toast.info("products successfully added to your cart");
+                  addToCart();
+                }}
+              >
+                Add to Cart
+              </Button>
               <Link href={"/billing"} className={"d-inline-block flex-fill"}>
-                <Button color={"primary"} className={"text-uppercase fw-bold"} style={{width: '50%'}}>
+                <Button
+                  color={"primary"}
+                  className={"text-uppercase fw-bold"}
+                  style={{ width: "50%" }}
+                >
                   Buy now
                 </Button>
               </Link>
@@ -224,58 +244,74 @@ const Id = ({product: serverSideProduct}) => {
         </Row>
         <hr />
         <Row className={"mt-5 mb-5"}>
-          <Modal isOpen={isOpen} toggle={() => setOpen(prevState => !prevState)} style={{width: 920}}>
-            <div style={{position: 'absolute', top: 0, right: 0}}>
-                <Button className={"border-0 bg-transparent"} style={{padding: '15px 15px'}} onClick={() => setOpen(prevState => !prevState)}>
-                  <img src={closeIcon}/>
-                </Button>
+          <Modal
+            isOpen={isOpen}
+            toggle={() => setOpen((prevState) => !prevState)}
+            style={{ width: 920 }}
+          >
+            <div style={{ position: "absolute", top: 0, right: 0 }}>
+              <Button
+                className={"border-0 bg-transparent"}
+                style={{ padding: "15px 15px" }}
+                onClick={() => setOpen((prevState) => !prevState)}
+              >
+                <img src={closeIcon} />
+              </Button>
             </div>
             <ModalBody>
-                <h3 className={"fw-bold mb-5"}>Leave Your Feedback</h3>
-              <div className={` ${s.modalProduct} d-flex justify-content-between align-items-center`}>
+              <h3 className={"fw-bold mb-5"}>Leave Your Feedback</h3>
+              <div
+                className={` ${s.modalProduct} d-flex justify-content-between align-items-center`}
+              >
                 <div className={"d-flex align-items-center"}>
                   <img
-                      src={product.image[0].publicUrl}
-                      width={100}
-                      className={"mr-4"}
+                    src={product.image[0].publicUrl}
+                    width={100}
+                    className={"mr-4"}
                   />
                   <div>
-                    <h6 className={"text-muted"}>{product.categories[0].title[0].toUpperCase() + product.categories[0].title.slice(1)}</h6>
+                    <h6 className={"text-muted"}>
+                      {product.categories[0].title[0].toUpperCase() +
+                        product.categories[0].title.slice(1)}
+                    </h6>
                     <h5 className={"fw-bold"}>{product.title}</h5>
                   </div>
                 </div>
                 <div className={"d-flex align-items-center"}>
                   <Button
-                      className={`bg-transparent border-0 p-1 fw-bold mr-3 ${s.quantityBtn}`}
-                      onClick={() => {
-                        if (quantity === 1) return;
-                        setQuantity((prevState) => prevState - 1);
-                        setProduct((prevState) => ({
-                          ...prevState,
-                          price: Number(prevState.price) - 70,
-                        }));
-                      }}
+                    className={`bg-transparent border-0 p-1 fw-bold mr-3 ${s.quantityBtn}`}
+                    onClick={() => {
+                      if (quantity === 1) return;
+                      setQuantity((prevState) => prevState - 1);
+                      setProduct((prevState) => ({
+                        ...prevState,
+                        price: Number(prevState.price) - 70,
+                      }));
+                    }}
                   >
                     -
                   </Button>
                   <p className={"fw-bold mb-0"}>{quantity}</p>
                   <Button
-                      className={`bg-transparent border-0 p-1 fw-bold ml-3 ${s.quantityBtn}`}
-                      onClick={() => {
-                        if (quantity < 1) return;
-                        setQuantity((prevState) => prevState + 1);
-                        setProduct((prevState) => ({
-                          ...prevState,
-                          price: Number(prevState.price) + 70,
-                        }));
-                      }}
+                    className={`bg-transparent border-0 p-1 fw-bold ml-3 ${s.quantityBtn}`}
+                    onClick={() => {
+                      if (quantity < 1) return;
+                      setQuantity((prevState) => prevState + 1);
+                      setProduct((prevState) => ({
+                        ...prevState,
+                        price: Number(prevState.price) + 70,
+                      }));
+                    }}
                   >
                     +
                   </Button>
                 </div>
                 <h6 className={"fw-bold mb-0"}>{product.price}$</h6>
-                <Button className={"bg-transparent border-0 p-0"} onClick={() => {}}>
-                  <img src={close} alt={"close"}/>
+                <Button
+                  className={"bg-transparent border-0 p-0"}
+                  onClick={() => {}}
+                >
+                  <img src={close} alt={"close"} />
                 </Button>
               </div>
               <div className={"d-flex align-items-center my-4"}>
@@ -283,24 +319,30 @@ const Id = ({product: serverSideProduct}) => {
                 <img src={rating} className={s.detailRating} />
               </div>
               <Input
-                  type="textarea"
-                  name="text"
-                  id="exampleEmail"
-                  className="w-100"
-                  style={{ height: 155 }}
-                  placeholder={"Add your comment"}
+                type="textarea"
+                name="text"
+                id="exampleEmail"
+                className="w-100"
+                style={{ height: 155 }}
+                placeholder={"Add your comment"}
               />
               <div className={"d-flex justify-content-center"}>
-              <Button color={"primary fw-bold text-uppercase"} style={{marginTop: 48}}>
-                LEAVE FEEDBACK
-              </Button>
+                <Button
+                  color={"primary fw-bold text-uppercase"}
+                  style={{ marginTop: 48 }}
+                >
+                  LEAVE FEEDBACK
+                </Button>
               </div>
             </ModalBody>
           </Modal>
           <Col sm={12} className={"d-flex justify-content-between"}>
             <h4 className={"fw-bold"}>Reviews:</h4>
-            <Button className={`bg-transparent border-0 fw-bold text-primary p-0 ${s.leaveFeedbackBtn}`} onClick={() => setOpen(true)}>
-            + Leave Feedback
+            <Button
+              className={`bg-transparent border-0 fw-bold text-primary p-0 ${s.leaveFeedbackBtn}`}
+              onClick={() => setOpen(true)}
+            >
+              + Leave Feedback
             </Button>
           </Col>
           <Col sm={12} className={"d-flex mt-5"}>
@@ -417,8 +459,11 @@ const Id = ({product: serverSideProduct}) => {
             <h5 className={"fw-bold"}>You may also like:</h5>
           </Col>
         </Row>
-        <Row className={"mb-5"} style={{position: 'relative'}}>
-          <img src={chevronRightIcon} style={{position: 'absolute', right: -5, top: 130}}/>
+        <Row className={"mb-5"} style={{ position: "relative" }}>
+          <img
+            src={chevronRightIcon}
+            style={{ position: "absolute", right: -5, top: 130 }}
+          />
           {products.map((c) => (
             <Col xs={6} lg={3} className={"mb-4"}>
               <img
@@ -519,7 +564,7 @@ const Id = ({product: serverSideProduct}) => {
 export async function getServerSideProps(context) {
   // const res = await axios.get(`/products/${context.query.id}`);
   // const product = res.data.rows;
-  console.log(context.query)
+  console.log(context.query);
 
   return {
     props: { product }, // will be passed to the page component as props

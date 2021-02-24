@@ -15,16 +15,18 @@ import insta3 from "public/images/e-commerce/home/insta3.png";
 import insta4 from "public/images/e-commerce/home/insta4.png";
 import insta5 from "public/images/e-commerce/home/insta5.png";
 import insta6 from "public/images/e-commerce/home/insta6.png";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import s1 from "./Wishlist.module.scss";
 import Head from "next/head";
 import {toast, ToastContainer} from "react-toastify";
+import productsListActions from "../../redux/actions/products/productsListActions";
 
 const Cart = () => {
   const [test, setTest] = React.useState(false);
   const [products, setProducts] = React.useState([]);
   const currentUser = useSelector((store) => store.auth.currentUser);
+  const dispatchStore = useDispatch()
   React.useEffect(() => {
     if (currentUser) {
       axios.get(`/users/${currentUser.id}`).then((res) => {
@@ -85,6 +87,7 @@ const Cart = () => {
     });
     typeof window !== "undefined" &&
     localStorage.setItem("products", JSON.stringify(localProducts));
+    dispatchStore(productsListActions.doAdd(localProducts))
     localStorage.removeItem("wishlist");
     setProducts([])
   };

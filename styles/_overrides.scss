@@ -268,7 +268,7 @@ small {
   position: relative;
   transition: all .3s ease;
   &:hover, &:focus {
-    color: #fff;
+    color: $white !important;
 
     &::after {
       width: 100%;
@@ -284,7 +284,7 @@ small {
     height: 100%;
     top: 0;
     left: 0;
-    background: var(--primary-color);
+    background: theme-color("primary");
   }
 }
 .btn,
@@ -634,7 +634,6 @@ h6,
   box-shadow: none !important;
   border: 0 !important;
   border-radius: 0;
-  padding: 48px 95px;
 }
 
 .modal-body {
@@ -1018,4 +1017,41 @@ select.form-control {
   width: 32px;
   height: 62px;
   background-image: url("../public/images/e-commerce/slidernexticon.svg");
+}
+
+// range
+
+.input-range__track--active {
+  background: theme-color("primary");
+}
+
+.input-range__slider {
+  background: theme-color("primary");
+  border: 1px solid theme-color("primary");
+  margin-left: -0.2rem;
+  margin-top: -0.5rem;
+  height: 10px;
+  width: 10px;
+}
+
+.input-range__label--max {
+  display: none
+}
+
+.input-range__label--min {
+  display: none;
+}
+
+.input-range__label--value {
+  top: .8rem;
+}
+
+.input-range__label-container {
+  left: 0;
+}
+
+.input-range__slider-container:not(:first-of-type) {
+  .input-range__label--value {
+    right: 85%;
+  }
 }

@@ -7,6 +7,13 @@ async function list() {
 }
 
 const actions = {
+  doAdd: (product) => async (dispatch) => {
+    dispatch({
+      type: "PRODUCTS_LIST_DO_ADD",
+      payload: {product}
+    });
+  },
+
   doFetch: (filter, keepPagination = false) => async (dispatch, getState) => {
     try {
       dispatch({

@@ -14,22 +14,72 @@ import Link from "next/link";
 import s from "./Billing.module.scss";
 import heartIcon from "public/images/e-commerce/heart.svg";
 import axios from "axios";
-import {toast, ToastContainer} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import MaskInput from "react-maskinput";
+import scriptLoader from 'react-async-script-loader';
 
-
-import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
   Elements,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import Head from "next/head";
+import Checkbox from "react-custom-checkbox";
 
-const Index = () => {
+const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
+  const [mask, setMask] = React.useState("0000-0000-0000-0000");
+  const onChange = (e) => {
+    if (
+      e.target.value.indexOf("34") === 0 ||
+      e.target.value.indexOf("37") === 0
+    ) {
+      setMask("0000-000000-00000");
+      return;
+    }
+
+    setMask("0000-0000-0000-0000");
+  };
   const [selected, setSelected] = React.useState(1);
+  const [stripe, setStripe] = React.useState(null);
+
+  React.useEffect(() => {
+    if (isScriptLoaded && isScriptLoadSucceed) {
+      setStripe(window.Stripe('pk_test_51HUCprJMc0TzjdrX6UigiucFDTS68cRAy45Y8zHj6eGm89KhvOZXCRRqaPAKThswy2UbeQ65rrjFZH8x2w50feSo00uRmReo8U'));
+    }
+  }, [isScriptLoaded, isScriptLoadSucceed]);
+
+  const processPayment = async () => {
+    const session = await axios.post(
+        'http://localhost:8080/payment/session-initiate',
+        {
+          customerEmail: 'example@gmail.com',
+          clientReferenceId:
+              '12',
+          lineItem: {
+            name: 'My Name',
+            description: 'My Description',
+            images: ['https://flatlogic-ecommerce-backend,herokuapp.com/images/1.png'],
+            amount: 100,
+            currency: 'eur',
+            quantity: 1,
+          },
+          successUrl: 'https://example.com/success',
+          cancelUrl: 'https://example.com/cancel',
+        }
+    );
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.data.id,
+    });
+  }
 
   return (
     <Container className={"mb-5"} style={{ marginTop: 32 }}>
+      <Head>
+        <title>Billing</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Row>
         <Col sm={12}>
           <section className={`${s.loginSection} py-4`}>
@@ -189,12 +239,13 @@ const Index = () => {
                 <Label for="exampleEmail" className="fw-bold">
                   Card Number
                 </Label>
-                <Input
-                  type="text"
-                  name="text"
-                  id="exampleEmail"
-                  className="card w-100"
-                  placeholder={"0000 - 0000 - 0000 - 0000"}
+                <MaskInput
+                  onChange={onChange}
+                  maskChar="_"
+                  mask={mask}
+                  alwaysShowMask
+                  size={20}
+                  className="card w-100 form-control"
                 />
               </FormGroup>
               <FormGroup className={`d-flex`}>
@@ -202,18 +253,41 @@ const Index = () => {
                   <Label for="exampleEmail" className="fw-bold">
                     Exp.Month
                   </Label>
-                  <Input type="select" name="text" id="exampleEmail" />
+                  <Input
+                    type="select"
+                    name="text"
+                    id="exampleEmail"
+                    style={{padding: '10px 24px'}}
+                  >
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                  </Input>
                 </div>
                 <div className="flex-fill">
                   <Label for="exampleEmail" className="fw-bold">
                     Exp. Year
                   </Label>
-                  <Input
-                    type="select"
-                    name="text"
-                    id="exampleEmail"
-                    placeholder={"+ 375 (29) "}
-                  />
+                  <Input type="select" name="text" id="exampleEmail"
+                         style={{padding: '10px 24px'}}
+                  >
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                  </Input>
                 </div>
               </FormGroup>
               <FormGroup className={"d-flex"}>
@@ -231,81 +305,41 @@ const Index = () => {
                   />
                 </div>
                 <Label check className={"d-flex align-items-center"}>
-                  <Input
-                    type="checkbox"
-                    style={{ marginTop: 26, marginLeft: -21 }}
+                  <Checkbox
+                      borderColor={"#232323"}
+                      borderWidth={1}
+                      borderRadius={2}
+                      icon={
+                        <div
+                            style={{
+                              backgroundColor: "#bd744c",
+                              borderRadius: 2,
+                              padding: 4,
+                            }}
+                        />
+                      }
+                      size={16}
+                      label={
+                        <p className={"mb-0 align-self-end mr-3"} style={{marginTop: 17}}>
+                          Set as default payment method
+                        </p>
+                      }
+                      style={{marginTop: 17}}
                   />
-                  <p className={"mb-0 align-self-end"}>
-                    Set as default payment method
-                  </p>
                 </Label>
               </FormGroup>
+              <Button
+                  color={"primary"}
+                  className={`${s.checkOutBtn} text-uppercase mt-auto fw-bold`}
+                  onClick={processPayment}
+              >
+                PLACE ORDER
+              </Button>
             </Form>
-            <ElementsProvider />
           </section>
         </Col>
       </Row>
     </Container>
-  );
-};
-
-const CheckoutForm = () => {
-  const [success, setSuccess] = React.useState(false);
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
-    });
-
-    toast.info("products successfully bought");
-
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:8080/payment", {
-          amount: 1000,
-          id,
-        });
-
-        if (response.data.success) {
-          console.log("Successful payment");
-          setSuccess(true);
-        }
-      } catch (error) {
-        console.log("Error", error);
-      }
-    } else {
-      console.log(error.message);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <ToastContainer />
-      <CardElement />
-      <Button
-        color={"primary"}
-        className={`${s.checkOutBtn} text-uppercase mt-auto fw-bold`}
-      >
-        <Link href={"/billing"}>PLACE ORDER</Link>
-      </Button>
-    </form>
-  );
-};
-
-const stripePromise = loadStripe(
-  "pk_test_51HUCprJMc0TzjdrX6UigiucFDTS68cRAy45Y8zHj6eGm89KhvOZXCRRqaPAKThswy2UbeQ65rrjFZH8x2w50feSo00uRmReo8U"
-);
-
-const ElementsProvider = () => {
-  return (
-    <Elements stripe={stripePromise}>
-      <CheckoutForm />
-    </Elements>
   );
 };
 
@@ -314,8 +348,8 @@ export async function getServerSideProps(context) {
   // const products = res.data.rows;
 
   return {
-    props: {  }, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as props
   };
 }
 
-export default Index;
+export default scriptLoader('https://js.stripe.com/v3/')(Index);

@@ -73,19 +73,19 @@ class Header extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentUser) {
-      // axios
-      //   .get(`/orders?user=${this.props.currentUser.[id]}&status=in+cart`)
-      //   .then((res) => {
-      //     this.setState({
-      //       count: res.data.count,
-      //     });
-      //   });
-      // return;
+      axios
+        .get(`/orders?user=${this.props.currentUser.id}&status=in+cart`)
+        .then((res) => {
+          this.setState({
+            count: res.data.count,
+          });
+        });
+      return;
     } else if (
       typeof window !== "undefined" &&
       localStorage.getItem("products") &&
       !this.props.currentUser &&
-      prevProps !== prevProps
+      this.props.products !== prevProps.products
     ) {
       this.setState({
         count: JSON.parse(localStorage.getItem("products")).length,
@@ -163,17 +163,13 @@ class Header extends React.Component {
           {this.state.innerWidth >= 768 && (
             <nav className={s.nav}>
               <ul className={s.nav__menu}>
-                <li className={s.nav__menuItem} style={{width:90}}>
+                <li className={s.nav__menuItem} style={{ width: 90 }}>
                   <ActiveLink
                     className={s.navLink}
                     onMouseOver={this.toggleHeightOne}
                     href={"/"}
                   >
-                    <span
-                      className={s.dropdownItem}
-                    >
-                      Home
-                    </span>
+                    <span className={s.dropdownItem}>Home</span>
                   </ActiveLink>
                 </li>
                 <li className={s.nav__menuItem}>
@@ -207,6 +203,11 @@ class Header extends React.Component {
                       <DropdownItem className={s.dropdownMenuItem} text>
                         <ActiveLink href={"/error"}>
                           <a>404</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                      <DropdownItem className={s.dropdownMenuItem} text>
+                        <ActiveLink href={"/wishlist"}>
+                          <a>Wishlist</a>
                         </ActiveLink>
                       </DropdownItem>
                       <DropdownItem className={s.dropdownMenuItem} text>
@@ -277,12 +278,20 @@ class Header extends React.Component {
                 <>
                   <Link href={"/search"}>
                     <Button className={`bg-transparent border-0 p-3`}>
-                      <div className={s.headerSearchIcon} />
+                      {this.props.router.pathname.includes("search") ? (
+                          <div className={s.headerSearchIconActive} />
+                      ) : (
+                          <div className={s.headerSearchIcon} />
+                      )}
                     </Button>
                   </Link>
                   <Link href={"/login"}>
                     <Button className={`bg-transparent border-0 p-3`}>
-                      <div className={s.headerLoginIcon} />
+                      {this.props.router.pathname.includes("account") ? (
+                          <div className={s.headerLoginIconActive} />
+                      ) : (
+                          <div className={s.headerLoginIcon} />
+                      )}
                     </Button>
                   </Link>
                 </>
@@ -301,7 +310,11 @@ class Header extends React.Component {
                     className={`${s.headerSvgIcon} bg-transparent border-0 p-3`}
                     style={{ marginTop: this.state.count ? -22 : 0 }}
                   >
-                    <div className={s.headerCartIcon} />
+                    {this.props.router.pathname.includes("cart") ? (
+                      <div className={s.headerCartIconActive} />
+                    ) : (
+                      <div className={s.headerCartIcon} />
+                    )}
                   </Button>
                 </a>
               </Link>
@@ -322,6 +335,7 @@ function mapStateToProps(store) {
     currentUser: store.auth.currentUser,
     navbarType: store.layout.navbarType,
     navbarColor: store.layout.navbarColor,
+    products: store.products.list
   };
 }
 

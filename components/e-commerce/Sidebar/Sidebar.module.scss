@@ -40,7 +40,7 @@
   font-size: 36px;
   & > i {
     font-style: normal;
-    color: var(--primary-color);
+    color: theme-color("primary");
   }
 }
 

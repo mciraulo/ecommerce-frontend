@@ -2,6 +2,7 @@
 
 .headerLink {
   overflow-x: hidden;
+  color: #232323;
 
   @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height),
     (max-width: map_get($grid-breakpoints, md) - 1px) {

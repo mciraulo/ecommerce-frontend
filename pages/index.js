@@ -9,6 +9,7 @@ import Head from "next/head";
 import car from "public/images/e-commerce/home/car.svg";
 import call from "public/images/e-commerce/home/headphones.svg";
 import moneyBack from "public/images/e-commerce/home/Sync.svg";
+import arrowRight from "public/images/e-commerce/home/arrow-right.svg";
 
 import article1 from "public/images/e-commerce/home/article1.png";
 import article2 from "public/images/e-commerce/home/article2.png";
@@ -21,11 +22,15 @@ import insta4 from "public/images/e-commerce/home/insta4.png";
 import insta5 from "public/images/e-commerce/home/insta5.png";
 import insta6 from "public/images/e-commerce/home/insta6.png";
 import { toast, ToastContainer } from "react-toastify";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import Countdown from "./home/Countdown";
+import rating from "../public/images/e-commerce/details/stars.svg";
+import productsListActions from "../redux/actions/products/productsListActions";
 
 const Index = ({ products: serverSideProducts }) => {
+  const [quantity, setQuantity] = React.useState(1);
+  const dispatchStore = useDispatch();
   const openReducer = (state, action) => {
     switch (action.type) {
       case "open0":
@@ -99,11 +104,11 @@ const Index = ({ products: serverSideProducts }) => {
   });
   const currentUser = useSelector((store) => store.auth.currentUser);
 
-  const addToCart = (id) => {
+  const addToCart = (id, quantity = 1) => {
     if (currentUser) {
       axios.post(`/orders/`, {
         data: {
-          amount: 1,
+          amount: quantity,
           order_date: new Date(),
           product: id,
           status: "in cart",
@@ -117,13 +122,14 @@ const Index = ({ products: serverSideProducts }) => {
         JSON.parse(localStorage.getItem("products"))) ||
       [];
     localProducts.push({
-      amount: 1,
+      amount: quantity,
       order_date: new Date(),
       product: id,
       status: "in cart",
     });
     typeof window !== "undefined" &&
       localStorage.setItem("products", JSON.stringify(localProducts));
+    dispatchStore(productsListActions.doAdd(localProducts))
   };
 
   const addToWishlist = (id) => {
@@ -188,7 +194,7 @@ const Index = ({ products: serverSideProducts }) => {
                     window.innerWidth <= 768 ? (
                       <Button
                         color="primary"
-                        className={"text-uppercase mt-4 mr-auto fw-bold"}
+                        className={"text-uppercase mt-4 fw-bold"}
                       >
                         view more
                       </Button>
@@ -230,7 +236,7 @@ const Index = ({ products: serverSideProducts }) => {
                     window.innerWidth <= 768 ? (
                       <Button
                         color="primary"
-                        className={"text-uppercase mt-4 mr-auto fw-bold"}
+                        className={"text-uppercase mt-4 fw-bold"}
                       >
                         view more
                       </Button>
@@ -272,7 +278,7 @@ const Index = ({ products: serverSideProducts }) => {
                     window.innerWidth <= 768 ? (
                       <Button
                         color="primary"
-                        className={"text-uppercase mt-4 mr-auto fw-bold"}
+                        className={"text-uppercase mt-4 fw-bold"}
                       >
                         view more
                       </Button>
@@ -306,20 +312,135 @@ const Index = ({ products: serverSideProducts }) => {
         </Row>
         <Row>
           {products.map((item, index) => (
-            <Col xs={6} md={3} className={`mb-4 ${s.product}`} key={index}>
+            <Col
+              sm={6}
+              md={3}
+              xs={12}
+              className={`mb-4 ${s.product}`}
+              key={index}
+            >
               <Modal
                 isOpen={openState[`open${index}`]}
                 toggle={() => dispatch({ type: `open${index}` })}
               >
-                <img src={item.image[0].publicUrl} />
+                <div className={"d-flex"}>
+                  <div style={{ width: "50%" }}>
+                    <img
+                      src={item.image[0].publicUrl}
+                      width={"100%"}
+                      height={"100%"}
+                    />
+                  </div>
+                  <div
+                    className={"p-4 d-flex flex-column justify-content-between"}
+                    style={{ width: "50%" }}
+                  >
+                    <Link href={`/products/${item.id}`}>
+                      <a className={"fw-semi-bold"}>
+                        More about product
+                        <img
+                          src={arrowRight}
+                          alt={"arrow"}
+                          className={"ml-2"}
+                        />
+                      </a>
+                    </Link>
+                    <h6 className={`text-muted`}>
+                      {item.categories[0].title[0].toUpperCase() +
+                        item.categories[0].title.slice(1)}
+                    </h6>
+                    <h4 className={"fw-bold"}>{item.title}</h4>
+                    <div className={"d-flex align-items-center"}>
+                      <img src={rating} />
+                      <p className={"text-primary ml-3 mb-0"}>12 reviews</p>
+                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In ut ullamcorper leo, eget euismod orci. Cum sociis
+                      natoque penatibus et magnis dis parturient montes,
+                      nascetur ridiculus mus. Vestibulum ultricies aliquam.
+                    </p>
+                    <div className={"d-flex"}>
+                      <div
+                        className={
+                          "d-flex flex-column mr-5 justify-content-between"
+                        }
+                      >
+                        <h6 className={"fw-bold text-muted text-uppercase"}>
+                          Quantity
+                        </h6>
+                        <div className={"d-flex align-items-center"}>
+                          <Button
+                            className={`bg-transparent border-0 p-1 fw-bold mr-3 ${s.quantityBtn}`}
+                            onClick={() => {
+                              if (quantity === 1) return;
+                              setQuantity((prevState) => prevState - 1);
+                            }}
+                          >
+                            -
+                          </Button>
+                          <p className={"fw-bold mb-0"}>{quantity}</p>
+                          <Button
+                            className={`bg-transparent border-0 p-1 fw-bold ml-3 ${s.quantityBtn}`}
+                            onClick={() => {
+                              if (quantity < 1) return;
+                              setQuantity((prevState) => prevState + 1);
+                            }}
+                          >
+                            +
+                          </Button>
+                        </div>
+                      </div>
+                      <div
+                        className={"d-flex flex-column justify-content-between"}
+                      >
+                        <h6 className={"fw-bold text-muted text-uppercase"}>
+                          Price
+                        </h6>
+                        <h6 className={"fw-bold"}>{item.price}$</h6>
+                      </div>
+                    </div>
+                    <div className={"d-flex mt-5"}>
+                      <Button
+                        outline
+                        color={"primary"}
+                        className={"flex-fill mr-4 text-uppercase fw-bold"}
+                        style={{ width: "50%" }}
+                        onClick={() => {
+                          toast.info(
+                            "products successfully added to your cart"
+                          );
+                          addToCart();
+                        }}
+                      >
+                        Add to Cart
+                      </Button>
+                      <Link
+                        href={"/billing"}
+                        className={"d-inline-block flex-fill"}
+                      >
+                        <Button
+                          color={"primary"}
+                          className={"text-uppercase fw-bold"}
+                          style={{ width: "50%" }}
+                        >
+                          Buy now
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </Modal>
               <div style={{ position: "relative" }}>
                 <Link href={`/products/${item.id}`}>
                   <a>
-                    <img
-                      src={item.image[0].publicUrl}
-                      className={"img-fluid"}
-                      alt={"pic"}
+                    <div
+                      style={{
+                        background: `url(${item.image[0].publicUrl}) no-repeat center`,
+                        backgroundSize: "contain",
+                        transition: "all .65s ease",
+                      }}
+                      className={s.productImage}
                     />
                   </a>
                 </Link>
@@ -362,21 +483,25 @@ const Index = ({ products: serverSideProducts }) => {
                   </Button>
                 </div>
               </div>
-              <p className={"mt-3 text-muted mb-0"}>
-                {item.categories[0].title[0].toUpperCase() +
-                  item.categories[0].title.slice(1)}
-              </p>
-              <Link href={`/products/${item.id}`}>
-                <a>
-                  <h6
-                    className={"fw-bold font-size-base mt-1"}
-                    style={{ fontSize: 16 }}
-                  >
-                    {item.title}
-                  </h6>
-                </a>
-              </Link>
-              <h6 style={{ fontSize: 16 }}>${item.price}</h6>
+              <div className={s.productInfo}>
+                <div>
+                  <p className={"mt-3 text-muted mb-0"}>
+                    {item.categories[0].title[0].toUpperCase() +
+                      item.categories[0].title.slice(1)}
+                  </p>
+                  <Link href={`/products/${item.id}`}>
+                    <a>
+                      <h6
+                        className={"fw-bold font-size-base mt-1"}
+                        style={{ fontSize: 16 }}
+                      >
+                        {item.title}
+                      </h6>
+                    </a>
+                  </Link>
+                  <h6 style={{ fontSize: 16 }}>${item.price}</h6>
+                </div>
+              </div>
             </Col>
           ))}
         </Row>

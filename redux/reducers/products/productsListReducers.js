@@ -67,5 +67,11 @@ export default (state = initialData, { type, payload }) => {
     };
   }
 
+  if (type === 'PRODUCTS_LIST_DO_ADD') {
+    return {
+      ...state,
+      rows: payload.product
+    }
+  }
   return state;
 };

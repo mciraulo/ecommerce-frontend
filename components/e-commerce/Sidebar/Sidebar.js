@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
     sidebarOpened: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
     activeItem: PropTypes.string,
-    location: PropTypes.shape({
+    router: PropTypes.shape({
       pathname: PropTypes.string,
     }).isRequired,
   };
