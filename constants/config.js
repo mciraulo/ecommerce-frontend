@@ -10,7 +10,7 @@ export default {
   hostApi,
   portApi,
   baseURLApi,
-  remote: "https://flatlogic-ecommerce-backend.herokuapp.com:6905",
+  remote: "https://flatlogic-ecommerce-backend.herokuapp.com:41521",
   isBackend: process.env.REACT_APP_BACKEND,
   app: {
     colors: {
