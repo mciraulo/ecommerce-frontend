@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e03b059-5153-4f0c-902d-67039bacec50" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/blog/Blog.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/login/Login.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/register/Register.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin/Sidebar/Sidebar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/Sidebar/Sidebar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/e-commerce/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/e-commerce/Footer/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/e-commerce/Footer/Footer.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/components/e-commerce/Footer/Footer.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/e-commerce/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/e-commerce/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/e-commerce/Sidebar/LinksGroup/LinksGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/e-commerce/Sidebar/LinksGroup/LinksGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/e-commerce/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/e-commerce/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/constants/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/blog/article/Article.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/pages/blog/article/Article.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/blog/article/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/blog/article/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/blog/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/blog/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/register/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/register/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/actions/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/_variables.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +55,7 @@
       <workItem from="1613977469453" duration="2019000" />
       <workItem from="1613997314959" duration="5319000" />
       <workItem from="1614132708808" duration="10353000" />
-      <workItem from="1614585746357" duration="7868000" />
+      <workItem from="1614585746357" duration="8999000" />
     </task>
     <task id="LOCAL-00001" summary="kek">
       <created>1614138511823</created>
@@ -83,7 +64,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614138511823</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix: fix some issues">
+      <created>1614604403533</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1614604403533</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +94,7 @@
       <path value="$PROJECT_DIR$/https:/git.heroku.com/flatlogic-ecommerce-backend.git" />
     </ignored-roots>
     <MESSAGE value="kek" />
-    <option name="LAST_COMMIT_MESSAGE" value="kek" />
+    <MESSAGE value="fix: fix some issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: fix some issues" />
   </component>
 </project>
