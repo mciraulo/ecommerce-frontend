@@ -65,6 +65,7 @@ class Header extends React.Component {
 
   doLogout() {
     this.props.dispatch(logoutUser());
+    this.props.router.push('/login');
   }
 
   // collapse/uncolappse

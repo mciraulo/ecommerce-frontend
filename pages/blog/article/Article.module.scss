@@ -1,13 +1,5 @@
 @import "styles/app";
 
-.stroke {
-  width: 30px;
-  background: #c4c4c4;
-  height: 100%;
-  margin-right: 100px;
-  margin-left: -113px;
-}
-
 .number {
   display: flex;
   align-items: center;
@@ -17,6 +9,7 @@
   color: theme-color("primary");
   align-self: flex-start;
   width: 30px;
+  height: 30px;
   font-weight: bold;
   margin-right: 18px;
 }

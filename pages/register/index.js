@@ -5,7 +5,6 @@ import {withRouter} from 'next/router'
 import { connect } from "react-redux";
 import {
   Container,
-  Alert,
   Button,
   Col,
   Row,
@@ -14,12 +13,15 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import Widget from "components/admin/Widget";
 import { registerUser, authError } from "redux/actions/auth";
 import { loginUser } from "redux/actions/auth";
 import microsoft from "public/images/microsoft.png";
 import img from "public/images/e-commerce/register/bg.png";
 import logo from "public/images/e-commerce/logo.svg";
+import eye from 'public/images/e-commerce/login/eye.png';
+import eyeOff from 'public/images/e-commerce/login/eye-off.png';
+
+import s from './Register.module.scss';
 
 class Index extends React.Component {
   static propTypes = {
@@ -33,6 +35,8 @@ class Index extends React.Component {
       email: "",
       password: "",
       confirmPassword: "",
+      viewPassword: false,
+      viewCopyPassword: false,
     };
 
     this.doRegister = this.doRegister.bind(this);
@@ -110,7 +114,7 @@ class Index extends React.Component {
         >
           <Container>
             <Row className={"d-flex justify-content-center"}>
-              <Col xs={"auto"}>
+              <Col lg={8} xs={"auto"}>
                 <Link href={"/"}>
                   <img src={logo} alt={"logo"} style={{ marginBottom: 120 }} />
                 </Link>
@@ -124,19 +128,19 @@ class Index extends React.Component {
                       type="email"
                       name="text"
                       id="exampleEmail"
-                      style={{ width: 440 }}
+                      className="w-100"
                       placeholder={"Email"}
                       value={this.state.email}
                       onChange={this.changeEmail}
                       required
                     />
                   </FormGroup>
-                  <FormGroup>
+                  <FormGroup className={s.formGroup}>
                     <Label for="exampleEmail" className="fw-bold">
                       Password
                     </Label>
                     <Input
-                      type="password"
+                        type={this.state.viewPassword ? 'text' : 'password'}
                       name="text"
                       id="exampleEmail"
                       className="w-100"
@@ -145,13 +149,14 @@ class Index extends React.Component {
                       onChange={this.changePassword}
                       required
                     />
+                    <img className={s.viewPassword} src={this.state.viewPassword ? eye : eyeOff} onClick={() => this.setState({ viewPassword: !this.state.viewPassword })} />
                   </FormGroup>
-                  <FormGroup>
+                  <FormGroup className={s.formGroup}>
                     <Label for="exampleEmail" className="fw-bold">
                       Repeat Password
                     </Label>
                     <Input
-                      type="password"
+                        type={this.state.viewCopyPassword ? 'text' : 'password'}
                       name="text"
                       id="exampleEmail"
                       className="w-100"
@@ -160,6 +165,7 @@ class Index extends React.Component {
                       onChange={this.changeConfirmPassword}
                       required
                     />
+                    <img className={s.viewPassword} src={this.state.viewCopyPassword ? eye : eyeOff} onClick={() => this.setState({ viewCopyPassword: !this.state.viewCopyPassword })} />
                   </FormGroup>
                   <div
                     className={
@@ -171,7 +177,7 @@ class Index extends React.Component {
                     </Link>
                     <Button
                       color={"primary"}
-                      className={"fw-bold text-uppercase"}
+                      className={`fw-bold text-uppercase ${s.button}`}
                     >
                       SIGN UP
                     </Button>
@@ -179,7 +185,7 @@ class Index extends React.Component {
                 </Form>
                 <footer
                   style={{ marginTop: 100 }}
-                  className={"d-flex justify-content-between"}
+                  className={`d-flex justify-content-between ${s.footer}`}
                 >
                   <Link href={"#"} className={"fw-bold text-dark"}>
                     Terms & Conditions
@@ -195,12 +201,7 @@ class Index extends React.Component {
             </Row>
           </Container>
         </Col>
-        <Col sm={6} className={"d-none d-md-inline-block h-100"}>
-          <img
-            src={img}
-            style={{ position: "absolute", right: 0, height: "100vh" }}
-          />
-        </Col>
+        <Col sm={6} className={`d-none d-md-inline-block h-100 ${s.backgroundImage}`} />
       </Row>
     );
   }

@@ -4,6 +4,7 @@ import { Collapse, Badge } from "reactstrap";
 import { Route } from "react-router";
 import classnames from "classnames";
 import { connect } from "react-redux";
+import Link from 'next/link'
 
 import s from "./LinksGroup.module.scss";
 
@@ -50,7 +51,7 @@ class LinksGroup extends Component {
     this.setState({
       headerLinkWasClicked:
         !this.state.headerLinkWasClicked ||
-        (this.props.activeItem &&
+        ((this.props.activeItem || link) &&
           !this.props.activeItem.includes(this.props.index)),
     });
   }
@@ -73,12 +74,8 @@ class LinksGroup extends Component {
               this.props.className
             )}
           >
-            {/*<NavLink*/}
-            {/*  to={this.props.link}*/}
-            {/*  activeClassName={s.headerLinkActive}*/}
-            {/*  exact={exact}*/}
-            {/*  target={this.props.target}*/}
-            {/*>*/}
+            <Link href={this.props.link}>
+              <a>
               {this.props.iconType === "text" ? (
                 <span className={classnames("icon", s.icon)}>
                   <i className={`la ${this.props.iconName}`} />
@@ -101,7 +98,8 @@ class LinksGroup extends Component {
                   9
                 </Badge>
               )}
-            {/*</NavLink>*/}
+              </a>
+            </Link>
           </li>
         );
       }
@@ -119,6 +117,15 @@ class LinksGroup extends Component {
           {/*  }}*/}
           {/*  exact={exact}*/}
           {/*>*/}
+          <Link href={this.props.link}
+                onClick={(e) => {
+                  // able to go to link is not available(for Demo)
+                  if (this.props.link.includes("menu")) {
+                    e.preventDefault();
+                  }
+                }}
+          >
+            <a>
             {this.props.header}{" "}
             {this.props.label && (
               <sup
@@ -129,7 +136,8 @@ class LinksGroup extends Component {
                 {this.props.label}
               </sup>
             )}
-          {/*</NavLink>*/}
+            </a>
+          </Link>
         </li>
       );
     }

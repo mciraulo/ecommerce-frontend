@@ -14,17 +14,21 @@ import {
   Input,
   Form,
 } from "reactstrap";
-import Widget from "components/admin/Widget";
 import { loginUser, receiveToken, doInit } from "redux/actions/auth";
 import jwt from "jsonwebtoken";
 import microsoft from "public/images/microsoft.png";
 import { push } from "connected-react-router";
 import img from "public/images/e-commerce/login/bg.svg";
 import logo from "public/images/e-commerce/logo.svg";
+import eye from 'public/images/e-commerce/login/eye.png';
+import eyeOff from 'public/images/e-commerce/login/eye-off.png';
+
+import s from './Login.module.scss';
 
 class Login extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    viewPassword: false,
   };
 
   static isAuthenticated() {
@@ -91,7 +95,6 @@ class Login extends React.Component {
   render() {
 
     if (typeof window !== 'undefined' && Login.isAuthenticated()) {
-      console.log('here')
       this.props.router.push('/admin/dashboard');
     }
 
@@ -106,7 +109,7 @@ class Login extends React.Component {
         >
           <Container>
             <Row className={"d-flex justify-content-center"}>
-              <Col xs={"auto"}>
+              <Col lg={8} xs={"auto"}>
                 <Link href={"/"}>
                   <img src={logo} alt={"logo"} style={{ marginBottom: 120 }} />
                 </Link>
@@ -120,19 +123,19 @@ class Login extends React.Component {
                       type="email"
                       name="text"
                       id="exampleEmail"
-                      style={{ width: 440 }}
+                      className="w-100"
                       placeholder={"Email"}
                       value={this.state.email}
                       onChange={this.changeEmail}
                       required
                     />
                   </FormGroup>
-                  <FormGroup>
+                  <FormGroup className={s.formGroup}>
                     <Label for="exampleEmail" className="fw-bold">
                       Password
                     </Label>
                     <Input
-                      type="password"
+                        type={this.state.viewPassword ? 'text' : 'password'}
                       name="text"
                       id="exampleEmail"
                       className="w-100"
@@ -141,6 +144,7 @@ class Login extends React.Component {
                       onChange={this.changePassword}
                       required
                     />
+                    <img className={s.viewPassword} src={this.state.viewPassword ? eye : eyeOff} onClick={() => this.setState({ viewPassword: !this.state.viewPassword })} />
                   </FormGroup>
                   <div
                     className={
@@ -152,16 +156,13 @@ class Login extends React.Component {
                     </Link>
                     <Button
                       color={"primary"}
-                      className={"fw-bold text-uppercase"}
+                      className={`${s.button} fw-bold text-uppercase`}
                     >
                       Login
                     </Button>
                   </div>
                 </Form>
-                <footer
-                  style={{ marginTop: 180 }}
-                  className={"d-flex justify-content-between"}
-                >
+                <footer className={`d-flex justify-content-between ${s.footer}`}>
                   <Link href={"#"} className={"fw-bold text-dark"}>
                     Terms & Conditions
                   </Link>
@@ -176,12 +177,7 @@ class Login extends React.Component {
             </Row>
           </Container>
         </Col>
-        <Col sm={6} className={"d-none d-md-inline-block h-100"}>
-          <img
-            src={img}
-            style={{ position: "absolute", right: 0, height: "100vh" }}
-          />
-        </Col>
+        <Col sm={6} className={`d-none d-md-inline-block h-100 ${s.backgroundImage}`} />
       </Row>
     );
   }

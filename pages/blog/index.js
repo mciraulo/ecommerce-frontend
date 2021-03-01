@@ -13,6 +13,7 @@ import insta4 from "public/images/e-commerce/home/insta4.png";
 import insta5 from "public/images/e-commerce/home/insta5.png";
 import insta6 from "public/images/e-commerce/home/insta6.png";
 import Head from "next/head";
+import s from './Blog.module.scss';
 
 const Index = () => {
   return (
@@ -87,76 +88,76 @@ const Index = () => {
             />
             <hr className={"my-5"} />
             <h6 className={"text-uppercase fw-bold mb-4"}>Cathegories</h6>
-            <div className={"d-flex justify-content-between mt-3"}>
+            <div className={`${s.categroryWrapper} d-flex justify-content-between mt-3`}>
+              <p className={s.categoryLink}>
               <Link href={"/blog/article"}>
                 <a className={"text-dark"}>
-                  <p style={{ fontWeight: 500 }} className={"mb-0"}>
                     Basic
-                  </p>
                 </a>
               </Link>
-              <p style={{ fontWeight: 500 }} className={"mb-0"}>
+              </p>
+                <p className={s.categoryAmount}>
                 3
               </p>
             </div>
-            <div className={"d-flex justify-content-between mt-3"}>
+            <div className={`${s.categroryWrapper} d-flex justify-content-between mt-3`}>
+              <p className={s.categoryLink}>
               <Link href={"/blog/article"}>
                 <a className={"text-dark"}>
-                  <p style={{ fontWeight: 500 }} className={"mb-0"}>
                     Creative
-                  </p>
                 </a>
               </Link>
-              <p style={{ fontWeight: 500 }} className={"mb-0"}>
+              </p>
+              <p className={s.categoryAmount}>
                 6
               </p>
             </div>
-            <div className={"d-flex justify-content-between mt-3"}>
+            <div className={`${s.categroryWrapper} d-flex justify-content-between mt-3`}>
+              <p className={s.categoryLink}>
               <Link href={"/blog/article"}>
                 <a className={"text-dark"}>
-                  <p style={{ fontWeight: 500 }} className={"mb-0"}>
                     Offers & Deals
-                  </p>
                 </a>
               </Link>
-              <p style={{ fontWeight: 500 }} className={"mb-0"}>
-                1
+              </p>
+              <p className={s.categoryAmount}>
+              1
               </p>
             </div>
-            <div className={"d-flex justify-content-between mt-3"}>
+            <div className={`${s.categroryWrapper} d-flex justify-content-between mt-3`}>
+              <p className={s.categoryLink}>
               <Link href={"/blog/article"}>
                 <a className={"text-dark"}>
-                  <p style={{ fontWeight: 500 }} className={"mb-0"}>
                     Decorations
-                  </p>
                 </a>
               </Link>
-              <p style={{ fontWeight: 500 }} className={"mb-0"}>
-                12
+              </p>
+              <p className={s.categoryAmount}>
+              12
               </p>
             </div>
-            <div className={"d-flex justify-content-between mt-3"}>
+            <div className={`${s.categroryWrapper} d-flex justify-content-between mt-3`}>
+              <p className={s.categoryLink}>
               <Link href={"/blog/article"}>
                 <a className={"text-dark"}>
-                  <p style={{ fontWeight: 500 }} className={"mb-0"}>
                     Gift Cards
-                  </p>
                 </a>
               </Link>
-              <p style={{ fontWeight: 500 }} className={"mb-0"}>
-                3
+              </p>
+              <p className={s.categoryAmount}>
+              3
               </p>
             </div>
-            <div className={"d-flex justify-content-between mt-3"}>
+            <div className={`${s.categroryWrapper} d-flex justify-content-between mt-3`}>
+              <p className={s.categoryLink}>
               <Link href={"/blog/article"}>
                 <a className={"text-dark"}>
-                  <p style={{ fontWeight: 500 }} className={"mb-0"}>
                     Classic Collection
-                  </p>
                 </a>
               </Link>
-              <p style={{ fontWeight: 500 }} className={"mb-0"}>
-                2
+              </p>
+              <p className={s.categoryAmount}>
+              2
               </p>
             </div>
             <hr className={"my-5"} />

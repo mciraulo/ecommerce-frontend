@@ -31,7 +31,6 @@ const Blog = () => {
             className={"d-flex"}
             style={{ marginTop: 35, marginBottom: 40 }}
           >
-            <div className={s.stroke} />
             <div className={"d-flex flex-column"}>
               <div
                 className={"d-flex align-items-center"}

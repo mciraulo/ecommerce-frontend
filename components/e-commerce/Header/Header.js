@@ -43,7 +43,7 @@ class Header extends React.Component {
       this.props.dispatch(closeSidebar());
       this.props.dispatch(changeActiveSidebarItem(null));
     } else {
-      const paths = this.props.location.pathname.split("/");
+      const paths = this.props.router.pathname.split("/");
       paths.pop();
       this.props.dispatch(openSidebar());
       this.props.dispatch(changeActiveSidebarItem(paths.join("/")));
@@ -142,7 +142,6 @@ class Header extends React.Component {
   };
 
   render() {
-    console.log(this.state.innerWidth);
     const { heightTwo, heightThree, heightFour } = this.state;
     return (
       <Navbar className={s.header}>
@@ -231,13 +230,9 @@ class Header extends React.Component {
                     height={heightThree}
                   >
                     <DropdownItem className={s.dropdownMenuItem} text>
-                      Left Sidebar
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
-                      Right Sidebar
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
-                      Categories
+                      <ActiveLink href={"/blog"}>
+                        <a>Shop</a>
+                      </ActiveLink>
                     </DropdownItem>
                   </AnimateHeight>
                 </li>
@@ -255,17 +250,13 @@ class Header extends React.Component {
                   >
                     <DropdownItem className={s.dropdownMenuItem} text>
                       <ActiveLink href={"/blog"}>
-                        <a>Masonry</a>
+                        <a>Blog</a>
                       </ActiveLink>
                     </DropdownItem>
                     <DropdownItem className={s.dropdownMenuItem} text>
-                      Left Sidebar
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
-                      Right Sidebar
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
-                      Without Sidebar
+                      <ActiveLink href={"/blog/article"}>
+                        <a>Blog Article</a>
+                      </ActiveLink>
                     </DropdownItem>
                   </AnimateHeight>
                 </li>

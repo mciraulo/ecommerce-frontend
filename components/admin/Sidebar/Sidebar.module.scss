@@ -34,6 +34,7 @@
 }
 
 .logoStyle {
+  transition: font-size $sidebar-transition-time ease-in-out;
   color: #000;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -60,6 +61,20 @@
 
 .sidebarClose.sidebarWrapper {
   width: $sidebar-width-closed;
+  :global {
+    .link-wrapper > a > span {
+      color: #262626;
+    }
+    .link-wrapper > a {
+      color: transparent;
+    }
+  }
+  .logo {
+    padding-left: 0;
+    .logoStyle {
+      font-size: 13px;
+    }
+  }
   @include media-breakpoint-down(sm) {
     width: 0;
   }
@@ -71,7 +86,7 @@
   width: 100%;
   font-weight: $font-weight-thin;
   text-align: left;
-  transition: width $sidebar-transition-time ease-in-out;
+  transition: width $sidebar-transition-time ease-in-out, padding-left $sidebar-transition-time ease-in-out;
   padding-left: 25px;
 
   a {

@@ -12,17 +12,6 @@ import {
 } from "redux/actions/navigation";
 import { logoutUser } from "redux/actions/auth";
 
-import HomeIcon from "public/images/e-commerce/sidebar/home";
-import DownloadIcon from "public/images/e-commerce/sidebar/download";
-import BarIcon from "public/images/e-commerce/sidebar/bar";
-import FileIcon from "public/images/e-commerce/sidebar/file";
-import GiftIcon from "public/images/e-commerce/sidebar/gift";
-import GridIcon from "public/images/e-commerce/sidebar/grid";
-import PersonIcon from "public/images/e-commerce/sidebar/person";
-import PricetagIcon from "public/images/e-commerce/sidebar/pricetag";
-import SettingsIcon from "public/images/e-commerce/sidebar/settings";
-import ShoppingIcon from "public/images/e-commerce/sidebar/shopping";
-
 class Sidebar extends React.Component {
   static propTypes = {
     sidebarOpened: PropTypes.bool,
@@ -42,15 +31,31 @@ class Sidebar extends React.Component {
     super(props);
 
     this.doLogout = this.doLogout.bind(this);
+    this.wrapperRef = React.createRef();
   }
 
   doLogout() {
     this.props.dispatch(logoutUser());
   }
 
+  handleClickOutside = (event) => {
+    if (this.wrapperRef && !this.wrapperRef.current.contains(event.target) && this.props.sidebarOpened) {
+      this.props.dispatch(closeSidebar());
+      this.props.dispatch(changeActiveSidebarItem(null));
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
   render() {
     return (
-        <div
+        <div ref={this.wrapperRef}
             className={`${
                 !this.props.sidebarOpened && !this.props.sidebarStatic
                     ? s.sidebarClose
@@ -65,11 +70,9 @@ class Sidebar extends React.Component {
             </header>
             <ul className={s.nav}>
               <LinksGroup
-                  onActiveSidebarItemChange={(activeItem) =>
-                      this.props.dispatch(changeActiveSidebarItem(activeItem))
-                  }
+                  onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
                   activeItem={this.props.activeItem}
-                  header="Index"
+                  header="Home"
                   link="/"
                   isHeader
               />
@@ -80,38 +83,20 @@ class Sidebar extends React.Component {
                   activeItem={this.props.activeItem}
                   header="Pages"
                   link="/app/dashboard"
+                  index="dashboard"
                   isHeader
-                  childrenLinks={[
-                    {
-                      header: 'Analytics', link: '/app/main/analytics',
-                    },
-                    {
-                      header: 'Visits', link: '/app/main/dashboard',
-                    },
-                    {
-                      header: 'Widgets', link: '/app/main/widgets',
-                    },
-                  ]}
+                  exact={false}
               />
               <LinksGroup
                   onActiveSidebarItemChange={(activeItem) =>
                       this.props.dispatch(changeActiveSidebarItem(activeItem))
                   }
                   activeItem={this.props.activeItem}
-                  header="Index"
+                  header="Shop"
                   link="/shop"
+                  index="shop"
                   isHeader
-                  childrenLinks={[
-                    {
-                      header: 'Analytics', link: '/app/main/analytics',
-                    },
-                    {
-                      header: 'Visits', link: '/app/main/dashboard',
-                    },
-                    {
-                      header: 'Widgets', link: '/app/main/widgets',
-                    },
-                  ]}
+                  exact={false}
               />
             </ul>
             <div className={s.accountBtn}>

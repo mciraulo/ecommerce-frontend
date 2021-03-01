@@ -1,0 +1,21 @@
+@import "styles/app";
+
+.categoryLink {
+  margin-bottom: 0;
+  & > a {
+    color: $text-color;
+  }
+}
+
+.categroryWrapper {
+  cursor: pointer;
+  &:hover, &:focus {
+    a, p {
+      color: var(--primary-color)
+    }
+  }
+}
+.categoryAmount {
+  font-weight: bold;
+  margin-bottom: 0;
+}

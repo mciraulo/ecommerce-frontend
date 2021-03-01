@@ -67,7 +67,6 @@ export function logoutUser() {
     dispatch({
       type: LOGOUT_SUCCESS,
     });
-    dispatch(push("/login"));
   };
 }
 
