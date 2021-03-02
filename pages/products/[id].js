@@ -24,9 +24,9 @@ import productRight from "public/images/e-commerce/details/1-right.png";
 import productCenter from "public/images/e-commerce/details/1-center.png";
 import productLeft from "public/images/e-commerce/details/1-left.png";
 import rating from "public/images/e-commerce/details/stars.svg";
-import person1 from "public/images/e-commerce/details/person1.png";
-import person2 from "public/images/e-commerce/details/person2.png";
-import person3 from "public/images/e-commerce/details/person3.png";
+import person1 from "public/images/e-commerce/details/person1.jpg";
+import person2 from "public/images/e-commerce/details/person2.jpg";
+import person3 from "public/images/e-commerce/details/person3.jpg";
 import product1 from "public/images/e-commerce/home/product1.png";
 import product2 from "public/images/e-commerce/home/product2.png";
 import product3 from "public/images/e-commerce/home/product3.png";
@@ -42,13 +42,16 @@ import insta4 from "public/images/e-commerce/home/insta4.png";
 import insta5 from "public/images/e-commerce/home/insta5.png";
 import insta6 from "public/images/e-commerce/home/insta6.png";
 import closeIcon from "public/images/e-commerce/details/close.svg";
+import preloaderImg from 'public/images/e-commerce/preloader.gif'
 import axios from "axios";
 import close from "public/images/e-commerce/close.svg";
 import chevronRightIcon from "public/images/e-commerce/details/chevron-right.svg";
 import chevronLeftIcon from "public/images/e-commerce/details/chevron-left.svg";
 import actions from "redux/actions/products/productsFormActions";
 import Head from "next/head";
-import productsListActions from "../../redux/actions/products/productsListActions";
+import productsListActions from "redux/actions/products/productsListActions";
+import ReactImageMagnify from 'react-image-magnify';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 
 const products = [
   {
@@ -67,33 +70,39 @@ const products = [
     id: 3,
     img: product4,
   },
+  {
+    id: 3,
+    img: product1,
+  },
+  {
+    id: 4,
+    img: product2,
+  },
+  {
+    id: 5,
+    img: product3,
+  },
+  {
+    id: 6,
+    img: product4,
+  },
 ];
 
 const Id = ({ product: serverSideProduct }) => {
   const [isOpen, setOpen] = React.useState(false);
   const currentUser = useSelector((state) => state.auth.currentUser);
   const dispatch = useDispatch();
-  const [product, setProduct] = React.useState({
-    image: [
-      {
-        publicUrl: null,
-      },
-    ],
-    categories: [
-      {
-        title: "Category",
-      },
-    ],
-  });
+  const [product, setProduct] = React.useState(serverSideProduct);
   const [quantity, setQuantity] = React.useState(1);
+  const [fetching, setFetching] = React.useState(true)
   const router = useRouter();
   const { id } = router.query;
 
   React.useEffect(() => {
-    axios.get(`/products/${router.query.id}`).then((res) => {
-      setProduct(res.data);
-    });
-  }, []);
+    window.setTimeout(() => {
+      setFetching(false)
+    }, 1000)
+  }, [])
 
   const addToCart = () => {
     dispatch(actions.doFind(id));
@@ -132,116 +141,129 @@ const Id = ({ product: serverSideProduct }) => {
       </Head>
       <ToastContainer />
       <Container>
-        <Row className={"mb-5"} style={{ marginTop: 32 }}>
-          <Col
-            xs={12}
-            lg={product.image.length > 1 ? 7 : 6}
-            className={"d-flex"}
-          >
-            <img
-              src={product.image[0].publicUrl}
-              alt="product"
-              style={{ height: 480 }}
-              className={"mr-3 img-fluid w-100"}
-            />
-            {product.image.length > 1 ? (
-              <div
-                className={`d-flex flex-column h-100 justify-content-between ${s.dMdNone}`}
-                style={{ width: 160 }}
-              >
-                <img src={productRight} width={160} />
-                <img src={productCenter} width={160} />
-                <img src={productLeft} width={160} />
-              </div>
-            ) : null}
-          </Col>
-          <Col
-            xs={12}
-            lg={product.image.length > 1 ? 5 : 6}
-            className={"d-flex flex-column justify-content-between"}
-          >
-            <h6 className={`text-muted ${s.detailCategory}`}>
-              {product.categories[0].title[0].toUpperCase() +
+        { fetching ? (
+            <div style={{height: 480}} className={"d-flex justify-content-center align-items-center"}>
+              <img src={preloaderImg} alt={"fetching"}/>
+          </div>
+            ) : (          <Row className={"mb-5"} style={{marginTop: 32}}>
+            <Col
+                xs={12}
+                lg={product.image.length > 1 ? 7 : 6}
+                className={"d-flex"}
+            >
+              <ReactImageMagnify {...{
+                smallImage: {
+                  alt: 'Wristwatch by Ted Baker London',
+                  isFluidWidth: true,
+                  src: product.image[0].publicUrl,
+                },
+                largeImage: {
+                  src: product.image[0].publicUrl,
+                  width: 1200,
+                  height: 1200
+                }
+              }}
+              className={`${product.image.length && 'mr-3'}`}
+              />
+              {product.image.length > 1 ? (
+                  <div
+                      className={`d-flex flex-column h-100 justify-content-between ${s.dMdNone}`}
+                      style={{width: 160}}
+                  >
+                    <img src={productRight} width={160}/>
+                    <img src={productCenter} width={160}/>
+                    <img src={productLeft} width={160}/>
+                  </div>
+              ) : null}
+            </Col>
+            <Col
+                xs={12}
+                lg={product.image.length > 1 ? 5 : 6}
+                className={"d-flex flex-column justify-content-between"}
+            >
+              <h6 className={`text-muted ${s.detailCategory}`}>
+                {product.categories[0].title[0].toUpperCase() +
                 product.categories[0].title.slice(1)}
-            </h6>
-            <h4 className={"fw-bold"}>{product.title}</h4>
-            <div className={"d-flex align-items-center"}>
-              <img src={rating} className={s.detailRating} />
-              <p className={"text-primary ml-3 mb-0"}>12 reviews</p>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
-              ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus
-              et magnis dis parturient montes, nascetur ridiculus mus.
-              Vestibulum ultricies aliquam.
-            </p>
-            <div className={"d-flex"}>
-              <div
-                className={"d-flex flex-column mr-5 justify-content-between"}
-              >
-                <h6 className={"fw-bold text-muted text-uppercase"}>
-                  Quantity
-                </h6>
-                <div className={"d-flex align-items-center"}>
-                  <Button
-                    className={`bg-transparent border-0 p-1 fw-bold mr-3 ${s.quantityBtn}`}
-                    onClick={() => {
-                      if (quantity === 1) return;
-                      setQuantity((prevState) => prevState - 1);
-                      setProduct((prevState) => ({
-                        ...prevState,
-                        price: Number(prevState.price) - 70,
-                      }));
-                    }}
-                  >
-                    -
-                  </Button>
-                  <p className={"fw-bold mb-0"}>{quantity}</p>
-                  <Button
-                    className={`bg-transparent border-0 p-1 fw-bold ml-3 ${s.quantityBtn}`}
-                    onClick={() => {
-                      if (quantity < 1) return;
-                      setQuantity((prevState) => prevState + 1);
-                      setProduct((prevState) => ({
-                        ...prevState,
-                        price: Number(prevState.price) + 70,
-                      }));
-                    }}
-                  >
-                    +
-                  </Button>
+              </h6>
+              <h4 className={"fw-bold"}>{product.title}</h4>
+              <div className={"d-flex align-items-center"}>
+                <img src={rating} className={s.detailRating}/>
+                <p className={"text-primary ml-3 mb-0"}>12 reviews</p>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
+                ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus
+                et magnis dis parturient montes, nascetur ridiculus mus.
+                Vestibulum ultricies aliquam.
+              </p>
+              <div className={"d-flex"}>
+                <div
+                    className={"d-flex flex-column mr-5 justify-content-between"}
+                >
+                  <h6 className={"fw-bold text-muted text-uppercase"}>
+                    Quantity
+                  </h6>
+                  <div className={"d-flex align-items-center"}>
+                    <Button
+                        className={`bg-transparent border-0 p-1 fw-bold mr-3 ${s.quantityBtn}`}
+                        onClick={() => {
+                          if (quantity === 1) return;
+                          setQuantity((prevState) => prevState - 1);
+                          setProduct((prevState) => ({
+                            ...prevState,
+                            price: Number(prevState.price) - 70,
+                          }));
+                        }}
+                    >
+                      -
+                    </Button>
+                    <p className={"fw-bold mb-0"}>{quantity}</p>
+                    <Button
+                        className={`bg-transparent border-0 p-1 fw-bold ml-3 ${s.quantityBtn}`}
+                        onClick={() => {
+                          if (quantity < 1) return;
+                          setQuantity((prevState) => prevState + 1);
+                          setProduct((prevState) => ({
+                            ...prevState,
+                            price: Number(prevState.price) + 70,
+                          }));
+                        }}
+                    >
+                      +
+                    </Button>
+                  </div>
+                </div>
+                <div className={"d-flex flex-column justify-content-between"}>
+                  <h6 className={"fw-bold text-muted text-uppercase"}>Price</h6>
+                  <h6 className={"fw-bold"}>{product.price}$</h6>
                 </div>
               </div>
-              <div className={"d-flex flex-column justify-content-between"}>
-                <h6 className={"fw-bold text-muted text-uppercase"}>Price</h6>
-                <h6 className={"fw-bold"}>{product.price}$</h6>
-              </div>
-            </div>
-            <div className={"d-flex mt-5"}>
-              <Button
-                outline
-                color={"primary"}
-                className={"flex-fill mr-4 text-uppercase fw-bold"}
-                style={{ width: "50%" }}
-                onClick={() => {
-                  toast.info("products successfully added to your cart");
-                  addToCart();
-                }}
-              >
-                Add to Cart
-              </Button>
-              <Link href={"/billing"} className={"d-inline-block flex-fill"}>
+              <div className={"d-flex mt-5"}>
                 <Button
-                  color={"primary"}
-                  className={"text-uppercase fw-bold"}
-                  style={{ width: "50%" }}
+                    outline
+                    color={"primary"}
+                    className={"flex-fill mr-4 text-uppercase fw-bold"}
+                    style={{width: "50%"}}
+                    onClick={() => {
+                      toast.info("products successfully added to your cart");
+                      addToCart();
+                    }}
                 >
-                  Buy now
+                  Add to Cart
                 </Button>
-              </Link>
-            </div>
-          </Col>
-        </Row>
+                <Link href={"/billing"} className={"d-inline-block flex-fill"}>
+                  <Button
+                      color={"primary"}
+                      className={"text-uppercase fw-bold"}
+                      style={{width: "50%"}}
+                  >
+                    Buy now
+                  </Button>
+                </Link>
+              </div>
+            </Col>
+          </Row> )
+        }
         <hr />
         <Row className={"mt-5 mb-5"}>
           <Modal
@@ -249,6 +271,7 @@ const Id = ({ product: serverSideProduct }) => {
             toggle={() => setOpen((prevState) => !prevState)}
             style={{ width: 920 }}
           >
+            <div className={"p-5"}>
             <div style={{ position: "absolute", top: 0, right: 0 }}>
               <Button
                 className={"border-0 bg-transparent"}
@@ -335,6 +358,7 @@ const Id = ({ product: serverSideProduct }) => {
                 </Button>
               </div>
             </ModalBody>
+            </div>
           </Modal>
           <Col sm={12} className={"d-flex justify-content-between"}>
             <h4 className={"fw-bold"}>Reviews:</h4>
@@ -348,7 +372,7 @@ const Id = ({ product: serverSideProduct }) => {
           <Col sm={12} className={"d-flex mt-5"}>
             <img
               src={person1}
-              style={{ borderRadius: 100 }}
+              style={{ borderRadius: 65 }}
               className={`mr-5 ${s.reviewImg}`}
             />
             <div
@@ -357,7 +381,7 @@ const Id = ({ product: serverSideProduct }) => {
               <div
                 className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
               >
-                <h6 className={"fw-bold mb-0"}>John Doe</h6>
+                <h6 className={"fw-bold mb-0"}>Philip Daineka</h6>
                 <p className={"text-muted mb-0"}>01.01.2020</p>
               </div>
               <img src={rating} className={s.reviewMarginImg} />
@@ -374,7 +398,7 @@ const Id = ({ product: serverSideProduct }) => {
           <Col sm={12} className={"d-flex mt-5"}>
             <img
               src={person2}
-              style={{ borderRadius: 100 }}
+              style={{ borderRadius: 65 }}
               className={`mr-5 ${s.reviewImg}`}
             />
             <div
@@ -385,7 +409,7 @@ const Id = ({ product: serverSideProduct }) => {
               <div
                 className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
               >
-                <h6 className={"fw-bold mb-0"}>Tim Burton</h6>
+                <h6 className={"fw-bold mb-0"}>Alexey Vertel</h6>
                 <p className={"text-muted mb-0"}>01.01.2020</p>
               </div>
               <img src={rating} className={s.reviewMarginImg} />
@@ -402,7 +426,7 @@ const Id = ({ product: serverSideProduct }) => {
           <Col sm={12} className={"d-flex mt-5"}>
             <img
               src={person3}
-              style={{ borderRadius: 100 }}
+              style={{ borderRadius: 65 }}
               className={`mr-5 ${s.reviewImg}`}
             />
             <div
@@ -413,7 +437,7 @@ const Id = ({ product: serverSideProduct }) => {
               <div
                 className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
               >
-                <h6 className={"fw-bold mb-0"}>Emma Watson</h6>
+                <h6 className={"fw-bold mb-0"}>Michael Daineka</h6>
                 <p className={"text-muted mb-0"}>01.01.2020</p>
               </div>
               <img src={rating} className={s.reviewMarginImg} />
@@ -460,27 +484,51 @@ const Id = ({ product: serverSideProduct }) => {
           </Col>
         </Row>
         <Row className={"mb-5"} style={{ position: "relative" }}>
-          <img
-            src={chevronRightIcon}
-            style={{ position: "absolute", right: -5, top: 130 }}
-          />
-          {products.map((c) => (
-            <Col xs={6} lg={3} className={"mb-4"}>
-              <img
-                src={c.img}
-                className={"img-fluid"}
-                style={{ width: "100%" }}
-              />
-              <p className={"mt-3 text-muted mb-0"}>Category</p>
-              <h6
-                className={"fw-bold font-size-base mt-1"}
-                style={{ fontSize: 16 }}
-              >
-                Awesome Product Name
-              </h6>
-              <h6 style={{ fontSize: 16 }}>$70</h6>
-            </Col>
-          ))}
+          <CarouselProvider
+              totalSlides={8}
+              visibleSlides={4}
+              style={{width: '100%'}}
+              infinite
+              dragEnabled
+              naturalSlideHeight={400}
+              naturalSlideWidth={300}
+          >
+            <ButtonBack style={{position: 'absolute', top: '35%', zIndex: 99, left: -20}} className={"btn bg-transparent border-0 p-0"}>
+              <img src={chevronLeftIcon}/>
+            </ButtonBack>
+            <Slider>
+              {products.map((c, index) => (
+                  <Slide index={index}>
+                    <Col className={`${s.product}`}>
+                      <Link href={`/products/afaf98d5-4060-4408-967b-c4f4af3d186${index + 1}`}>
+                        <a>
+                          <img
+                              src={c.img}
+                              className={"img-fluid"}
+                              style={{ width: "100%" }}
+                          />
+                        </a>
+                      </Link>
+                      <p className={"mt-3 text-muted mb-0"}>Category</p>
+                      <Link href={`/products/afaf98d5-4060-4408-967b-c4f4af3d1861`}>
+                        <a>
+                          <h6
+                              className={"fw-bold font-size-base mt-1"}
+                              style={{ fontSize: 16 }}
+                          >
+                            Awesome Product Name
+                          </h6>
+                        </a>
+                      </Link>
+                      <h6 style={{ fontSize: 16 }}>$70</h6>
+                    </Col>
+                  </Slide>
+              ))}
+            </Slider>
+            <ButtonNext style={{position: 'absolute', top: '35%', zIndex: 99, right: -20}} className={"btn bg-transparent border-0 p-0"}>
+              <img src={chevronRightIcon}/>
+            </ButtonNext>
+          </CarouselProvider>
         </Row>
       </Container>
       <hr />
@@ -562,9 +610,8 @@ const Id = ({ product: serverSideProduct }) => {
 };
 
 export async function getServerSideProps(context) {
-  // const res = await axios.get(`/products/${context.query.id}`);
-  // const product = res.data.rows;
-  console.log(context.query);
+  const res = await axios.get(`/products/${context.query.id}`);
+  const product = res.data;
 
   return {
     props: { product }, // will be passed to the page component as props

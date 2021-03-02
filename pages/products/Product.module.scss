@@ -22,6 +22,8 @@
 }
 
 .reviewImg {
+  width: 132px;
+  height: 132px;
   @media (max-width: 992px) {
     display: none;
   }
@@ -55,4 +57,15 @@
 .modalProduct {
   padding-bottom: 24px;
   border-bottom: 1px solid #d9d9d9;
+}
+
+.product {
+  &:hover {
+    a {
+      color: theme-color("primary")
+    }
+  }
+  a {
+    color: #232323;
+  }
 }

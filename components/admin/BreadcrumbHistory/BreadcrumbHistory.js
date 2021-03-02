@@ -15,7 +15,7 @@ const BreadcrumbHistory = ({ url }) => {
         const { id } = router.query;
         axios.get(`/products/${id}`).then((res) => {
           setRoute([
-            "products",
+            "Products",
             res.data.categories[0].title[0].toUpperCase() +
               res.data.categories[0].title.slice(1),
             res.data.title,
