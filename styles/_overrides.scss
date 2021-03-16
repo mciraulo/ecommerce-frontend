@@ -160,8 +160,11 @@ legend {
 }
 
 .table {
+  .btn {
+    padding: 5px 9px;
+  }
   th {
-    background: $blue;
+    background: $primary-color;
     color: $gray-light;
     border: none;
   }
@@ -212,6 +215,7 @@ small {
 .dropdown-toggle::after {
   background: url("../public/images/e-commerce/chevron-down-header.svg");
   -webkit-appearance: none;
+  vertical-align: -2px;
   border: none;
   width: 16px;
   height: 16px;

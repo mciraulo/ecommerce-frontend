@@ -21,11 +21,12 @@
 
 .navigationLink {
   color: $text-muted;
+  cursor: pointer;
   & > h6 {
     transition: color .35s ease;
     &:hover, &:focus {
       color: #f4f4f4;
-    }
+    }    
   }
   &:hover, &:focus {
     color: #f4f4f4;

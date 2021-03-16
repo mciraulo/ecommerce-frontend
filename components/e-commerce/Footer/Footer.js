@@ -50,14 +50,14 @@ const Footer = () => {
                 className={"d-flex flex-column justify-content-between"}
               >
                 <div>
-                  <img src={logo} className={"mb-4"} alt={"flatlogic"}/>
+                  <img alt="img" src={logo} className={"mb-4"} />
                   <p className={"text-white fw-thin mb-0"}>
                     Lorem Ipsum has been the industry's standard dummy text ever
                     since the 1500s,
                   </p>
                 </div>
                 <div>
-                  <Link href="https://flatlogic.com/">
+                <Link href="https://flatlogic.com/">
                   <a className={s.socialLink} target="_blank" rel="noopener noreferrer">
                     <img src={google} alt="google" className={"mr-4"} />
                   </a>
@@ -85,19 +85,19 @@ const Footer = () => {
                     <h5 className={"text-white fw-bold text-uppercase mb-4"}>
                       company
                     </h5>
-                    <h6 className={"text-muted mb-3"}>What We Do</h6>
-                    <h6 className={"text-muted mb-3"}>Available Services</h6>
-                    <h6 className={"text-muted mb-3"}>Latest Posts</h6>
-                    <h6 className={"text-muted mb-3"}>FAQs</h6>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>What We Do</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Available Services</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Latest Posts</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>FAQs</h6></Link>
                   </Col>
                   <Col sm={"auto"}>
                     <h5 className={"text-white fw-bold text-uppercase mb-4"}>
                       my account
                     </h5>
-                    <h6 className={"text-muted mb-3"}>Sign In</h6>
-                    <h6 className={"text-muted mb-3"}>View Cart</h6>
-                    <h6 className={"text-muted mb-3"}>Order Tracking</h6>
-                    <h6 className={"text-muted mb-3"}>Help & Support</h6>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Sign In</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>View Cart</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Order Tracking</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Support</h6></Link>
                   </Col>
                   <Col sm={"auto"}>
                     <h5
@@ -107,10 +107,10 @@ const Footer = () => {
                     >
                       customer service
                     </h5>
-                    <h6 className={"text-muted mb-3"}>Help & Contact Us</h6>
-                    <h6 className={"text-muted mb-3"}>Returns & Refunds</h6>
-                    <h6 className={"text-muted mb-3"}>Online Stores</h6>
-                    <h6 className={"text-muted mb-3"}>Terms & Conditions</h6>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Contact Us</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Returns & Refunds</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Online Stores</h6></Link>
+                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Terms & Conditions</h6></Link>
                   </Col>
                 </Row>
               </Col>
@@ -120,7 +120,7 @@ const Footer = () => {
         <hr className={`${s.footer__hr} mb-0`} />
         <Row style={{ padding: "30px 0" }}>
           <Col sm={12}>
-            <p className={"text-muted mb-0"}>© 2020-21 powered by Flatlogic</p>
+            <p className={"text-muted mb-0"}>© 2020-{new Date().getFullYear()} powered by <Link href="https://flatlogic.com"><span className={s.navigationLink}>Flatlogic</span></Link></p>
           </Col>
         </Row>
       </Container>
@@ -129,3 +129,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

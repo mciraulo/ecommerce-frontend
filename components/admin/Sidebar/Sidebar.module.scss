@@ -88,6 +88,7 @@
   text-align: left;
   transition: width $sidebar-transition-time ease-in-out, padding-left $sidebar-transition-time ease-in-out;
   padding-left: 25px;
+  height: 30px;
 
   a {
     color: var(--logo-color);

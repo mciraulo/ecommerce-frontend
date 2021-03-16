@@ -33,6 +33,7 @@ $gray-900: #29323a !default;
 $black: #000 !default;
 $gray-light: $gray-100 !default;
 
+$primary-color: #bd744c;
 $blue: #005792 !default;
 $indigo: #7f3ddb !default;
 $purple: #1a86d0 !default;
@@ -48,7 +49,7 @@ $gray-inverse: #002b49 !default;
 $subtle-white: #eaf0f6 !default;
 
 $theme-colors: (
-  primary: #bd744c,
+  primary: $primary-color,
   secondary: $gray-600,
   success: $teal,
   info: $purple,
@@ -69,7 +70,7 @@ $theme-colors: (
 $link-color: #1a86d0;
 
 $text-color: #262626 !default;
-$text-muted: #9d9d9d;
+$text-muted: #555555;
 
 $font-weight-bold: 700 !default;
 $font-weight-semi-bold: 600 !default;
