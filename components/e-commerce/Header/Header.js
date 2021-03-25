@@ -190,6 +190,11 @@ class Header extends React.Component {
                         </ActiveLink>
                       </DropdownItem>
                       <DropdownItem className={s.dropdownMenuItem} text>
+                        <ActiveLink href={"/about-team"}>
+                          <a>About Team</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                      <DropdownItem className={s.dropdownMenuItem} text>
                         <ActiveLink href={"/contact"}>
                           <a>Contact Us</a>
                         </ActiveLink>
@@ -230,8 +235,18 @@ class Header extends React.Component {
                     height={heightThree}
                   >
                     <DropdownItem className={s.dropdownMenuItem} text>
-                      <ActiveLink href={"/blog"}>
+                      <ActiveLink href={"/shop"}>
                         <a>Shop</a>
+                      </ActiveLink>
+                    </DropdownItem>
+                    <DropdownItem className={s.dropdownMenuItem} text>
+                      <ActiveLink href={"/categories"}>
+                        <a>Categories</a>
+                      </ActiveLink>
+                    </DropdownItem>
+                    <DropdownItem className={s.dropdownMenuItem} text>
+                      <ActiveLink href={"/account"}>
+                        <a>Account</a>
                       </ActiveLink>
                     </DropdownItem>
                   </AnimateHeight>

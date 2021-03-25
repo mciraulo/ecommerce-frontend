@@ -1,19 +1,60 @@
 import React, { Component } from "react";
-import ProductsView from "./ProductsView";
+import ProductsForm from "./ProductsView";
+import { push } from "connected-react-router";
 import actions from "redux/actions/products/productsFormActions";
 import { connect } from "react-redux";
-import { withRouter } from 'next/router'
+import {withRouter} from "next/router";
 
-class ProductsPage extends Component {
+class Index extends Component {
+  state = {
+    dispatched: false,
+  };
+
   componentDidMount() {
     const { dispatch, router } = this.props;
-    dispatch(actions.doFind(router.query.id));
+    if (this.isEditing()) {
+      dispatch(actions.doFind(router.query.id));
+    } else {
+      if (this.isProfile()) {
+        const currentUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem("user"));
+        const currentUserId = currentUser.user.id;
+        dispatch(actions.doFind(currentUserId));
+      } else {
+        dispatch(actions.doNew());
+      }
+    }
+    this.setState({ dispatched: true });
   }
 
+
+  isEditing = () => {
+    const { router } = this.props;
+    return !!router.query.id;
+  };
+
+  isProfile = () => {
+    const { router } = this.props;
+    return router.pathname === "/app/profile";
+  };
+
   render() {
+    console.log(this.props.record);
     return (
       <React.Fragment>
-        <ProductsView loading={this.props.loading} record={this.props.record} />
+        {this.state.dispatched && (
+          <ProductsForm
+            saveLoading={this.props.saveLoading}
+            findLoading={this.props.findLoading}
+            currentUser={this.props.currentUser}
+            record={
+              this.isEditing() || this.isProfile() ? this.props.record : {}
+            }
+            isEditing={this.isEditing()}
+            isProfile={this.isProfile()}
+            onSubmit={null}
+            onCancel={() => this.props.router.push("/admin/products")}
+          />
+        )}
       </React.Fragment>
     );
   }
@@ -21,8 +62,10 @@ class ProductsPage extends Component {
 
 function mapStateToProps(store) {
   return {
-    loading: store.users.form.loading,
-    record: store.users.form.record,
+    findLoading: store.products.form.findLoading,
+    saveLoading: store.products.form.saveLoading,
+    record: store.products.form.record,
+    currentUser: store.auth.currentUser,
   };
 }
 
@@ -35,4 +78,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(ProductsPage));
+export default connect(mapStateToProps)(withRouter(Index));

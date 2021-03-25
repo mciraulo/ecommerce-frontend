@@ -1,8 +1,8 @@
 import * as dataFormat from "./ProductsDataFormatters";
 
-import * as categoriesDataFormat from "../сategories/CategoriesDataFormatters";
+import * as categoriesDataFormat from "../categories/CategoriesDataFormatters";
 import * as productsDataFormat from "../products/ProductsDataFormatters";
-
+import { withRouter } from "next/router"
 import actions from "redux/actions/products/productsListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
@@ -48,20 +48,19 @@ class ProductsListTable extends Component {
   actionFormatter(cell) {
     return (
       <div>
-        {null && (
-          <Button
-            color="default"
-            size="xs"
-            onClick={() => this.props.dispatch(push(`/admin/products/${cell}`))}
-          >
-            View
-          </Button>
-        )}
+        <Button
+          color="default"
+          size="xs"
+          onClick={() => this.props.router.push(`/admin/products/${cell}`)}
+        >
+          View
+        </Button>
+        &nbsp;&nbsp;
         <Button
           color="info"
           size="xs"
           onClick={() =>
-            this.props.dispatch(push(`/admin/products/${cell}/edit`))
+            this.props.router.push(`/admin/products/edit/${cell}`)
           }
         >
           Edit
@@ -77,6 +76,7 @@ class ProductsListTable extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(actions.doFetch({}));
+    console.log(this.props)
   }
 
   renderSizePerPageDropDown = (props) => {
@@ -104,7 +104,6 @@ class ProductsListTable extends Component {
 
   render() {
     const { rows } = this.props;
-
     const options = {
       sizePerPage: 10,
       paginationSize: 5,
@@ -213,4 +212,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default connect(mapStateToProps)(ProductsListTable);
+export default connect(mapStateToProps)(withRouter(ProductsListTable));

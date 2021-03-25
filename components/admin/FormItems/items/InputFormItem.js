@@ -17,6 +17,7 @@ export class InputFormItemNotFast extends Component {
       inputProps,
       errorMessage,
       required,
+      disabled,
     } = this.props;
 
     const { label } = this.props.schema[name];
@@ -52,6 +53,7 @@ export class InputFormItemNotFast extends Component {
             form.setFieldValue(name, event.target.value);
             form.setFieldTouched(name);
           }}
+          disabled={disabled}
           value={form.values[name] || ""}
           placeholder={placeholder || undefined}
           autoFocus={autoFocus || undefined}
@@ -74,6 +76,7 @@ export class InputFormItemNotFast extends Component {
 
 InputFormItemNotFast.defaultProps = {
   required: false,
+  disabled: false,
 };
 
 InputFormItemNotFast.propTypes = {

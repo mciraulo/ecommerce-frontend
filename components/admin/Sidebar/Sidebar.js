@@ -221,7 +221,7 @@ class Sidebar extends React.Component {
               iconName={<SettingsIcon/>}
             />
           } */}
-
+        {console.log(this.props.currentUser)}
             {this.props.currentUser &&
             this.props.currentUser.role === "admin" && (
                 <LinksGroup
@@ -230,7 +230,7 @@ class Sidebar extends React.Component {
                     }
                     activeItem={this.props.activeItem}
                     header="Categories"
-                    link="/admin/сategories"
+                    link="/admin/categories"
                     isHeader
                     iconType="node"
                     iconName={<BarIcon />}
@@ -243,7 +243,7 @@ class Sidebar extends React.Component {
                 }
                 activeItem={this.props.activeItem}
                 header="My Profile"
-                link="/admin/profile"
+                link={`/admin/users/edit/${this.props.currentUser && this.props.currentUser.id}`}
                 isHeader
                 iconType="node"
                 iconName={<FileIcon />}

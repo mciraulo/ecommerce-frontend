@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ChangePasswordForm from "./ChangePasswordForm";
 import { push } from "connected-react-router";
 import actions from "redux/actions/password";
+import { withRouter } from 'next/router';
 import { connect } from "react-redux";
 
 class Index extends Component {
@@ -21,7 +22,7 @@ class Index extends Component {
           saveLoading={this.props.saveLoading}
           findLoading={this.props.findLoading}
           onSubmit={this.doSubmit}
-          onCancel={() => this.props.dispatch(push("/app/dashboard"))}
+          onCancel={() => this.props.router.push("/app/dashboard")}
         />
       </React.Fragment>
     );
@@ -44,4 +45,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default connect(mapStateToProps)(Index);
+export default connect(mapStateToProps)(withRouter(Index));

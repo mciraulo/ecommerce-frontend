@@ -1,19 +1,58 @@
 import React, { Component } from "react";
-import OrdersView from "./OrdersView";
+import OrdersForm from "./OrdersForm";
+import { push } from "connected-react-router";
 import actions from "redux/actions/orders/ordersFormActions";
 import { connect } from "react-redux";
-import { withRouter } from 'next/router'
+import {withRouter} from 'next/router'
 
-class OrdersPage extends Component {
+class Index extends Component {
+  state = {
+    dispatched: false,
+  };
+
   componentDidMount() {
     const { dispatch, router } = this.props;
-    dispatch(actions.doFind(router.query.id));
+    if (this.isEditing()) {
+      dispatch(actions.doFind(router.query.id));
+    } else {
+      if (this.isProfile()) {
+        const currentUser = typeof window !== 'undefined' && JSON.parse(localStorage.getItem("user"));
+        const currentUserId = currentUser.user.id;
+        dispatch(actions.doFind(currentUserId));
+      } else {
+        dispatch(actions.doNew());
+      }
+    }
+    this.setState({ dispatched: true });
   }
+
+  isEditing = () => {
+    const { router } = this.props;
+    return !!router.query.id;
+  };
+
+  isProfile = () => {
+    const { router } = this.props;
+    return router.pathname === "/app/profile";
+  };
 
   render() {
     return (
       <React.Fragment>
-        <OrdersView loading={this.props.loading} record={this.props.record} />
+        {this.state.dispatched && (
+          <OrdersForm
+            saveLoading={this.props.saveLoading}
+            findLoading={this.props.findLoading}
+            currentUser={this.props.currentUser}
+            record={
+              this.isEditing() || this.isProfile() ? this.props.record : {}
+            }
+            isEditing={this.isEditing()}
+            isProfile={this.isProfile()}
+            onSubmit={null}
+            onCancel={() => this.props.dispatch(push("/admin/orders"))}
+          />
+        )}
       </React.Fragment>
     );
   }
@@ -21,8 +60,10 @@ class OrdersPage extends Component {
 
 function mapStateToProps(store) {
   return {
-    loading: store.users.form.loading,
-    record: store.users.form.record,
+    findLoading: store.orders.form.findLoading,
+    saveLoading: store.orders.form.saveLoading,
+    record: store.orders.form.record,
+    currentUser: store.auth.currentUser,
   };
 }
 
@@ -35,4 +76,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(OrdersPage));
+export default withRouter(connect(mapStateToProps)(Index))

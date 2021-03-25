@@ -9,6 +9,7 @@ const ImagesUploaderWrapper = styled.div`
     display: none;
     position: relative;
     bottom: 2.4rem;
+    top: -100px;
     width: calc(100px);
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import CategoriesListTable from "./CategoriesListTable";
+import FeedbackListTable from "./FeedbackListTable";
 
 class Index extends Component {
   render() {
     return (
       <div>
-        <CategoriesListTable />
+        <FeedbackListTable />
       </div>
     );
   }

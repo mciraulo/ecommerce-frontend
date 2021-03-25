@@ -13,6 +13,8 @@ import orders from "./orders/ordersReducers";
 
 import users from "./users/usersReducers";
 
+import feedback from "./feedback/feedbackReducers";
+
 export default combineReducers({
     layout,
     alerts,
@@ -22,4 +24,5 @@ export default combineReducers({
     categories,
     orders,
     users,
+    feedback,
   });

@@ -6,8 +6,9 @@ import Head from "next/head";
 const Index = () => {
 
   const handleScroll = (elementId) => {
-    const element = document.querySelector("#delivery")
-    element.scrollIntoView({behavior: 'smooth'})
+    const element = document.querySelector(`#${elementId}`);
+    element.scrollIntoView({behavior: 'smooth'});
+    
   }
 
   return (

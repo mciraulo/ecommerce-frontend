@@ -5,6 +5,7 @@ import * as productsDataFormat from "components/admin/CRUD/Products/list/Product
 import actions from "redux/actions/users/usersListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
+import { withRouter } from "next/router"
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 
@@ -47,19 +48,18 @@ class UsersListTable extends Component {
   actionFormatter(cell) {
     return (
       <div>
-        {null && (
-          <Button
-            color="default"
-            size="xs"
-            onClick={() => this.props.dispatch(push(`/admin/users/${cell}`))}
-          >
-            View
-          </Button>
-        )}
+        <Button
+          color="default"
+          size="xs"
+          onClick={() => this.props.router.push(`/admin/users/${cell}`)}
+        >
+          View
+        </Button>
+        &nbsp;&nbsp;
         <Button
           color="info"
           size="xs"
-          onClick={() => this.props.dispatch(push(`/admin/users/${cell}/edit`))}
+          onClick={() => this.props.router.push(`/admin/users/edit/${cell}`)}
         >
           Edit
         </Button>
@@ -72,6 +72,7 @@ class UsersListTable extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     const { dispatch } = this.props;
     dispatch(actions.doFetch({}));
   }
@@ -214,4 +215,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default connect(mapStateToProps)(UsersListTable);
+export default connect(mapStateToProps)(withRouter(UsersListTable));

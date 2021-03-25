@@ -8,7 +8,7 @@ import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
-
+import { withRouter } from "next/router"
 import {
   Dropdown,
   DropdownMenu,
@@ -48,20 +48,20 @@ class OrdersListTable extends Component {
   actionFormatter(cell) {
     return (
       <div>
-        {null && (
-          <Button
-            color="default"
-            size="xs"
-            onClick={() => this.props.dispatch(push(`/admin/orders/${cell}`))}
-          >
-            View
-          </Button>
-        )}
+    
+        <Button
+          color="default"
+          size="xs"
+          onClick={() => this.props.router.push(`/admin/orders/${cell}`)}
+        >
+          View
+        </Button>
+        &nbsp;&nbsp;
         <Button
           color="info"
           size="xs"
           onClick={() =>
-            this.props.dispatch(push(`/admin/orders/${cell}/edit`))
+            this.props.router.push(`/admin/orders/edit/${cell}`)
           }
         >
           Edit
@@ -213,4 +213,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default connect(mapStateToProps)(OrdersListTable);
+export default connect(mapStateToProps)(withRouter(OrdersListTable));

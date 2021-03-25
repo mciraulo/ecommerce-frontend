@@ -18,7 +18,7 @@ import PreparedValues from "components/admin/FormItems/preparedValues";
 import FormValidations from "components/admin/FormItems/formValidations";
 import Widget from "components/admin/Widget";
 
-import CategoriesAutocompleteFormItem from "../../сategories/autocomplete/CategoriesAutocompleteFormItem";
+import CategoriesAutocompleteFormItem from "../../categories/autocomplete/CategoriesAutocompleteFormItem";
 
 import ProductsAutocompleteFormItem from "../autocomplete/ProductsAutocompleteFormItem";
 

@@ -31,6 +31,7 @@ class Index extends Component {
     if (this.isEditing() || this.isProfile()) {
       dispatch(actions.doUpdate(id, data, this.isProfile()));
     } else {
+      console.log(data)
       dispatch(actions.doCreate(data));
     }
   };

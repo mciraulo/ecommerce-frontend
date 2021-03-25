@@ -89,7 +89,7 @@ class Layout extends React.Component {
                 </CSSTransition>
               </TransitionGroup>
               <footer className={s.contentFooter}>
-                React User Management - Made by{" "}
+                Flatlogic Ecommerce - Made by{" "}
                 <a
                   href="https://flatlogic.com"
                   rel="nofollow noopener noreferrer"

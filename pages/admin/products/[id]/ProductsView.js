@@ -1,38 +1,113 @@
+import { Formik } from "formik";
 import React, { Component } from "react";
 import Loader from "components/admin/Loader";
-import TextViewItem from "components/admin/FormItems/items/TextViewItem";
-import ImagesViewItem from "components/admin/FormItems/items/ImagesViewItem";
-import Widget from "components/admin/Widget";
 
-class ProductsView extends Component {
-  renderView() {
-    const { record } = this.props;
+import InputFormItem from "components/admin/FormItems/items/InputFormItem";
+import InputNumberFormItem from "components/admin/FormItems/items/InputNumberFormItem";
+import SwitchFormItem from "components/admin/FormItems/items/SwitchFormItem";
+import RadioFormItem from "components/admin/FormItems/items/RadioFormItem";
+import SelectFormItem from "components/admin/FormItems/items/SelectFormItem";
+import DatePickerFormItem from "components/admin/FormItems/items/DatePickerFormItem";
+import ImagesFormItem from "components/admin/FormItems/items/ImagesFormItem";
+import FilesFormItem from "components/admin/FormItems/items/FilesFormItem";
+import TextAreaFormItem from "components/admin/FormItems/items/TextAreaFormItem";
+
+import productsFields from "components/admin/CRUD/Products/productsFields";
+import IniValues from "components/admin/FormItems/iniValues";
+import PreparedValues from "components/admin/FormItems/preparedValues";
+import FormValidations from "components/admin/FormItems/formValidations";
+import Widget from "components/admin/Widget";
+import s from './ProductsView.module.scss';
+
+import CategoriesAutocompleteFormItem from "../../categories/autocomplete/CategoriesAutocompleteFormItem";
+
+import ProductsAutocompleteFormItem from "../autocomplete/ProductsAutocompleteFormItem";
+
+class ProductsForm extends Component {
+  iniValues = () => {
+    return IniValues(productsFields, this.props.record || {});
+  };
+
+  title = () => {
+    if (this.props.isProfile) {
+      return "Edit My Profile";
+    }
+
+    return this.props.isEditing ? "Edit products" : "Add products";
+  };
+
+  renderForm() {
+    const { saveLoading } = this.props;
 
     return (
-      <Widget title={<h4>{"View User"}</h4>} collapse close>
-        <ImagesViewItem label={"Avatar"} value={record.avatar} />
+      <Widget className={s.root} title={<h4>{this.title()}</h4>} collapse close>
+        <Formik
+          onSubmit={null}
+          initialValues={this.iniValues()}
+          validationSchema={null}
+          render={(form) => {
+            return (
+              <form onSubmit={form.handleSubmit}>
+                <ImagesFormItem
+                  name={"image"}
+                  schema={productsFields}
+                  path={"products/image"}
+                  fileProps={{
+                    size: undefined,
+                    formats: undefined,
+                  }}
+                  max={undefined}
+                />
 
-        <TextViewItem label={"First name"} value={record.firstName} />
+                <InputFormItem name={"title"} schema={productsFields} />
 
-        <TextViewItem label={"Last Name"} value={record.lastName} />
+                <InputFormItem name={"price"} schema={productsFields} />
 
-        <TextViewItem label={"Phone number"} value={record.phoneNumber} />
+                <InputFormItem name={"discount"} schema={productsFields} />
 
-        <TextViewItem label={"Email"} value={record.email} />
+                <TextAreaFormItem
+                  name={"description"}
+                  schema={productsFields}
+                />
 
-        <TextViewItem label={"Disabled"} value={record.disabled} />
+                <CategoriesAutocompleteFormItem
+                  name={"categories"}
+                  schema={productsFields}
+                  showCreate={!this.props.modal}
+                  mode="multiple"
+                />
+
+                <ProductsAutocompleteFormItem
+                  name={"more_products"}
+                  schema={productsFields}
+                  showCreate={!this.props.modal}
+                  mode="multiple"
+                />
+
+                <InputNumberFormItem name={"rating"} schema={productsFields} />
+
+                <RadioFormItem name={"status"} schema={productsFields} />
+
+              </form>
+            );
+          }}
+        />
       </Widget>
     );
   }
 
   render() {
-    const { record, loading } = this.props;
+    const { isEditing, findLoading, record } = this.props;
 
-    if (loading || !record) {
+    if (findLoading) {
       return <Loader />;
     }
 
-    return this.renderView();
+    if (isEditing && !record) {
+      return <Loader />;
+    }
+
+    return this.renderForm();
   }
 }
 
@@ -45,4 +120,4 @@ export async function getServerSideProps(context) {
     };
 }
 
-export default ProductsView;
+export default ProductsForm;

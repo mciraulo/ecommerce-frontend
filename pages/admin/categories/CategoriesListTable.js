@@ -4,6 +4,7 @@ import actions from "redux/actions/categories/categoriesListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
+import { withRouter } from 'next/router';
 import { push } from "connected-react-router";
 
 import {
@@ -45,22 +46,21 @@ class CategoriesListTable extends Component {
   actionFormatter(cell) {
     return (
       <div>
-        {null && (
-          <Button
-            color="default"
-            size="xs"
-            onClick={() =>
-              this.props.dispatch(push(`/admin/categories/${cell}`))
-            }
-          >
-            View
-          </Button>
-        )}
+        <Button
+          color="default"
+          size="xs"
+          onClick={() =>
+            this.props.router.push(`/admin/categories/${cell}`)
+          }
+        >
+          View
+        </Button>
+        &nbsp;&nbsp;
         <Button
           color="info"
           size="xs"
           onClick={() =>
-            this.props.dispatch(push(`/admin/categories/${cell}/edit`))
+            this.props.router.push(`/admin/categories/edit/${cell}`)
           }
         >
           Edit
@@ -184,4 +184,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default connect(mapStateToProps)(CategoriesListTable);
+export default connect(mapStateToProps)(withRouter(CategoriesListTable));
