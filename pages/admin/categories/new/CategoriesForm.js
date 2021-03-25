@@ -12,7 +12,7 @@ import ImagesFormItem from "components/admin/FormItems/items/ImagesFormItem";
 import FilesFormItem from "components/admin/FormItems/items/FilesFormItem";
 import TextAreaFormItem from "components/admin/FormItems/items/TextAreaFormItem";
 
-import categoriesFields from "../categoriesFields";
+import categoriesFields from "components/admin/CRUD/Categories/categoriesFields";
 import IniValues from "components/admin/FormItems/iniValues";
 import PreparedValues from "components/admin/FormItems/preparedValues";
 import FormValidations from "components/admin/FormItems/formValidations";

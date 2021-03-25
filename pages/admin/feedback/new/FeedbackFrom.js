@@ -13,7 +13,7 @@ import ImagesFormItem from 'components/admin/FormItems/items/ImagesFormItem';
 import FilesFormItem from 'components/admin/FormItems/items/FilesFormItem';
 import TextAreaFormItem from 'components/admin/FormItems/items/TextAreaFormItem';
 
-import feedbackFields from '../feedbackFields';
+import feedbackFields from 'components/admin/CRUD/Feedback/feedbackFields';
 import IniValues from 'components/admin/FormItems/iniValues';
 import PreparedValues from 'components/admin/FormItems/preparedValues';
 import FormValidations from 'components/admin/FormItems/formValidations';

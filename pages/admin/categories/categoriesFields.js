@@ -1,6 +1,19 @@
-const categoriesFields = {
+export const categoriesFields = {
   id: { type: "id", label: "ID" },
   title: { type: "string", label: "Title" },
 };
 
-export default categoriesFields;
+const Component = () => {
+  return null
+}
+
+export async function getServerSideProps(context) {
+  // const res = await axios.get("/products");
+  // const products = res.data.rows;
+
+  return {
+    props: {  }, // will be passed to the page component as props
+  };
+}
+
+export default Component
