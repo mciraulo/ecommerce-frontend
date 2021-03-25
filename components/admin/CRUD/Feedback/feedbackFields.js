@@ -1,8 +1,11 @@
 
 
 const feedbackFields = {
-	id: { type: 'id', label: 'ID' },
-firstname: { type: 'string', label: 'First Name',
+    id: { type: "id", label: "ID" },
+    feedbate_date: { type: "datetime", label: "Order date" },
+    product: { type: "relation_one", label: "Product" },
+    user: { type: "relation_one", label: "User" },
+    firstname: { type: 'string', label: 'First Name',
 
     },
 lastname: { type: 'string', label: 'Last Name',
@@ -17,16 +20,16 @@ avatar: { type: 'string', label: 'Avatar',
 review: { type: 'string', label: 'Review',
 
     },
-datetime: { type: 'datetime', label: 'Date',
-
+    status: {
+      type: "enum",
+      label: "Status",
+  
+      options: [
+        { value: "visible", label: "visible" },
+  
+        { value: "hidden", label: "hidden" },
+      ],
     },
-related_user: { type: 'relation_one', label: 'Related User',
-
-    },
-related_products: { type: 'relation_one', label: 'Related Products',
-
-    },
-
-}
+  };
 
 export default feedbackFields;

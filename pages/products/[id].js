@@ -99,6 +99,7 @@ const Id = ({ product: serverSideProduct }) => {
   const { id } = router.query;
 
   React.useEffect(() => {
+    dispatch(actions.doFetch({}));
     window.setTimeout(() => {
       setFetching(false)
     }, 1000)
