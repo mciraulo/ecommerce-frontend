@@ -26,16 +26,6 @@ class Index extends Component {
     this.setState({ dispatched: true });
   }
 
-  doSubmit = (id, data) => {
-    const { dispatch } = this.props;
-    if (this.isEditing() || this.isProfile()) {
-      dispatch(actions.doUpdate(id, data, this.isProfile()));
-    } else {
-      console.log(data)
-      dispatch(actions.doCreate(data));
-    }
-  };
-
   isEditing = () => {
     const { router } = this.props;
     return !!router.query.id;
@@ -59,7 +49,7 @@ class Index extends Component {
             }
             isEditing={this.isEditing()}
             isProfile={this.isProfile()}
-            onSubmit={this.doSubmit}
+            onSubmit={null}
             onCancel={() => this.props.dispatch(push("/admin/feedback"))}
           />
         )}

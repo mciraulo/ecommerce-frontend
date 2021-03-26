@@ -1,39 +1,35 @@
+import { Formik } from "formik";
+import React, { Component } from "react";
+import Loader from "components/admin/Loader";
 
-import { Formik } from 'formik';
-import React, { Component } from 'react';
-import Loader from 'components/admin/Loader';
+import InputFormItem from "components/admin/FormItems/items/InputFormItem";
+import InputNumberFormItem from "components/admin/FormItems/items/InputNumberFormItem";
+import SwitchFormItem from "components/admin/FormItems/items/SwitchFormItem";
+import RadioFormItem from "components/admin/FormItems/items/RadioFormItem";
+import SelectFormItem from "components/admin/FormItems/items/SelectFormItem";
+import DatePickerFormItem from "components/admin/FormItems/items/DatePickerFormItem";
+import ImagesFormItem from "components/admin/FormItems/items/ImagesFormItem";
+import FilesFormItem from "components/admin/FormItems/items/FilesFormItem";
+import TextAreaFormItem from "components/admin/FormItems/items/TextAreaFormItem";
 
-import InputFormItem from 'components/admin/FormItems/items/InputFormItem';
-import InputNumberFormItem from 'components/admin/FormItems/items/InputNumberFormItem';
-import SwitchFormItem from 'components/admin/FormItems/items/SwitchFormItem';
-import RadioFormItem from 'components/admin/FormItems/items/RadioFormItem';
-import SelectFormItem from 'components/admin/FormItems/items/SelectFormItem';
-import DatePickerFormItem from 'components/admin/FormItems/items/DatePickerFormItem';
-import ImagesFormItem from 'components/admin/FormItems/items/ImagesFormItem';
-import FilesFormItem from 'components/admin/FormItems/items/FilesFormItem';
-import TextAreaFormItem from 'components/admin/FormItems/items/TextAreaFormItem';
-
-import feedbackFields from 'components/admin/CRUD/Feedback/feedbackFields';
-import IniValues from 'components/admin/FormItems/iniValues';
-import PreparedValues from 'components/admin/FormItems/preparedValues';
-import FormValidations from 'components/admin/FormItems/formValidations';
-import Widget from 'components/admin/Widget';
-
+import feedbackFields from "components/admin/CRUD/Feedback/feedbackFields";
+import IniValues from "components/admin/FormItems/iniValues";
+import PreparedValues from "components/admin/FormItems/preparedValues";
+import FormValidations from "components/admin/FormItems/formValidations";
+import Widget from "components/admin/Widget";
 
 import ProductsAutocompleteFormItem from "components/admin/CRUD/Products/autocomplete/ProductsAutocompleteFormItem";
 
 import UsersAutocompleteFormItem from "components/admin/CRUD/Users/autocomplete/UsersAutocompleteFormItem";
 
-
-
 class FeedbackForm extends Component {
   iniValues = () => {
     return IniValues(feedbackFields, this.props.record || {});
-  }
+  };
 
   formValidations = () => {
     return FormValidations(feedbackFields, this.props.record || {});
-  }
+  };
 
   handleSubmit = (values) => {
     const { id, ...data } = PreparedValues(feedbackFields, values || {});
@@ -41,13 +37,11 @@ class FeedbackForm extends Component {
   };
 
   title = () => {
-    if(this.props.isProfile) {
-      return 'Edit My Profile';
+    if (this.props.isProfile) {
+      return "Edit My Profile";
     }
 
-    return this.props.isEditing
-      ? 'Edit Feedback'
-      : 'Add Feedback';
+    return this.props.isEditing ? "Edit feedback" : "Add feedback";
   };
 
   renderForm() {
@@ -62,11 +56,22 @@ class FeedbackForm extends Component {
           render={(form) => {
             return (
               <form onSubmit={form.handleSubmit}>
-
                 <DatePickerFormItem
-                  name={"datetime"}
+                  name={"feedbate_date"}
                   schema={feedbackFields}
                   showTimeInput
+                />
+
+                <ProductsAutocompleteFormItem
+                  name={"product"}
+                  schema={feedbackFields}
+                  showCreate={!this.props.modal}
+                />
+
+                <UsersAutocompleteFormItem
+                  name={"user"}
+                  schema={feedbackFields}
+                  showCreate={!this.props.modal}
                 />
 
                 <InputFormItem
@@ -84,20 +89,9 @@ class FeedbackForm extends Component {
                   schema={feedbackFields}
                 />
 
-                <ProductsAutocompleteFormItem
-                  name={"product"}
-                  schema={feedbackFields}
-                  showCreate={!this.props.modal}
-                />
-
-                <UsersAutocompleteFormItem
-                  name={"user"}
-                  schema={feedbackFields}
-                  showCreate={!this.props.modal}
-                />
-
                 <InputNumberFormItem name={"rating"} schema={feedbackFields} />
 
+                <RadioFormItem name={"status"} schema={feedbackFields} />
 
                 <div className="form-buttons">
                   <button
@@ -107,8 +101,7 @@ class FeedbackForm extends Component {
                     onClick={form.handleSubmit}
                   >
                     Save
-                  </button>{' '}{' '}
-
+                  </button>{" "}
                   <button
                     className="btn btn-light"
                     type="button"
@@ -116,16 +109,15 @@ class FeedbackForm extends Component {
                     onClick={form.handleReset}
                   >
                     Reset
-                  </button>{' '}{' '}
-
-                    <button
-                      className="btn btn-light"
-                      type="button"
-                      disabled={saveLoading}
-                      onClick={() => this.props.onCancel()}
-                    >
-                      Cancel
-                    </button>
+                  </button>{" "}
+                  <button
+                    className="btn btn-light"
+                    type="button"
+                    disabled={saveLoading}
+                    onClick={() => this.props.onCancel()}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             );
@@ -151,12 +143,12 @@ class FeedbackForm extends Component {
 }
 
 export async function getServerSideProps(context) {
-  // const res = await axios.get("/products");
-  // const products = res.data.rows;
+    // const res = await axios.get("/products");
+    // const products = res.data.rows;
 
-  return {
-      props: {  }, // will be passed to the page component as props
-  };
+    return {
+        props: {  }, // will be passed to the page component as props
+    };
 }
 
 export default FeedbackForm;
