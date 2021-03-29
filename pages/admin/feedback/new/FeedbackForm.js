@@ -56,8 +56,19 @@ class FeedbackForm extends Component {
           render={(form) => {
             return (
               <form onSubmit={form.handleSubmit}>
+                <ImagesFormItem
+                  name={"image"}
+                  schema={feedbackFields}
+                  path={"feedbacks/image"}
+                  fileProps={{
+                    size: undefined,
+                    formats: undefined,
+                  }}
+                  max={undefined}
+                />
+
                 <DatePickerFormItem
-                  name={"feedbate_date"}
+                  name={"feedback_date"}
                   schema={feedbackFields}
                   showTimeInput
                 />

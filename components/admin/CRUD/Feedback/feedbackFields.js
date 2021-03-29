@@ -2,7 +2,8 @@
 
 const feedbackFields = {
     id: { type: "id", label: "ID" },
-    feedbate_date: { type: "datetime", label: "Order date" },
+    image: { type: "images", label: "Image" },
+    feedback_date: { type: "datetime", label: "Order date" },
     product: { type: "relation_one", label: "Product" },
     user: { type: "relation_one", label: "User" },
     firstname: { type: 'string', label: 'First Name',

@@ -128,7 +128,7 @@ class FeedbackListTable extends Component {
             tableContainerClass={`table-responsive table-striped table-hover`}
           >
             <TableHeaderColumn
-              dataField="feedbate_date"
+              dataField="feedback_date"
               dataSort
               dataFormat={dataFormat.dateTimeFormatter}
             >

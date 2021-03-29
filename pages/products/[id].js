@@ -15,6 +15,12 @@ import {
   ModalFooter,
   Input,
 } from "reactstrap";
+import feedbackFields from "components/admin/CRUD/Feedback/feedbackFields";
+import { Formik } from "formik";
+import IniValues from "components/admin/FormItems/iniValues";
+import PreparedValues from "components/admin/FormItems/preparedValues";
+import FormValidations from "components/admin/FormItems/formValidations";
+import ImagesFormItem from "components/admin/FormItems/items/ImagesFormItem";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -23,7 +29,7 @@ import product from "public/images/e-commerce/home/product5.png";
 import productRight from "public/images/e-commerce/details/1-right.png";
 import productCenter from "public/images/e-commerce/details/1-center.png";
 import productLeft from "public/images/e-commerce/details/1-left.png";
-import rating from "public/images/e-commerce/details/stars.svg";
+import ratingImg from "public/images/e-commerce/details/stars.svg";
 import person1 from "public/images/e-commerce/details/person1.jpg";
 import person2 from "public/images/e-commerce/details/person2.jpg";
 import person3 from "public/images/e-commerce/details/person3.jpg";
@@ -49,9 +55,16 @@ import chevronRightIcon from "public/images/e-commerce/details/chevron-right.svg
 import chevronLeftIcon from "public/images/e-commerce/details/chevron-left.svg";
 import actions from "redux/actions/products/productsFormActions";
 import Head from "next/head";
+import feedbackActions from "redux/actions/feedback/feedbackListActions";
+import feedbackActionsForm from "redux/actions/feedback/feedbackFormActions";
 import productsListActions from "redux/actions/products/productsListActions";
 import ReactImageMagnify from 'react-image-magnify';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+
+const Star = ({ selected=false, onClick=f=>f }) =>
+  <div className={(selected) ? `${s.star} ${s.selected}` : `${s.star}`}
+      onClick={onClick}>
+  </div>
 
 const products = [
   {
@@ -88,9 +101,14 @@ const products = [
   },
 ];
 
-const Id = ({ product: serverSideProduct }) => {
+const Id = ({ product: serverSideProduct, currentProductId }) => {
   const [isOpen, setOpen] = React.useState(false);
   const currentUser = useSelector((state) => state.auth.currentUser);
+  const feedbackList = useSelector((state) => state.feedback.list.rows)
+  const [starsSelected, setStarsSelected] = React.useState(0)
+  const [firstname, setFirstName] = React.useState('');
+  const [lastname, setLastName] = React.useState('');
+  const [review, setReview] = React.useState('');
   const dispatch = useDispatch();
   const [product, setProduct] = React.useState(serverSideProduct);
   const [quantity, setQuantity] = React.useState(1);
@@ -99,11 +117,27 @@ const Id = ({ product: serverSideProduct }) => {
   const { id } = router.query;
 
   React.useEffect(() => {
-    dispatch(actions.doFetch({}));
+    dispatch(feedbackActions.doFetch({}))
     window.setTimeout(() => {
       setFetching(false)
     }, 1000)
   }, [])
+
+  const addFeedback = () => {
+  
+    axios.post(`/feedback/`, {
+      data: {
+        avatar: '',
+        feedback_date: new Date(),
+        firstname,
+        lastname,
+        status: 'hidden',
+        rating: starsSelected,
+        review,
+        product: currentProductId
+      }
+    }).then(setOpen(false));
+  }
 
   const addToCart = () => {
     dispatch(actions.doFind(id));
@@ -134,7 +168,32 @@ const Id = ({ product: serverSideProduct }) => {
     dispatch(productsListActions.doAdd(localProducts))
   };
 
+  const iniValues = () => {
+    return IniValues(feedbackFields, {});
+  };
+
+  const formValidations = () => {
+    return FormValidations(feedbackFields, {});
+  };
+
+  const handleSubmit = (values) => {
+    const { id, ...data } = PreparedValues(feedbackFields, values || {});
+    const finalData = {...data, ...{
+      avatar: '',
+      feedback_date: new Date(),
+      firstname,
+      lastname,
+      status: 'hidden',
+      rating: starsSelected,
+      review,
+      product: currentProductId
+    }}
+    setOpen(false);
+    dispatch(feedbackActionsForm.doCreate(finalData));
+  };
+
   return (
+    
     <>
       <Head>
         <title>{product.title}</title>
@@ -188,8 +247,13 @@ const Id = ({ product: serverSideProduct }) => {
               </h6>
               <h4 className={"fw-bold"}>{product.title}</h4>
               <div className={"d-flex align-items-center"}>
-                <img src={rating} className={s.detailRating}/>
-                <p className={"text-primary ml-3 mb-0"}>12 reviews</p>
+              {[1,2,3,4,5].map((n, i) =>
+                          <Star key={i}
+                                selected={i < product.rating}
+                                onClick={null}
+                            />
+                        )}
+                <p className={"text-primary ml-3 mb-0"}>{feedbackList.length} reviews</p>
               </div>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
@@ -340,24 +404,78 @@ const Id = ({ product: serverSideProduct }) => {
               </div>
               <div className={"d-flex align-items-center my-4"}>
                 <h6 className={"fw-bold mr-4 mb-0"}>Rate Product</h6>
-                <img src={rating} className={s.detailRating} />
+                <div className={s.starRating}>
+                {[1,2,3,4,5].map((n, i) =>
+                    <Star key={i}
+                          selected={i < starsSelected}
+                          onClick={() => setStarsSelected(i+1)}
+                      />
+                  )}
               </div>
+              </div>
+              <div className={"d-flex mb-4"}>
+                <Input
+                  type="text"
+                  name="text"
+                  onChange={e => setFirstName(e.target.value)}
+                  id="exampleEmail"
+                  className="w-100 mr-4"
+                  placeholder={"First Name"}
+                />
+                <Input
+                  type="text"
+                  name="text"
+                  onChange={e => setLastName(e.target.value)}
+                  id="exampleEmail"
+                  className="w-100"
+                  placeholder={"Last Name"}
+                />                
+              </div>
+
               <Input
                 type="textarea"
                 name="text"
+                onChange={e => setReview(e.target.value)}
                 id="exampleEmail"
                 className="w-100"
                 style={{ height: 155 }}
                 placeholder={"Add your comment"}
               />
+
+              <Formik
+                onSubmit={handleSubmit}
+                initialValues={iniValues()}
+                validationSchema={formValidations()}
+                render={(form) => {
+                  return (
+                    <form onSubmit={form.handleSubmit}>
+                      <ImagesFormItem
+                        name={"image"}
+                        schema={feedbackFields}
+                        path={"feedbacks/image"}
+                        fileProps={{
+                          size: undefined,
+                          formats: undefined,
+                        }}
+                        max={undefined}
+                      />
+
+
               <div className={"d-flex justify-content-center"}>
                 <Button
                   color={"primary fw-bold text-uppercase"}
                   style={{ marginTop: 48 }}
+                  onClick={() => form.handleSubmit()}
                 >
                   LEAVE FEEDBACK
                 </Button>
               </div>
+
+                    </form>
+                  );
+                }}
+              />
+
             </ModalBody>
             </div>
           </Modal>
@@ -370,90 +488,45 @@ const Id = ({ product: serverSideProduct }) => {
               + Leave Feedback
             </Button>
           </Col>
-          <Col sm={12} className={"d-flex mt-5"}>
-            <img
-              src={person1}
-              style={{ borderRadius: 65 }}
-              className={`mr-5 ${s.reviewImg}`}
-            />
-            <div
-              className={`d-flex flex-column justify-content-between align-items-start`}
-            >
-              <div
-                className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
-              >
-                <h6 className={"fw-bold mb-0"}>Philip Daineka</h6>
-                <p className={"text-muted mb-0"}>01.01.2020</p>
-              </div>
-              <img src={rating} className={s.reviewMarginImg} />
-              <p className={"mb-0"}>
-                Hi see in the Avada theme options panel under Typography that
-                you refer to heading elements as “headers”. Please change to
-                “headings” to help your users, a “header” is not a typography
-                element. Thank you. Typography that you refer to heading
-                elements as “headers”. Please change to “headings” to help your
-                users, a “header” is not a typography element. Thank you.
-              </p>
-            </div>
-          </Col>
-          <Col sm={12} className={"d-flex mt-5"}>
-            <img
-              src={person2}
-              style={{ borderRadius: 65 }}
-              className={`mr-5 ${s.reviewImg}`}
-            />
-            <div
-              className={
-                "d-flex flex-column justify-content-between align-items-start"
+          {
+            feedbackList && feedbackList.map((item, idx) => {
+              if (item.status === "visible") {
+                return (
+                  <Col sm={12} className={"d-flex mt-5"}>
+                    <img
+                      src={item.image[0].publicUrl || person2}
+                      style={{ borderRadius: 65 }}
+                      className={`mr-5 ${s.reviewImg}`}
+                    />
+                    <div
+                      className={`d-flex flex-column justify-content-between align-items-start`}
+                    >
+                      <div
+                        className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
+                      >
+                        <h6 className={"fw-bold mb-0"}>{item.firstname} {item.lastname}</h6>
+                        <p className={"text-muted mb-0"}>{item.feedbackDate && item.feedbackDate.toString().slice(0, 10) || item.createdAt && item.createdAt.toString().slice(0, 10)}</p> 
+                      </div>
+                      <div className={s.starRating}>
+                      {[1,2,3,4,5].map((n, i) =>
+                          <Star key={i}
+                                selected={i < item.rating}
+                                onClick={null}
+                            />
+                        )}
+                    </div>
+                      <p className={"mb-0"}>
+                      {item.review}
+                      </p>
+                    </div>
+                  </Col>              
+                )
               }
-            >
-              <div
-                className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
-              >
-                <h6 className={"fw-bold mb-0"}>Alexey Vertel</h6>
-                <p className={"text-muted mb-0"}>01.01.2020</p>
-              </div>
-              <img src={rating} className={s.reviewMarginImg} />
-              <p className={"mb-0"}>
-                Hi see in the Avada theme options panel under Typography that
-                you refer to heading elements as “headers”. Please change to
-                “headings” to help your users, a “header” is not a typography
-                element. Thank you. Typography that you refer to heading
-                elements as “headers”. Please change to “headings” to help your
-                users, a “header” is not a typography element. Thank you.
-              </p>
-            </div>
-          </Col>
-          <Col sm={12} className={"d-flex mt-5"}>
-            <img
-              src={person3}
-              style={{ borderRadius: 65 }}
-              className={`mr-5 ${s.reviewImg}`}
-            />
-            <div
-              className={
-                "d-flex flex-column justify-content-between align-items-start"
-              }
-            >
-              <div
-                className={`d-flex justify-content-between w-100 ${s.reviewMargin}`}
-              >
-                <h6 className={"fw-bold mb-0"}>Michael Daineka</h6>
-                <p className={"text-muted mb-0"}>01.01.2020</p>
-              </div>
-              <img src={rating} className={s.reviewMarginImg} />
-              <p className={"mb-0"}>
-                Hi see in the Avada theme options panel under Typography that
-                you refer to heading elements as “headers”. Please change to
-                “headings” to help your users, a “header” is not a typography
-                element. Thank you. Typography that you refer to heading
-                elements as “headers”. Please change to “headings” to help your
-                users, a “header” is not a typography element. Thank you.
-              </p>
-            </div>
-          </Col>
+            }
+          )
+          }
         </Row>
-        <Row className={"justify-content-center"}>
+        {/* <Row className={"justify-content-center"}>
           <Pagination aria-label="Page navigation example">
             <PaginationItem>
               <PaginationLink previous href="#" />
@@ -477,7 +550,7 @@ const Id = ({ product: serverSideProduct }) => {
               <PaginationLink next href="#" />
             </PaginationItem>
           </Pagination>
-        </Row>
+        </Row> */}
         <hr />
         <Row className={"mt-5 mb-5"}>
           <Col sm={12}>
@@ -615,7 +688,7 @@ export async function getServerSideProps(context) {
   const product = res.data;
 
   return {
-    props: { product }, // will be passed to the page component as props
+    props: { product, currentProductId: context.query.id }, // will be passed to the page component as props
   };
 }
 

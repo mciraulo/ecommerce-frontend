@@ -19,7 +19,7 @@ const actions = {
       });
 
       const response = await list();
-
+      
       dispatch({
         type: 'FEEDBACK_LIST_FETCH_SUCCESS',
         payload: {
