@@ -150,11 +150,6 @@ class BlogsForm extends Component {
                   name={"point_one_description"}
                   schema={blogsFields}
                 />
-                <InputFormItem name={"point_one_title"} schema={blogsFields} />
-                <TextAreaFormItem
-                  name={"point_one_description"}
-                  schema={blogsFields}
-                />
                 <InputFormItem name={"point_two_title"} schema={blogsFields} />
                 <TextAreaFormItem
                   name={"point_two_description"}
