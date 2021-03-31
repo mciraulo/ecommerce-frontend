@@ -17,7 +17,6 @@ const Id = ({ post }) => {
         <title>{post.title && post.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {console.log(post)}
       <img
         src={post.hero_image[0] && post.hero_image[0].publicUrl}
         alt={"header"}
@@ -52,7 +51,7 @@ const Id = ({ post }) => {
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
-            <img src={post.blog_image_one[0] && post.blog_image_one[0].publicUrl} alt={"article"} />
+            <img src={post.blog_image_one[0] && post.blog_image_one[0].publicUrl} alt={"article"} className={s.blogImage} />
             <p className={"text-muted mt-3"}>
               {post.blog_image_one_annotation && post.blog_image_one_annotation}
             </p>
@@ -65,7 +64,7 @@ const Id = ({ post }) => {
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
-            <img src={post.blog_image_two[0] && post.blog_image_two[0].publicUrl} alt={"article"} />
+            <img src={post.blog_image_two[0] && post.blog_image_two[0].publicUrl} alt={"article"} className={s.blogImage} />
             <p className={"text-muted mt-3"}>
               {post.blog_image_two_annotation && post.blog_image_two_annotation}
             </p>
@@ -78,7 +77,7 @@ const Id = ({ post }) => {
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
-            <img src={post.blog_image_three[0] && post.blog_image_three[0].publicUrl} alt={"article"} />
+            <img src={post.blog_image_three[0] && post.blog_image_three[0].publicUrl} alt={"article"} className={s.blogImage} />
             <p className={"text-muted mt-3"}>
               {post.blog_image_three_annotation && post.blog_image_three_annotation}
             </p>
