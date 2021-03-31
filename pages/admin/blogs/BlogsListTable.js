@@ -1,10 +1,12 @@
-import * as dataFormat from "./CategoriesDataFormatters";
+import * as dataFormat from "./BlogsDataFormatters";
 
-import actions from "redux/actions/categories/categoriesListActions";
+import * as categoriesDataFormat from "../categories/CategoriesDataFormatters";
+import * as blogsDataFormat from "../blogs/BlogsDataFormatters";
+import { withRouter } from "next/router"
+import actions from "redux/actions/blogs/blogsListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
-import { withRouter } from 'next/router';
 import { push } from "connected-react-router";
 
 import {
@@ -23,7 +25,7 @@ import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 
 import Widget from "components/admin/Widget";
 
-class CategoriesListTable extends Component {
+class BlogsListTable extends Component {
   state = {
     modalOpen: false,
     idToDelete: null,
@@ -49,9 +51,7 @@ class CategoriesListTable extends Component {
         <Button
           color="default"
           size="xs"
-          onClick={() =>
-            this.props.router.push(`/admin/categories/${cell}`)
-          }
+          onClick={() => this.props.router.push(`/admin/blogs/${cell}`)}
         >
           View
         </Button>
@@ -60,7 +60,7 @@ class CategoriesListTable extends Component {
           color="info"
           size="xs"
           onClick={() =>
-            this.props.router.push(`/admin/categories/edit/${cell}`)
+            this.props.router.push(`/admin/blogs/edit/${cell}`)
           }
         >
           Edit
@@ -76,6 +76,7 @@ class CategoriesListTable extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(actions.doFetch({}));
+    console.log(this.props)
   }
 
   renderSizePerPageDropDown = (props) => {
@@ -103,7 +104,6 @@ class CategoriesListTable extends Component {
 
   render() {
     const { rows } = this.props;
-    console.log(rows)
     const options = {
       sizePerPage: 10,
       paginationSize: 5,
@@ -112,8 +112,8 @@ class CategoriesListTable extends Component {
 
     return (
       <div>
-        <Widget title={<h4>Categories</h4>} collapse close>
-          <Link href="/admin/categories/new">
+        <Widget title={<h4>Blogs</h4>} collapse close>
+          <Link href="/admin/blogs/new">
             <button className="btn btn-primary" type="button">
               New
             </button>
@@ -127,8 +127,36 @@ class CategoriesListTable extends Component {
             search
             tableContainerClass={`table-responsive table-striped table-hover`}
           >
+            <TableHeaderColumn
+              dataField="hero_image"
+              dataSort
+              dataFormat={dataFormat.imageFormatter}
+            >
+              <span className="fs-sm">Image</span>
+            </TableHeaderColumn>
+
             <TableHeaderColumn dataField="title" dataSort>
               <span className="fs-sm">Title</span>
+            </TableHeaderColumn>
+
+            <TableHeaderColumn dataField="price" dataSort>
+              <span className="fs-sm">Price</span>
+            </TableHeaderColumn>
+
+            <TableHeaderColumn
+              dataField="categories"
+              dataSort
+              dataFormat={categoriesDataFormat.listFormatter}
+            >
+              <span className="fs-sm">Categories</span>
+            </TableHeaderColumn>
+
+            <TableHeaderColumn dataField="rating" dataSort>
+              <span className="fs-sm">Rating</span>
+            </TableHeaderColumn>
+
+            <TableHeaderColumn dataField="status" dataSort>
+              <span className="fs-sm">Status</span>
             </TableHeaderColumn>
 
             <TableHeaderColumn
@@ -168,20 +196,20 @@ class CategoriesListTable extends Component {
 
 function mapStateToProps(store) {
   return {
-    loading: store.categories.list.loading,
-    rows: store.categories.list.rows,
-    modalOpen: store.categories.list.modalOpen,
-    idToDelete: store.categories.list.idToDelete,
+    loading: store.blogs.list.loading,
+    rows: store.blogs.list.rows,
+    modalOpen: store.blogs.list.modalOpen,
+    idToDelete: store.blogs.list.idToDelete,
   };
 }
 
 export async function getServerSideProps(context) {
-  // const res = await axios.get("/products");
-  // const products = res.data.rows;
+  // const res = await axios.get("/blogs");
+  // const blogs = res.data.rows;
 
   return {
     props: {  }, // will be passed to the page component as props
   };
 }
 
-export default connect(mapStateToProps)(withRouter(CategoriesListTable));
+export default connect(mapStateToProps)(withRouter(BlogsListTable));

@@ -7,6 +7,8 @@ import { connectRouter } from "connected-react-router";
 
 import products from "./products/productsReducers";
 
+import blogs from "./blogs/blogsReducers";
+
 import categories from "./categories/categoriesReducers";
 
 import orders from "./orders/ordersReducers";
@@ -24,5 +26,6 @@ export default combineReducers({
     categories,
     orders,
     users,
+    blogs,
     feedback,
   });

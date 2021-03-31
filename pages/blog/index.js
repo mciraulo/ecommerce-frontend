@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Input } from "reactstrap";
+import axios from 'axios';
 import Link from "next/link";
 import img1 from "public/images/e-commerce/blog/img1.png";
 import img2 from "public/images/e-commerce/blog/img2.png";
@@ -15,13 +16,23 @@ import insta6 from "public/images/e-commerce/home/insta6.png";
 import Head from "next/head";
 import s from './Blog.module.scss';
 
+
 const Index = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/blogs").then((res) => {
+      setBlogs([...res.data.rows]);
+    });
+  }, []);
+
   return (
     <>
       <Head>
         <title>Blog</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      {console.log(blogs)}
       <Container className={"mb-5"} style={{ marginTop: 32 }}>
         <Row>
           <Col xs={12} lg={8}>

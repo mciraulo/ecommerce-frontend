@@ -137,6 +137,21 @@ class Sidebar extends React.Component {
                         this.props.dispatch(changeActiveSidebarItem(activeItem))
                     }
                     activeItem={this.props.activeItem}
+                    header="Blog"
+                    link="/admin/blogs"
+                    isHeader
+                    iconType="node"
+                    iconName={<DownloadIcon />}
+                />
+            )}
+
+            {this.props.currentUser &&
+            this.props.currentUser.role === "admin" && (
+                <LinksGroup
+                    onActiveSidebarItemChange={(activeItem) =>
+                        this.props.dispatch(changeActiveSidebarItem(activeItem))
+                    }
+                    activeItem={this.props.activeItem}
                     header="Products"
                     link="/admin/products"
                     isHeader

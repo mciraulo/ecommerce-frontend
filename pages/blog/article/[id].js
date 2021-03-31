@@ -1,0 +1,233 @@
+import React from "react";
+import axios from "axios";
+import { Container, Row, Col } from "reactstrap";
+import headerImg from "public/images/e-commerce/blog/article/header.png";
+import articleImg from "public/images/e-commerce/blog/article/article-image.png";
+import person from "public/images/e-commerce/blog/article/person.svg";
+import s from "./Article.module.scss";
+import article1 from "public/images/e-commerce/home/article1.png";
+import article2 from "public/images/e-commerce/home/article2.png";
+import article3 from "public/images/e-commerce/home/article3.png";
+import Head from "next/head";
+
+const Id = (props) => {
+  return (
+    <>
+      <Head>
+        <title>ghfgh</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      {console.log(props)}
+      <img
+        src={headerImg}
+        alt={"header"}
+        className={"w-100"}
+        style={{ marginTop: 32, maxHeight: 440 }}
+      />
+      <Container className={"mb-5 mt-5 d-flex flex-column align-items-center"}>
+        <Row style={{ width: 700 }}>
+          <h1 className={"fw-bold mb-0"}>
+            The beauty of astronomy is that anybody can do it
+          </h1>
+          <blockquote
+            className={"d-flex"}
+            style={{ marginTop: 35, marginBottom: 40 }}
+          >
+            <div className={"d-flex flex-column"}>
+              <div
+                className={"d-flex align-items-center"}
+                style={{ marginBottom: 35 }}
+              >
+                <img src={person} alt="person" className={"mr-3"} />
+                <p className={"text-uppercase fw-bold text-primary mb-0"}>
+                  By James Lee Cooper
+                </p>
+              </div>
+              <h5 className={"fw-bold mb-0"}>
+                The universe is a constantly changing and moving. Some would say
+                it’s a living thing because you never know what you are going to
+                see on any given night of stargazing.
+              </h5>
+            </div>
+          </blockquote>
+          <h5>
+            There is a lot of exciting stuff going on in the stars above us that
+            makes astronomy so much fun. The universe is constantly changing and
+            moving. Some would say it’s a living thing because you never know
+            what you are going to see on any given night of stargazing. Of the
+            many celestial phenomenons, there is probably none as exciting as
+            when you see your first asteroid on the move in the heavens. To call
+            asteroids the “rock stars” of astronomy is both a bad joke and an
+            accurate depiction of how astronomy fans view them. Unlike suns,
+            planets, and moons, asteroids are on the move, ever changing and, if
+            they appear in the night sky, they are exciting and dynamic.
+          </h5>
+        </Row>
+        <Row className={"mt-5"}>
+          <Col xs={12}>
+            <img src={articleImg} alt={"article"} />
+            <p className={"text-muted mt-3"}>
+              There is a lot of exciting stuff going on in the stars
+            </p>
+          </Col>
+        </Row>
+        <Row style={{ width: 700 }} className={"mt-5"}>
+          <h5>
+            There is a lot of exciting stuff going on in the stars above us that
+            makes astronomy so much fun. The universe is constantly changing and
+            moving. Some would say it’s a living thing because you never know
+            what you are going to see on any given night of stargazing. Of the
+            many celestial phenomenons, there is probably none as exciting as
+            when you see your first asteroid on the move in the heavens. To call
+            asteroids the “rock stars” of astronomy is both a bad joke and an
+            accurate depiction of how astronomy fans view them. Unlike suns,
+            planets, and moons, asteroids are on the move, ever changing and, if
+            they appear in the night sky, they are exciting and dynamic.
+          </h5>
+          <hr className={"mt-5"} />
+          <div className={"d-flex flex-column w-100"}>
+            <div className={"d-flex justify-content-center mt-4"}>
+              <div className={s.number}>1</div>
+              <div style={{ width: 600 }}>
+                <h6 className={"fw-bold mb-4"}>
+                  Unmatched Toner Cartridge Quality
+                </h6>
+                <p>
+                  There is a lot of exciting stuff going on in the stars above
+                  us that makes astronomy so much fun. The universe is
+                  constantly changing and moving. Some would say it’s a “living”
+                  thing because you never know what you are going to see on any
+                  given night of stargazing.
+                </p>
+              </div>
+            </div>
+            <div className={"d-flex justify-content-center mt-5"}>
+              <div className={s.number}>2</div>
+              <div style={{ width: 600 }}>
+                <h6 className={"fw-bold mb-4"}>
+                  Unmatched Toner Cartridge Quality
+                </h6>
+                <p>
+                  There is a lot of exciting stuff going on in the stars above
+                  us that makes astronomy so much fun. The universe is
+                  constantly changing and moving. Some would say it’s a “living”
+                  thing because you never know what you are going to see on any
+                  given night of stargazing.
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </Row>
+      </Container>
+      <Container style={{ marginTop: 80, marginBottom: 80 }}>
+        <h3 className={"text-center fw-bold mb-4"}>More From Our Blog</h3>
+        <Row className={"justify-content-center mb-2"}>
+          <Col sm={8}>
+            <p className={"text-center text-muted mb-4"}>
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum
+            </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={12}
+            md={4}
+            className={"mb-4 d-flex flex-column align-items-center"}
+          >
+            <img src={article1} className={"img-fluid"} />
+            <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
+            <h6
+              className={"fw-bold font-size-base mt-1"}
+              style={{ fontSize: 16 }}
+            >
+              What is Lorem Ipsum?
+            </h6>
+            <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
+              Read More
+            </h6>
+          </Col>
+          <Col
+            xs={12}
+            md={4}
+            className={"mb-4 d-flex flex-column align-items-center"}
+          >
+            <img src={article2} className={"img-fluid"} />
+            <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
+            <h6
+              className={"fw-bold font-size-base mt-1"}
+              style={{ fontSize: 16 }}
+            >
+              What is Lorem Ipsum?
+            </h6>
+            <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
+              Read More
+            </h6>
+          </Col>
+          <Col
+            xs={12}
+            md={4}
+            className={"mb-4 d-flex flex-column align-items-center"}
+          >
+            <img src={article3} className={"img-fluid"} />
+            <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
+            <h6
+              className={"fw-bold font-size-base mt-1"}
+              style={{ fontSize: 16 }}
+            >
+              What is Lorem Ipsum?
+            </h6>
+            <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
+              Read More
+            </h6>
+          </Col>
+        </Row>
+      </Container>
+      <Container
+        style={{ marginTop: 80, marginBottom: 80 }}
+        className={"d-flex flex-column align-items-center"}
+      >
+        <Row style={{ width: 700 }}>
+          <h5>
+            There is a lot of exciting stuff going on in the stars above us that
+            makes astronomy so much fun. The universe is constantly changing and
+            moving. Some would say it’s a living thing because you never know
+            what you are going to see on any given night of stargazing. Of the
+            many celestial phenomenons, there is probably none as exciting as
+            when you see your first asteroid on the move in the heavens. To call
+            asteroids the “rock stars” of astronomy is both a bad joke and an
+            accurate depiction of how astronomy fans view them. Unlike suns,
+            planets, and moons, asteroids are on the move, ever changing and, if
+            they appear in the night sky, they are exciting and dynamic.
+          </h5>
+
+          <h5 className={"mt-5"}>
+            There is a lot of exciting stuff going on in the stars above us that
+            makes astronomy so much fun. The universe is constantly changing and
+            moving. Some would say it’s a living thing because you never know
+            what you are going to see on any given night of stargazing. Of the
+            many celestial phenomenons, there is probably none as exciting as
+            when you see your first asteroid on the move in the heavens. To call
+            asteroids the “rock stars” of astronomy is both a bad joke and an
+            accurate depiction of how astronomy fans view them. Unlike suns,
+            planets, and moons, asteroids are on the move, ever changing and, if
+            they appear in the night sky, they are exciting and dynamic.
+          </h5>
+        </Row>
+      </Container>
+    </>
+  );
+};
+
+export async function getServerSideProps(context) {
+  const res = await axios.get(`/products/${context.query.id}`);
+  const product = res.data;
+
+  return {
+    props: { product, id: context.query.id }, // will be passed to the page component as props
+  };
+}
+
+export default Id;
