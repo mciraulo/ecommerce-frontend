@@ -32,61 +32,35 @@ const Index = () => {
         <title>Blog</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {console.log(blogs)}
       <Container className={"mb-5"} style={{ marginTop: 32 }}>
         <Row>
           <Col xs={12} lg={8}>
             <h3 className="fw-bold mb-5">Blog</h3>
-            <Link href={"blog/article"}>
+            {blogs.length > 0 && blogs.map(post => {
+            return (
+              <div key={post.id}>
+                <Link href={`blog/article/${post.id}`}>
               <a>
-                <img src={img1} alt="img1" className="mb-4 img-fluid" />
+                <img src={post.hero_image[0].publicUrl} alt="img1" className="mb-4 img-fluid" />
               </a>
             </Link>
             <h6 className="fw-bold text-primary mb-3 text-uppercase mt-3">
-              Technology
+              {post.author_name}
             </h6>
-            <Link href={"blog/article"}>
+            <Link href={`blog/article/${post.id}`}>
               <a className={"text-dark"}>
                 <h4 className="fw-bold mb-4">
-                  Differentiate Yourself And Attract More Attention
+                  {post.title}
                 </h4>
               </a>
             </Link>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s but also the leap{" "}
+              {post.epigraph}{" "}
             </p>
-            <p className={"text-muted mt-2"}>June 30, 2017</p>
-            <Link href={"blog/article"}>
-              <a>
-                <img src={img2} alt="img2" className="mb-4 mt-5 img-fluid" />
-              </a>
-            </Link>
-            <h6 className="fw-bold text-primary mb-3 text-uppercase mt-3">
-              Technology
-            </h6>
-            <Link href={"blog/article"}>
-              <a className={"text-dark"}>
-                <h4 className="fw-bold mb-4">
-                  Differentiate Yourself And Attract More Attention
-                </h4>
-              </a>
-            </Link>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s but also the leap{" "}
-            </p>
-            <p className={"text-muted mt-2"}>June 30, 2017</p>
+            <p className={"text-muted mt-2"}>{post.createdAt.toString().slice(0, 10)}</p>
+              </div>
+            )
+          })}
           </Col>
           <Col xs={12} lg={4}>
             <h3 className="fw-bold mb-4">Search</h3>

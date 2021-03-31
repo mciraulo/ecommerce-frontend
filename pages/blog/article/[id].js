@@ -10,16 +10,16 @@ import article2 from "public/images/e-commerce/home/article2.png";
 import article3 from "public/images/e-commerce/home/article3.png";
 import Head from "next/head";
 
-const Id = (props) => {
+const Id = ({ post }) => {
   return (
     <>
       <Head>
-        <title>ghfgh</title>
+        <title>{post.title && post.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {console.log(props)}
+      {console.log(post)}
       <img
-        src={headerImg}
+        src={post.hero_image[0] && post.hero_image[0].publicUrl}
         alt={"header"}
         className={"w-100"}
         style={{ marginTop: 32, maxHeight: 440 }}
@@ -27,7 +27,7 @@ const Id = (props) => {
       <Container className={"mb-5 mt-5 d-flex flex-column align-items-center"}>
         <Row style={{ width: 700 }}>
           <h1 className={"fw-bold mb-0"}>
-            The beauty of astronomy is that anybody can do it
+            {post.title && post.title}
           </h1>
           <blockquote
             className={"d-flex"}
@@ -38,84 +38,131 @@ const Id = (props) => {
                 className={"d-flex align-items-center"}
                 style={{ marginBottom: 35 }}
               >
-                <img src={person} alt="person" className={"mr-3"} />
+                <img src={post.author_avatar[0] && post.author_avatar[0].publicUrl} alt="person" className={"mr-3"} />
                 <p className={"text-uppercase fw-bold text-primary mb-0"}>
-                  By James Lee Cooper
+                  By {post.author_name && post.author_name}
                 </p>
               </div>
               <h5 className={"fw-bold mb-0"}>
-                The universe is a constantly changing and moving. Some would say
-                it’s a living thing because you never know what you are going to
-                see on any given night of stargazing.
+                {post.epigraph && post.epigraph}
               </h5>
             </div>
           </blockquote>
-          <h5>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
-          </h5>
+       
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
-            <img src={articleImg} alt={"article"} />
+            <img src={post.blog_image_one[0] && post.blog_image_one[0].publicUrl} alt={"article"} />
             <p className={"text-muted mt-3"}>
-              There is a lot of exciting stuff going on in the stars
+              {post.blog_image_one_annotation && post.blog_image_one_annotation}
             </p>
           </Col>
         </Row>
         <Row style={{ width: 700 }} className={"mt-5"}>
           <h5>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
+            {post.first_paragraph && post.first_paragraph}
           </h5>
+        </Row>
+        <Row className={"mt-5"}>
+          <Col xs={12}>
+            <img src={post.blog_image_two[0] && post.blog_image_two[0].publicUrl} alt={"article"} />
+            <p className={"text-muted mt-3"}>
+              {post.blog_image_two_annotation && post.blog_image_two_annotation}
+            </p>
+          </Col>
+        </Row>
+        <Row style={{ width: 700 }} className={"mt-5"}>
+          <h5>
+            {post.second_paragraph && post.second_paragraph}
+          </h5>
+        </Row>
+        <Row className={"mt-5"}>
+          <Col xs={12}>
+            <img src={post.blog_image_three[0] && post.blog_image_three[0].publicUrl} alt={"article"} />
+            <p className={"text-muted mt-3"}>
+              {post.blog_image_three_annotation && post.blog_image_three_annotation}
+            </p>
+          </Col>
+        </Row>
+        <Row style={{ width: 700 }} className={"mt-5"}>
+          <h5>
+            {post.third_paragraph && post.third_paragraph}
+          </h5>
+        </Row>
+        <Row style={{ width: 700 }} className={"mt-5"}>
           <hr className={"mt-5"} />
+
           <div className={"d-flex flex-column w-100"}>
+          {post.point_one_title && (
             <div className={"d-flex justify-content-center mt-4"}>
-              <div className={s.number}>1</div>
+            <div className={s.number}>{post.point_one_title && 1}</div>
+            <div style={{ width: 600 }}>
+              <h6 className={"fw-bold mb-4"}>
+              {post.point_one_title && post.point_one_title}
+              </h6>
+              <p>
+              {post.point_one_description && post.point_one_description}
+              </p>
+            </div>
+          </div>
+          )}
+          
+            {post.point_two_title && (
+            <div className={"d-flex justify-content-center mt-4"}>
+              <div className={s.number}>{post.point_two_title && 2}</div>
               <div style={{ width: 600 }}>
                 <h6 className={"fw-bold mb-4"}>
-                  Unmatched Toner Cartridge Quality
+                {post.point_two_title && post.point_two_title}
                 </h6>
                 <p>
-                  There is a lot of exciting stuff going on in the stars above
-                  us that makes astronomy so much fun. The universe is
-                  constantly changing and moving. Some would say it’s a “living”
-                  thing because you never know what you are going to see on any
-                  given night of stargazing.
+                {post.point_two_description && post.point_two_description}
                 </p>
               </div>
-            </div>
-            <div className={"d-flex justify-content-center mt-5"}>
-              <div className={s.number}>2</div>
+            </div>              
+            )}
+
+            {post.point_three_title && (
+            <div className={"d-flex justify-content-center mt-4"}>
+              <div className={s.number}>{post.point_three_title && 3}</div>
               <div style={{ width: 600 }}>
                 <h6 className={"fw-bold mb-4"}>
-                  Unmatched Toner Cartridge Quality
+                {post.point_three_title && post.point_three_title}
                 </h6>
                 <p>
-                  There is a lot of exciting stuff going on in the stars above
-                  us that makes astronomy so much fun. The universe is
-                  constantly changing and moving. Some would say it’s a “living”
-                  thing because you never know what you are going to see on any
-                  given night of stargazing.
+                {post.point_three_description && post.point_three_description}
                 </p>
               </div>
+            </div>              
+            )}
+
+            {post.point_four_title && (
+            <div className={"d-flex justify-content-center mt-4"}>
+            <div className={s.number}>{post.point_four_title && 4}</div>
+            <div style={{ width: 600 }}>
+              <h6 className={"fw-bold mb-4"}>
+              {post.point_four_title && post.point_four_title}
+              </h6>
+              <p>
+              {post.point_four_description && post.point_four_description}
+              </p>
             </div>
+          </div>
+            )}
+
+            {post.point_four_title && (
+            <div className={"d-flex justify-content-center mt-4"}>
+              <div className={s.number}>{post.point_four_title && 5}</div>
+              <div style={{ width: 600 }}>
+                <h6 className={"fw-bold mb-4"}>
+                {post.point_five_title && post.point_five_title}
+                </h6>
+                <p>
+                {post.point_five_description && post.point_five_description}
+                </p>
+              </div>
+            </div>              
+            )}
+
           </div>
           <hr />
         </Row>
@@ -191,29 +238,11 @@ const Id = (props) => {
       >
         <Row style={{ width: 700 }}>
           <h5>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
+            {post.fourth_paragraph && post.fourth_paragraph}
           </h5>
 
           <h5 className={"mt-5"}>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
+            {post.fifth_paragraph && post.fifth_paragraph}
           </h5>
         </Row>
       </Container>
@@ -222,11 +251,11 @@ const Id = (props) => {
 };
 
 export async function getServerSideProps(context) {
-  const res = await axios.get(`/products/${context.query.id}`);
-  const product = res.data;
+  const res = await axios.get(`/blogs/${context.query.id}`);
+  const post = res.data;
 
   return {
-    props: { product, id: context.query.id }, // will be passed to the page component as props
+    props: { post }, // will be passed to the page component as props
   };
 }
 
