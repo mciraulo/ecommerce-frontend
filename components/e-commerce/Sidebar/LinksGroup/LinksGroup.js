@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Collapse, Badge } from "reactstrap";
-import { Route } from "react-router";
 import classnames from "classnames";
-import { connect } from "react-redux";
 import Link from 'next/link'
+import { withRouter } from 'next/router';
 
 import s from "./LinksGroup.module.scss";
 
