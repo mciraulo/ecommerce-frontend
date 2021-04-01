@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "next/router";
 import Link from "next/link";
 import s from "./Sidebar.module.scss";
-import LinksGroup from "components/E-commerce/Sidebar/LinksGroup";
+import LinksGroup from "./LinksGroup";
 import {
   closeSidebar,
   changeActiveSidebarItem,
