@@ -83,7 +83,6 @@ const SimpleLine = ({ color, title, subtitle, value }) => {
 }
 
 SimpleLine.propTypes = {
-  classes: PropTypes.object.isRequired,
   color: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,

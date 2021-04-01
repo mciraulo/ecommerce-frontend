@@ -71,27 +71,27 @@ class Header extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.currentUser) {
-      axios
-        .get(`/orders?user=${this.props.currentUser.id}&status=in+cart`)
-        .then((res) => {
-          this.setState({
-            count: res.data.count,
-          });
-        });
-      return;
-    } else if (
-      typeof window !== "undefined" &&
-      localStorage.getItem("products") &&
-      !this.props.currentUser &&
-      this.props.products !== prevProps.products
-    ) {
-      this.setState({
-        count: JSON.parse(localStorage.getItem("products")).length,
-      });
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.currentUser) {
+  //     axios
+  //       .get(`/orders?user=${this.props.currentUser.id}&status=in+cart`)
+  //       .then((res) => {
+  //         this.setState({
+  //           count: res.data.count,
+  //         });
+  //       });
+  //     return;
+  //   } else if (
+  //     typeof window !== "undefined" &&
+  //     localStorage.getItem("products") &&
+  //     !this.props.currentUser &&
+  //     this.props.products !== prevProps.products
+  //   ) {
+  //     this.setState({
+  //       count: JSON.parse(localStorage.getItem("products")).length,
+  //     });
+  //   }
+  // }
 
   toggle = (e) => {
     this.setState({ [e.target.name]: true });
@@ -184,37 +184,37 @@ class Header extends React.Component {
                     height={heightTwo}
                   >
                     <UncontrolledDropdown>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/about"}>
                           <a>About Us</a>
                         </ActiveLink>
                       </DropdownItem>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/about-team"}>
                           <a>About Team</a>
                         </ActiveLink>
                       </DropdownItem>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/contact"}>
                           <a>Contact Us</a>
                         </ActiveLink>
                       </DropdownItem>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/faq"}>
                           <a>FAQ</a>
                         </ActiveLink>
                       </DropdownItem>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/error"}>
                           <a>404</a>
                         </ActiveLink>
                       </DropdownItem>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/wishlist"}>
                           <a>Wishlist</a>
                         </ActiveLink>
                       </DropdownItem>
-                      <DropdownItem className={s.dropdownMenuItem} text>
+                      <DropdownItem className={s.dropdownMenuItem}>
                         <ActiveLink href={"/login"}>
                           <a>Login</a>
                         </ActiveLink>
@@ -234,17 +234,17 @@ class Header extends React.Component {
                     className={`${s.nav__submenu}`}
                     height={heightThree}
                   >
-                    <DropdownItem className={s.dropdownMenuItem} text>
+                    <DropdownItem className={s.dropdownMenuItem}>
                       <ActiveLink href={"/shop"}>
                         <a>Shop</a>
                       </ActiveLink>
                     </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
+                    <DropdownItem className={s.dropdownMenuItem}>
                       <ActiveLink href={"/categories"}>
                         <a>Categories</a>
                       </ActiveLink>
                     </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
+                    <DropdownItem className={s.dropdownMenuItem}>
                       <ActiveLink href={"/account"}>
                         <a>Account</a>
                       </ActiveLink>
@@ -263,12 +263,12 @@ class Header extends React.Component {
                     className={`${s.nav__submenu}`}
                     height={heightFour}
                   >
-                    <DropdownItem className={s.dropdownMenuItem} text>
+                    <DropdownItem className={s.dropdownMenuItem}>
                       <ActiveLink href={"/blog"}>
                         <a>Blog</a>
                       </ActiveLink>
                     </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem} text>
+                    <DropdownItem className={s.dropdownMenuItem}>
                       <ActiveLink href={"/blog/article"}>
                         <a>Blog Article</a>
                       </ActiveLink>

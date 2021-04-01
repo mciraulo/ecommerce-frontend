@@ -163,7 +163,7 @@ const Categories = () => {
             </ButtonBack>
             <Slider>
               {products.map((c, index) => (
-                  <Slide index={index}>
+                  <Slide index={index} key={index}>
                     <Col className={`${s.product}`}>
                       <Link href={`/products/afaf98d5-4060-4408-967b-c4f4af3d186${index + 1}`}>
                         <a>

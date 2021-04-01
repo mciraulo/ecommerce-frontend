@@ -17,7 +17,7 @@ class LinksGroup extends Component {
     link: PropTypes.string.isRequired,
     iconType: PropTypes.string.isRequired,
     childrenLinks: PropTypes.array,
-    iconName: PropTypes.string,
+    iconName: PropTypes.oneOfType([ PropTypes.string, PropTypes.node ]),
     className: PropTypes.string,
     badge: PropTypes.string,
     label: PropTypes.string,

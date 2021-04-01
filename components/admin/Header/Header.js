@@ -37,9 +37,6 @@ class Header extends React.Component {
     sidebarOpened: PropTypes.bool,
     sidebarStatic: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }).isRequired,
   };
 
   constructor(props) {
@@ -74,7 +71,7 @@ class Header extends React.Component {
       this.props.dispatch(closeSidebar());
       this.props.dispatch(changeActiveSidebarItem(null));
     } else {
-      const paths = this.props.location.pathname.split("/");
+      const paths = this.props.router.pathname.split("/");
       paths.pop();
       this.props.dispatch(openSidebar());
       this.props.dispatch(changeActiveSidebarItem(paths.join("/")));
@@ -89,7 +86,7 @@ class Header extends React.Component {
       this.props.dispatch(changeActiveSidebarItem(null));
     } else {
       typeof window !== 'undefined' && localStorage.setItem("staticSidebar", "true");
-      const paths = this.props.location.pathname.split("/");
+      const paths = this.props.router.pathname.split("/");
       paths.pop();
       this.props.dispatch(changeActiveSidebarItem(paths.join("/")));
     }

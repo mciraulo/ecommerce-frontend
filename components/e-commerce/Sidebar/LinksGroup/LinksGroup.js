@@ -143,75 +143,69 @@ class LinksGroup extends Component {
     }
     /* eslint-disable */
     return (
-      // <Route
-      //   path={this.props.link}
-      //   children={(params) => {
-      //     const { match } = params;
-      //     return (
-      //       <li
-      //         className={classnames(
-      //           "link-wrapper",
-      //           { [s.headerLink]: this.props.isHeader },
-      //           this.props.className
-      //         )}
-      //       >
-      //         <a
-      //           className={classnames(
-      //             { [s.headerLinkActive]: match },
-      //             { [s.collapsed]: isOpen },
-      //             "d-flex"
-      //           )}
-      //           style={{
-      //             paddingLeft: `${
-      //               this.props.deep == 0 ? 33 : 26 + 10 * (this.props.deep - 1)
-      //             }px`,
-      //           }}
-      //           onClick={() => this.togglePanelCollapse(this.props.link)}
-      //         >
-      //           {this.props.isHeader ? (
-      //             <span className={classnames("icon", s.icon)}>
-      //               <i className={`fi ${this.props.iconName}`} />
-      //             </span>
-      //           ) : null}
-      //           {this.props.header}{" "}
-      //           {this.props.label && (
-      //             <sup
-      //               className={`${s.headerLabel} ${s.headerNode} ml-1 text-${
-      //                 this.props.labelColor || "warning"
-      //               }`}
-      //             >
-      //               {this.props.label}
-      //             </sup>
-      //           )}
-      //           <b className={["la la-angle-left", s.caret].join(" ")} />
-      //         </a>
-      //         {/* eslint-enable */}
-      //         <Collapse className={s.panel} isOpen={isOpen}>
-      //           <ul>
-      //             {this.props.childrenLinks &&
-      //               this.props.childrenLinks.map((child, ind) => (
-      //                 <LinksGroup
-      //                   onActiveSidebarItemChange={
-      //                     this.props.onActiveSidebarItemChange
-      //                   }
-      //                   activeItem={this.props.activeItem}
-      //                   header={child.header}
-      //                   link={child.link}
-      //                   index={child.index}
-      //                   childrenLinks={child.childrenLinks}
-      //                   deep={this.props.deep + 1}
-      //                   key={ind} // eslint-disable-line
-      //                 />
-      //               ))}
-      //           </ul>
-      //         </Collapse>
-      //       </li>
-      //     );
-      //   }}
-      // />
+
+            <li
+              className={classnames(
+                "link-wrapper",
+                { [s.headerLink]: this.props.isHeader },
+                this.props.className
+              )}
+            >
+              <a
+                className={classnames(
+                  { [s.headerLinkActive]: false },
+                  { [s.collapsed]: isOpen },
+                  "d-flex"
+                )}
+                style={{
+                  paddingLeft: `${
+                    this.props.deep == 0 ? 33 : 26 + 10 * (this.props.deep - 1)
+                  }px`,
+                }}
+                onClick={() => this.togglePanelCollapse(this.props.link)}
+              >
+                {this.props.isHeader ? (
+                  <span className={classnames("icon", s.icon)}>
+                    <i className={`fi ${this.props.iconName}`} />
+                  </span>
+                ) : null}
+                {this.props.header}{" "}
+                {this.props.label && (
+                  <sup
+                    className={`${s.headerLabel} ${s.headerNode} ml-1 text-${
+                      this.props.labelColor || "warning"
+                    }`}
+                  >
+                    {this.props.label}
+                  </sup>
+                )}
+                <b className={["la la-angle-left", s.caret].join(" ")} />
+              </a>
+              {/* eslint-enable */}
+              <Collapse className={s.panel} isOpen={isOpen}>
+                <ul>
+                  {this.props.childrenLinks &&
+                    this.props.childrenLinks.map((child, ind) => (
+                      <LinksGroup
+                        onActiveSidebarItemChange={
+                          this.props.onActiveSidebarItemChange
+                        }
+                        activeItem={this.props.activeItem}
+                        header={child.header}
+                        link={child.link}
+                        index={child.index}
+                        childrenLinks={child.childrenLinks}
+                        deep={this.props.deep + 1}
+                        key={ind} // eslint-disable-line
+                      />
+                    ))}
+                </ul>
+              </Collapse>
+            </li>
+          );
+        }}
+      
         <div/>
-    );
-  }
-}
+
 
 export default LinksGroup;

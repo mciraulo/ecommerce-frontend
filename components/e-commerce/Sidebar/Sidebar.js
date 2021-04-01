@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { withRouter } from 'next/router'
-import Link from 'next/link'
+import { withRouter } from "next/router";
+import Link from "next/link";
 import s from "./Sidebar.module.scss";
-import LinksGroup from "components/e-commerce/Sidebar/LinksGroup";
+import LinksGroup from "components/E-commerce/Sidebar/LinksGroup";
 import {
-  openSidebar,
   closeSidebar,
   changeActiveSidebarItem,
 } from "redux/actions/navigation";
@@ -17,7 +16,7 @@ class Sidebar extends React.Component {
     sidebarOpened: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
     activeItem: PropTypes.string,
-    router: PropTypes.shape({
+    location: PropTypes.shape({
       pathname: PropTypes.string,
     }).isRequired,
   };
@@ -29,9 +28,8 @@ class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.doLogout = this.doLogout.bind(this);
     this.wrapperRef = React.createRef();
+    this.doLogout = this.doLogout.bind(this);
   }
 
   doLogout() {
@@ -50,7 +48,7 @@ class Sidebar extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClickOutside);
+      document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
   render() {
@@ -82,10 +80,33 @@ class Sidebar extends React.Component {
                   }
                   activeItem={this.props.activeItem}
                   header="Pages"
-                  link="/app/dashboard"
-                  index="dashboard"
+                  link="/pages"
+                  index="pages"
                   isHeader
                   exact={false}
+                  childrenLinks={[
+                    {
+                      header: 'About Us', link: '/about',
+                    },
+                    {
+                      header: 'About Team', link: '/about-team',
+                    },
+                    {
+                      header: 'Contact Us', link: '/contact',
+                    },
+                    {
+                      header: 'FAQ', link: '/faq',
+                    },
+                    {
+                      header: '404', link: '/error',
+                    },
+                    {
+                      header: 'Wishlist', link: '/wishlist',
+                    },
+                    {
+                      header: 'Login', link: '/login',
+                    },
+                  ]}
               />
               <LinksGroup
                   onActiveSidebarItemChange={(activeItem) =>
@@ -97,10 +118,40 @@ class Sidebar extends React.Component {
                   index="shop"
                   isHeader
                   exact={false}
+                  childrenLinks={[
+                    {
+                      header: 'Shop', link: '/shop',
+                    },
+                    {
+                      header: 'Categories', link: '/categories',
+                    },
+                    {
+                      header: 'Account', link: '/account',
+                    },
+                  ]}
+              />
+              <LinksGroup
+                  onActiveSidebarItemChange={(activeItem) =>
+                      this.props.dispatch(changeActiveSidebarItem(activeItem))
+                  }
+                  activeItem={this.props.activeItem}
+                  header="Blog"
+                  link="/blog"
+                  index="blog"
+                  isHeader
+                  exact={false}
+                  childrenLinks={[
+                    {
+                      header: 'Blog', link: '/blog',
+                    },
+                    {
+                      header: 'Article', link: '/blog/article',
+                    },
+                  ]}
               />
             </ul>
             <div className={s.accountBtn}>
-              <Link href={"/account"}>
+              <Link href={"/account  "}>
                 My Account
               </Link>
             </div>
