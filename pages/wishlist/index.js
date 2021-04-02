@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col, Table, Button } from "reactstrap";
 import close from "public/images/e-commerce/close.svg";
 
-import InfoBlock from 'components/e-commerce/InfoBlock';
 import InstagramWidget from 'components/e-commerce/Instagram';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
