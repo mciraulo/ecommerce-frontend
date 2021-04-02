@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import UsersForm from "./UsersForm";
-import { push } from "connected-react-router";
 import actions from "redux/actions/users/usersFormActions";
 import { connect } from "react-redux";
 import {withRouter} from "next/router";
@@ -59,7 +58,7 @@ class Index extends Component {
             isEditing={this.isEditing()}
             isProfile={this.isProfile()}
             onSubmit={this.doSubmit}
-            onCancel={() => this.props.dispatch(push("/admin/users"))}
+            onCancel={() => this.props.router.push("/admin/users")}
           />
         )}
       </React.Fragment>

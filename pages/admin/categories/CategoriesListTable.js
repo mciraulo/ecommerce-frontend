@@ -1,11 +1,8 @@
-import * as dataFormat from "./CategoriesDataFormatters";
-
 import actions from "redux/actions/categories/categoriesListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
 import { withRouter } from 'next/router';
-import { push } from "connected-react-router";
 
 import {
   Dropdown,

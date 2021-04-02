@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CategoriesForm from "./CategoriesForm";
-import { push } from "connected-react-router";
 import actions from "redux/actions/categories/categoriesFormActions";
 import { connect } from "react-redux";
 import {withRouter} from "next/router";
@@ -59,7 +58,7 @@ class Index extends Component {
             isEditing={this.isEditing()}
             isProfile={this.isProfile()}
             onSubmit={this.doSubmit}
-            onCancel={() => this.props.dispatch(push("/admin/categories"))}
+            onCancel={() => this.props.router.push("/admin/categories")}
           />
         )}
       </React.Fragment>

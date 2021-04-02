@@ -80,7 +80,7 @@ export function receiveToken(token) {
     dispatch({
       type: LOGIN_SUCCESS,
     });
-    typeof window !== 'undefined' && dispatch(push("/app"));
+    if (typeof window !== 'undefined') { window.location.href = "/admin/dashboard" } 
   };
 }
 
@@ -98,7 +98,7 @@ export function loginUser(creds) {
           const token = res.data;
           dispatch(receiveToken(token));
           dispatch(doInit());
-          typeof window !== 'undefined' && dispatch(push("/app"));
+          if (typeof window !== 'undefined') { window.location.href = "/admin/dashboard" } 
         })
         .catch((err) => {
           console.log(err.response);

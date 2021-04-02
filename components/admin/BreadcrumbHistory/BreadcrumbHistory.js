@@ -13,14 +13,16 @@ const BreadcrumbHistory = ({ url }) => {
     React.useEffect(() => {
       if (router.pathname.includes("products")) {
         const { id } = router.query;
-        axios.get(`/products/${id}`).then((res) => {
-          setRoute([
-            "Products",
-            res.data.categories[0].title[0].toUpperCase() +
-              res.data.categories[0].title.slice(1),
-            res.data.title,
-          ]);
-        });
+        if (id) {
+          axios.get(`/products/${id}`).then((res) => {
+            setRoute([
+              "Products",
+              res.data.categories[0].title[0].toUpperCase() +
+                res.data.categories[0].title.slice(1),
+              res.data.title,
+            ]);
+          });
+        }
       } else {
         if (router.pathname.includes("category")) {
           var { categoryName } = router.query;
@@ -29,7 +31,6 @@ const BreadcrumbHistory = ({ url }) => {
           .split("/")
           .slice(1)
           .map((route, index) => {
-            console.log(route);
             if (router.pathname.includes("category") && index === 1) {
               return categoryName[0].toUpperCase() + categoryName.slice(1);
             } else {

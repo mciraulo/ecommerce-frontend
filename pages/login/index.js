@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { connect } from "react-redux";
 import {
   Container,
-  Alert,
   Button,
   Col,
   Row,
@@ -14,11 +13,8 @@ import {
   Input,
   Form,
 } from "reactstrap";
-import { loginUser, receiveToken, doInit } from "redux/actions/auth";
+import { loginUser } from "redux/actions/auth";
 import jwt from "jsonwebtoken";
-import microsoft from "public/images/microsoft.png";
-import { push } from "connected-react-router";
-import img from "public/images/e-commerce/login/bg.svg";
 import logo from "public/images/e-commerce/logo.svg";
 import eye from 'public/images/e-commerce/login/eye.png';
 import eyeOff from 'public/images/e-commerce/login/eye-off.png';
@@ -89,14 +85,10 @@ class Login extends React.Component {
   }
 
   signUp() {
-    this.props.dispatch(push("/register"));
+    this.props.router.push("/register");
   }
 
   render() {
-
-    if (typeof window !== 'undefined' && Login.isAuthenticated()) {
-      this.props.router.push('/admin/dashboard');
-    }
 
     return (
       <Row className={"no-gutters"} style={{ height: "100vh" }}>

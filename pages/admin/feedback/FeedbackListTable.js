@@ -7,7 +7,6 @@ import actions from "redux/actions/feedback/feedbackListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
 import { withRouter } from "next/router"
 import {
   Dropdown,

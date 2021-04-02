@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import BlogsForm from "./BlogsView";
-import { push } from "connected-react-router";
 import actions from "redux/actions/blogs/blogsFormActions";
 import { connect } from "react-redux";
 import {withRouter} from "next/router";
@@ -38,7 +37,6 @@ class Index extends Component {
   };
 
   render() {
-    console.log(this.props.record);
     return (
       <React.Fragment>
         {this.state.dispatched && (

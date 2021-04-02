@@ -1,13 +1,11 @@
 import * as dataFormat from "./ProductsDataFormatters";
 
 import * as categoriesDataFormat from "../categories/CategoriesDataFormatters";
-import * as productsDataFormat from "../products/ProductsDataFormatters";
 import { withRouter } from "next/router"
 import actions from "redux/actions/products/productsListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
 
 import {
   Dropdown,

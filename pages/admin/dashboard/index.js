@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Row, Col, Progress } from "reactstrap";
 import dynamic from 'next/dynamic';
+import { withRouter } from "next/router";
 const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 import { chartData, splineArea } from './chartsMock';
@@ -93,163 +94,178 @@ class Index extends React.Component {
   }
 
   render() {
-    return (
-      <div className={s.root}>
-        <h1 className="page-title">
-          Welcome,{" "}
-          {this.props.currentUser
-            ? this.props.currentUser.firstName || "User"
-            : "User"}
-          ! <br />
-          <small>
+    if (!this.props.loadingInit) {
+      if (this.props.currentUser) {
+        if (this.props.currentUser.role !== 'admin') {
+          if (typeof window !== 'undefined') { window.location.href = "/error" } 
+        }
+      } else {
+        if (typeof window !== 'undefined') { window.location.href = "/error" } 
+      }
+    } else {
+      return (
+        <div>loading</div>
+      )
+    }
+
+      return (
+        <div className={s.root}>
+          <h1 className="page-title">
+            Welcome,{" "}
+            {this.props.currentUser
+              ? this.props.currentUser.firstName || "User"
+              : "User"}
+            ! <br />
             <small>
-              Your role is{" "}
-              {this.props.currentUser && this.props.currentUser.role}
+              <small>
+                Your role is{" "}
+                {this.props.currentUser && this.props.currentUser.role}
+              </small>
             </small>
-          </small>
-        </h1>
-        <Row>
-          <Col lg={3}>
-            <SimpleLine color="#5EC992" title="97.5K" subtitle="Revenue Generated" />
-          </Col>
-          <Col lg={3}>
-            <SimpleLine color="#CA4155" title="84.2K" subtitle="Revenue Generated" />
-          </Col>
-          <Col lg={3}>
-            <SimpleLine color="#D19C48" title="58.8K" subtitle="Revenue Generated" />
-          </Col>
-          <Col lg={3}>
-            <SimpleLine color="#4392D5" title="89.3K" subtitle="Revenue Generated" />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <div className={s.dashboardWidgetWrapper}>
-              <h3 className={s.widgetMainTitle} style={{ paddingLeft: 25 }}>Revenue</h3>
+          </h1>
+          <Row>
+            <Col lg={3}>
+              <SimpleLine color="#5EC992" title="97.5K" subtitle="Revenue Generated" />
+            </Col>
+            <Col lg={3}>
+              <SimpleLine color="#CA4155" title="84.2K" subtitle="Revenue Generated" />
+            </Col>
+            <Col lg={3}>
+              <SimpleLine color="#D19C48" title="58.8K" subtitle="Revenue Generated" />
+            </Col>
+            <Col lg={3}>
+              <SimpleLine color="#4392D5" title="89.3K" subtitle="Revenue Generated" />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div className={s.dashboardWidgetWrapper}>
+                <h3 className={s.widgetMainTitle} style={{ paddingLeft: 25 }}>Revenue</h3>
+                <ApexChart
+                  className="sparkline-chart"
+                  series={splineArea.spline.series}
+                  options={splineArea.spline.options}
+                  type={"area"}
+                  height={"350px"}
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6} xs={12}>
+              <div className={`${s.widgetPadding} ${s.dashboardWidgetWrapper}`}>
+                <h3 className={s.widgetMainTitle}>Browser Statistics</h3>
+                <div className={s.progressItemWrap}>
+                <div className={s.flexItem}>
+                  <div className={s.leftSide}>
+                    <h6>Google Chrome</h6>
+                    <span>73%</span>
+                  </div>
+                  <div className={s.rightSide}>
+                    <h6>800 <i className={'la la-arrow-right ml-sm text-success rotate-270'}/></h6>
+                    <span>13:16</span>
+                  </div>
+                </div>
+                <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
+                </div>
+                <div className={s.progressItemWrap}>
+                <div className={s.flexItem}>
+                  <div className={s.leftSide}>
+                    <h6>Opera</h6>
+                    <span>8%</span>
+                  </div>
+                  <div className={s.rightSide}>
+                    <h6>-200 <i className={'la la-arrow-right ml-sm text-danger rotate-90'}/></h6>
+                    <span>13:16</span>
+                  </div>
+                </div>
+                <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
+                </div>
+                <div className={s.progressItemWrap}>
+                <div className={s.flexItem}>
+                  <div className={s.leftSide}>
+                    <h6>Firefox</h6>
+                    <span>19%</span>
+                  </div>
+                  <div className={s.rightSide}>
+                    <h6>100 <i className={'la la-arrow-right ml-sm text-success rotate-270'}/></h6>
+                    <span>13:26</span>
+                  </div>
+                </div>
+                <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
+                </div>
+                <div className={s.progressItemWrap}>
+                <div className={s.flexItem}>
+                  <div className={s.leftSide}>
+                    <h6>Internet Explorer</h6>
+                    <span>27%</span>
+                  </div>
+                  <div className={s.rightSide}>
+                    <h6>-450 <i className={'la la-arrow-right ml-sm text-danger rotate-90'}/></h6>
+                    <span>13:16</span>
+                  </div>
+                </div>
+                <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
+                </div>
+              </div>
+            </Col>
+            <Col md={6} xs={12}>
+            <div className={`${s.widgetPadding} ${s.dashboardWidgetWrapper}`}>
+              <h3 className={s.widgetMainTitle}>Product Orders</h3>
               <ApexChart
                 className="sparkline-chart"
-                series={splineArea.spline.series}
-                options={splineArea.spline.options}
-                type={"area"}
-                height={"350px"}
+                type={"donut"}
+                height={180}
+                series={chartData.apex.pie.series}
+                options={this.state.pie.options}
               />
+              <Col sm={12}>
+                <div className={`${s.pieElements} ${s.elementDesktop}`}>
+                  <h5 className={"mt-3 mb-1"}>Desktop - 59.5%</h5>
+                  <p className={s.piePercent}>2%
+                    <i
+                      className={'la la-arrow-right ml-sm text-success rotate-270'}
+                    />
+                  </p>
+                </div>
+              </Col>
+              <Col sm={12}>
+                <div className={`${s.pieElements} ${s.elementMobile}`}>
+                  <h5 className={"mt-3 mb-1"}>Mobile - 35.7%</h5>
+                  <p className={s.piePercent}>8%
+                    <i
+                      className={'la la-arrow-right ml-sm text-success rotate-270'}
+                    />
+                  </p>
+                </div>
+              </Col>
+              <Col sm={12}>
+                <div className={`${s.pieElements} ${s.elementTablet}`}>
+                  <h5 className={"mt-3 mb-1"}>Tablet - 4.8%</h5>
+                  <p className={s.piePercent}>-5%
+                    <i
+                      className={'la la-arrow-right ml-sm text-danger rotate-90'}
+                    />
+                  </p>
+                </div>
+              </Col>
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6} xs={12}>
-            <div className={`${s.widgetPadding} ${s.dashboardWidgetWrapper}`}>
-              <h3 className={s.widgetMainTitle}>Browser Statistics</h3>
-              <div className={s.progressItemWrap}>
-              <div className={s.flexItem}>
-                <div className={s.leftSide}>
-                  <h6>Google Chrome</h6>
-                  <span>73%</span>
-                </div>
-                <div className={s.rightSide}>
-                  <h6>800 <i className={'la la-arrow-right ml-sm text-success rotate-270'}/></h6>
-                  <span>13:16</span>
-                </div>
-              </div>
-              <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
-              </div>
-              <div className={s.progressItemWrap}>
-              <div className={s.flexItem}>
-                <div className={s.leftSide}>
-                  <h6>Opera</h6>
-                  <span>8%</span>
-                </div>
-                <div className={s.rightSide}>
-                  <h6>-200 <i className={'la la-arrow-right ml-sm text-danger rotate-90'}/></h6>
-                  <span>13:16</span>
-                </div>
-              </div>
-              <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
-              </div>
-              <div className={s.progressItemWrap}>
-              <div className={s.flexItem}>
-                <div className={s.leftSide}>
-                  <h6>Firefox</h6>
-                  <span>19%</span>
-                </div>
-                <div className={s.rightSide}>
-                  <h6>100 <i className={'la la-arrow-right ml-sm text-success rotate-270'}/></h6>
-                  <span>13:26</span>
-                </div>
-              </div>
-              <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
-              </div>
-              <div className={s.progressItemWrap}>
-              <div className={s.flexItem}>
-                <div className={s.leftSide}>
-                  <h6>Internet Explorer</h6>
-                  <span>27%</span>
-                </div>
-                <div className={s.rightSide}>
-                  <h6>-450 <i className={'la la-arrow-right ml-sm text-danger rotate-90'}/></h6>
-                  <span>13:16</span>
-                </div>
-              </div>
-              <Progress value="60" className={`progress-xs ${s.bgViolet}`} />
-              </div>
-            </div>
-          </Col>
-          <Col md={6} xs={12}>
-          <div className={`${s.widgetPadding} ${s.dashboardWidgetWrapper}`}>
-            <h3 className={s.widgetMainTitle}>Product Orders</h3>
-            <ApexChart
-              className="sparkline-chart"
-              type={"donut"}
-              height={180}
-              series={chartData.apex.pie.series}
-              options={this.state.pie.options}
-            />
-            <Col sm={12}>
-              <div className={`${s.pieElements} ${s.elementDesktop}`}>
-                <h5 className={"mt-3 mb-1"}>Desktop - 59.5%</h5>
-                <p className={s.piePercent}>2%
-                  <i
-                    className={'la la-arrow-right ml-sm text-success rotate-270'}
-                  />
-                </p>
-              </div>
             </Col>
-            <Col sm={12}>
-              <div className={`${s.pieElements} ${s.elementMobile}`}>
-                <h5 className={"mt-3 mb-1"}>Mobile - 35.7%</h5>
-                <p className={s.piePercent}>8%
-                  <i
-                    className={'la la-arrow-right ml-sm text-success rotate-270'}
-                  />
-                </p>
-              </div>
-            </Col>
-            <Col sm={12}>
-              <div className={`${s.pieElements} ${s.elementTablet}`}>
-                <h5 className={"mt-3 mb-1"}>Tablet - 4.8%</h5>
-                <p className={s.piePercent}>-5%
-                  <i
-                    className={'la la-arrow-right ml-sm text-danger rotate-90'}
-                  />
-                </p>
-              </div>
-            </Col>
-          </div>
-          </Col>
-        </Row>
-        {/*<Row>*/}
-        {/*  <Col lg={9}>*/}
-        {/*    <HomePageWidget />*/}
-        {/*  </Col>*/}
-        {/*</Row>*/}
-      </div>
-    );
+          </Row>
+          {/*<Row>*/}
+          {/*  <Col lg={9}>*/}
+          {/*    <HomePageWidget />*/}
+          {/*  </Col>*/}
+          {/*</Row>*/}
+        </div>
+    )
   }
 }
 
 function mapStateToProps(store) {
   return {
     currentUser: store.auth.currentUser,
+    loadingInit: store.auth.loadingInit,
   };
 }
 
@@ -262,4 +278,4 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default connect(mapStateToProps)(Index);
+export default connect(mapStateToProps)(withRouter(Index));

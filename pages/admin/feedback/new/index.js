@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FeedbackForm from "./FeedbackForm";
-import { push } from "connected-react-router";
 import actions from "redux/actions/feedback/feedbackFormActions";
 import { connect } from "react-redux";
 import {withRouter} from 'next/router'
@@ -60,7 +59,7 @@ class Index extends Component {
             isEditing={this.isEditing()}
             isProfile={this.isProfile()}
             onSubmit={this.doSubmit}
-            onCancel={() => this.props.dispatch(push("/admin/feedback"))}
+            onCancel={() => this.props.router.push("/admin/feedback")}
           />
         )}
       </React.Fragment>

@@ -1,6 +1,5 @@
 import axios from "axios";
 import Errors from "../../../components/admin/FormItems/error/errors";
-import { push } from "connected-react-router";
 import { doInit } from "redux/actions/auth";
 import { toast } from "react-toastify";
 
@@ -32,7 +31,7 @@ const actions = {
         type: "PRODUCTS_FORM_FIND_ERROR",
       });
 
-      dispatch(push("/admin/products"));
+      if (typeof window !== 'undefined') { window.location.href = "/admin/products" }
     }
   },
 
@@ -48,7 +47,7 @@ const actions = {
         });
 
         toast.success("products created");
-        dispatch(push("/admin/products"));
+        if (typeof window !== 'undefined') { window.location.href = "/admin/products" }
       });
     } catch (error) {
       Errors.handle(error);
@@ -77,7 +76,7 @@ const actions = {
         toast.success("Profile updated");
       } else {
         toast.success("products updated");
-        dispatch(push("/admin/products"));
+        if (typeof window !== 'undefined') { window.location.href = "/admin/products" }
       }
     } catch (error) {
       Errors.handle(error);

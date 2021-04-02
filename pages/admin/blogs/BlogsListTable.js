@@ -1,13 +1,11 @@
 import * as dataFormat from "./BlogsDataFormatters";
 
 import * as categoriesDataFormat from "../categories/CategoriesDataFormatters";
-import * as blogsDataFormat from "../blogs/BlogsDataFormatters";
 import { withRouter } from "next/router"
 import actions from "redux/actions/blogs/blogsListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
 
 import {
   Dropdown,
@@ -76,7 +74,6 @@ class BlogsListTable extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(actions.doFetch({}));
-    console.log(this.props)
   }
 
   renderSizePerPageDropDown = (props) => {

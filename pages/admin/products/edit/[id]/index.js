@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProductsForm from "./ProductForm";
-import { push } from "connected-react-router";
 import actions from "redux/actions/products/productsFormActions";
 import { connect } from "react-redux";
 import {withRouter} from "next/router";

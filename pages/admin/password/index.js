@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ChangePasswordForm from "./ChangePasswordForm";
-import { push } from "connected-react-router";
 import actions from "redux/actions/password";
 import { withRouter } from 'next/router';
 import { connect } from "react-redux";

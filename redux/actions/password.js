@@ -1,6 +1,5 @@
 import axios from "axios";
 import Errors from "../../components/admin/FormItems/error/errors";
-import { push } from "connected-react-router";
 import { toast } from "react-toastify";
 
 const actions = {
@@ -18,7 +17,7 @@ const actions = {
       });
 
       toast.success("Password has been updated");
-      dispatch(push("/app/dashboard"));
+      if (typeof window !== 'undefined') { window.location.href = "/admin/dashboard" }
     } catch (error) {
       Errors.handle(error);
 

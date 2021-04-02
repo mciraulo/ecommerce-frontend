@@ -1,13 +1,10 @@
 import * as dataFormat from "./UsersDataFormatters";
 
-import * as productsDataFormat from "components/admin/CRUD/Products/list/ProductsDataFormatters";
-
 import actions from "redux/actions/users/usersListActions";
 import React, { Component } from "react";
 import Link from 'next/link'
 import { withRouter } from "next/router"
 import { connect } from "react-redux";
-import { push } from "connected-react-router";
 
 import {
   Dropdown,
