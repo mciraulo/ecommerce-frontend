@@ -93,6 +93,7 @@
 }
 
 .categoryBlock {
+  cursor: pointer;
   height: 210px;
   position: relative;
   margin-bottom: 40px;
@@ -124,6 +125,7 @@
 }
 
 .livingRoomBanner, .kitchenBanner {
+  cursor: pointer;
   height: 210px;
   position: relative;
   color: #262626;
@@ -154,6 +156,7 @@
 }
 
 .pillows {
+  cursor: pointer;
   margin-bottom: 40px;
   background-image: url('../../public/images/e-commerce/pillows_banner.jpg');
   height: 210px;
@@ -176,6 +179,7 @@
 }
 
 .bedLinen {
+  cursor: pointer;
   background-size: cover;
   background-image: url('../../public/images/e-commerce/linen_banner.jpg');
   height: 210px;

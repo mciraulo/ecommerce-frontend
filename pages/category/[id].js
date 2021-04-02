@@ -6,20 +6,13 @@ import {
   Input,
   Button,
   Modal,
-  ModalBody,
 } from "reactstrap";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import s from "./Shop.module.scss";
-import car from "public/images/e-commerce/home/car.svg";
-import call from "public/images/e-commerce/home/headphones.svg";
-import moneyBack from "public/images/e-commerce/home/Sync.svg";
-import insta1 from "public/images/e-commerce/home/insta1.png";
-import insta2 from "public/images/e-commerce/home/insta2.png";
-import insta3 from "public/images/e-commerce/home/insta3.png";
-import insta4 from "public/images/e-commerce/home/insta4.png";
-import insta5 from "public/images/e-commerce/home/insta5.png";
-import insta6 from "public/images/e-commerce/home/insta6.png";
+
+import InfoBlock from 'components/e-commerce/InfoBlock';
+import InstagramWidget from 'components/e-commerce/Instagram';
 import filter from "public/images/e-commerce/filter.svg";
 import relevant from "public/images/e-commerce/relevant.svg";
 import axios from "axios";
@@ -29,7 +22,7 @@ import { useRouter } from "next/router";
 
 let categoriesList = [], brandsList = [];
 
-const Index = () => {
+const Index = ({ categoryId }) => {
   const router = useRouter();
   const openReducer = (state, action) => {
     switch (action.type) {
@@ -91,8 +84,8 @@ const Index = () => {
   const {categoryName} = router.query
   const [width, setWidth] = React.useState(1440);
   const [products, setProducts] = React.useState([]);
+  const [showFilter, setShowFilter] = React.useState(false);
   const [allProducts, setAllProducts] = React.useState([]);
-  const [categoryId, setCategoryId] = React.useState();
   const [openState, dispatch] = React.useReducer(openReducer, {
     open0: false,
     open1: false,
@@ -105,11 +98,6 @@ const Index = () => {
     open8: false,
   });
   const currentUser = useSelector((store) => store.auth.currentUser);
-  React.useEffect(() => {
-    axios.get(`/categories?title=${categoryName}`).then((res) => {
-      setCategoryId(res.data.rows[0].id)
-    })
-  }, [])
   React.useEffect(() => {
     window.addEventListener("resize", () => {
       setWidth(window.innerWidth);
@@ -211,114 +199,107 @@ const Index = () => {
       <Container className={"mb-5"} style={{ marginTop: 21 }}>
         <Row>
           <ToastContainer />
-          {!(width <= 768) ? (
-            <Col sm={3}>
-              <h5
-                className={"fw-bold mb-5 text-uppercase"}
-                style={{ marginTop: 44 }}
-              >
-                Cathegories
-              </h5>
-              <div className={"d-flex align-items-center"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc711")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Furniture</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc712")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Lighting</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc713")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Decoration</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc714")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Bedding</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc715")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Bath & Shower</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc716")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Curtains</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc717")}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Toys</p>
-              </div>
-              <h5
-                  className={"fw-bold mb-5 mt-5 text-uppercase"}
-              >
-                Price
-              </h5>
-              <p>Price Range: $0 - $1000</p>
-              <input
-                  type="range"
-                  min="0"
-                  max="1400"
-                  defaultValue={"1000"}
-                  className={"w-100"}
-              />
-              <h5 className={"fw-bold mb-5 mt-5 text-uppercase"}>Brands</h5>
-              <div className={"d-flex align-items-center"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc721", true)}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Poliform</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc722", true)}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Roche Bobois</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc723", true)}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Edra</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc724", true)}/>
-                <p className={"d-inline-block ml-2 mb-0"}>Kartell</p>
-              </div>
-              <h5 className={"fw-bold mb-5 mt-5 text-uppercase"}>Rooms</h5>
-              <div className={"d-flex align-items-center"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Bedroom</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Kitchen</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Living Room</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Bathroom</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Wine Cellar</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Balcony</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Games Room</p>
-              </div>
-              <h5 className={"fw-bold mb-5 mt-5 text-uppercase"}>
-                Availability
-              </h5>
-              <div className={"d-flex align-items-center"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>On Stock</p>
-              </div>
-              <div className={"d-flex align-items-center mt-2"}>
-                <input type={"checkbox"} />
-                <p className={"d-inline-block ml-2 mb-0"}>Out of Stock</p>
-              </div>
-            </Col>
-          ) : null}
+          <Col sm={3} className={`${s.filterColumn} ${showFilter ? s.showFilter : ''}`}>
+          <div className={s.filterTitle}><h5 className={"fw-bold mb-5 text-uppercase"}>Categories</h5><span onClick={() => setShowFilter(false)}>✕</span></div>
+            <div className={"d-flex align-items-center"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc711")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Furniture</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc712")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Lighting</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc713")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Decoration</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc714")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Bedding</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc715")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Bath & Shower</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc716")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Curtains</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc717")}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Toys</p>
+            </div>
+            <h5
+                className={"fw-bold mb-5 mt-5 text-uppercase"}
+            >
+              Price
+            </h5>
+            <p>Price Range: $0 - $1000</p>
+            <input
+                type="range"
+                min="0"
+                max="1400"
+                defaultValue={"1000"}
+                className={"w-100"}
+            />
+            <h5 className={"fw-bold mb-5 mt-5 text-uppercase"}>Brands</h5>
+            <div className={"d-flex align-items-center"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc721", true)}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Poliform</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc722", true)}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Roche Bobois</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc723", true)}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Edra</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} onClick={() => filterByCategory("1fcb7ece-6373-405d-92ef-3f3c4e7dc724", true)}/>
+              <p className={"d-inline-block ml-2 mb-0"}>Kartell</p>
+            </div>
+            <h5 className={"fw-bold mb-5 mt-5 text-uppercase"}>Rooms</h5>
+            <div className={"d-flex align-items-center"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Bedroom</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Kitchen</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Living Room</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Bathroom</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Wine Cellar</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Balcony</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Games Room</p>
+            </div>
+            <h5 className={"fw-bold mb-5 mt-5 text-uppercase"}>
+              Availability
+            </h5>
+            <div className={"d-flex align-items-center"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>On Stock</p>
+            </div>
+            <div className={"d-flex align-items-center mt-2"}>
+              <input type={"checkbox"} />
+              <p className={"d-inline-block ml-2 mb-0"}>Out of Stock</p>
+            </div>
+          </Col>
           <Col sm={width <= 768 ? 12 : 9}>
             {!(width <= 768) ? (
               <div
@@ -349,6 +330,7 @@ const Index = () => {
                   <Button
                     className={"text-dark bg-transparent border-0"}
                     style={{ padding: "14px 0 22px 0" }}
+                    onClick={() => setShowFilter(true)}
                   >
                     <img src={filter} /> Filters
                   </Button>
@@ -446,80 +428,8 @@ const Index = () => {
           </Col>
         </Row>
       </Container>
-      <hr />
-      <div className={s.info}>
-        <Container className={"h-100"}>
-          <Row
-            className={"h-100 justify-content-between flex-column flex-md-row"}
-          >
-            <Col
-              xs={12}
-              md={4}
-              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
-            >
-              <section className={"d-flex align-items-center"}>
-                <img src={car} className={"mr-3"} />
-                <div>
-                  <h5 className={"fw-bold text-uppercase"}>free shipping</h5>
-                  <p className={"text-muted mb-0"}>On all orders of $ 150</p>
-                </div>
-              </section>
-            </Col>
-            <Col
-              xs={12}
-              md={4}
-              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
-            >
-              <section className={"d-flex align-items-center"}>
-                <img src={call} className={"mr-3"} />
-                <div>
-                  <h5 className={"fw-bold text-uppercase"}>24/7 support</h5>
-                  <p className={"text-muted mb-0"}>Get help when you need it</p>
-                </div>
-              </section>
-            </Col>
-            <Col
-              xs={12}
-              md={4}
-              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
-            >
-              <section className={"d-flex align-items-center"}>
-                <img src={moneyBack} className={"mr-3"} />
-                <div>
-                  <h5 className={"fw-bold text-uppercase"}>100% money back</h5>
-                  <p className={"text-muted mb-0"}>
-                    30 day money back guarantee
-                  </p>
-                </div>
-              </section>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <hr />
-      <section style={{ marginTop: 80, marginBottom: 80 }}>
-        <h3 className={"text-center fw-bold mb-4"}>Follow us on Instagram</h3>
-        <Row className={"no-gutters"}>
-          <Col md={2} xs={12}>
-            <img src={insta1} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta2} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta3} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta4} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta5} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta6} className={"w-100"} />
-          </Col>
-        </Row>
-      </section>
+      <InfoBlock />
+      <InstagramWidget />
     </>
   );
 };
@@ -530,7 +440,7 @@ export async function getServerSideProps(context) {
   console.log(context.query)
 
   return {
-    props: { }, // will be passed to the page component as props
+    props: { categoryId: context.query.id }, // will be passed to the page component as props
   };
 }
 

@@ -327,8 +327,8 @@
   @media (max-width: 576px) {
     display: flex;
     flex-direction: column;
-    align-items:center;
-    justify-content: center;
+    align-items:flex-start;
+    justify-content: flex-start;
   }
 }
 
@@ -339,8 +339,17 @@
   height: 264px;
   max-height: 264px;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
   &:hover {
     transform: scale(1.03) translate(-0px, -0px);
+  }
+  @media (max-width: 768px) {
+    background-size: cover;
+  }
+  @media (max-width: 380px) {
+    background-size: contain;
+    background-color: #f6f6f6;
   }
 }
 

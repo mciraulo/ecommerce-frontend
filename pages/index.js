@@ -6,21 +6,15 @@ import axios from "axios";
 import Carousel from "react-bootstrap/Carousel";
 import Head from "next/head";
 
-import car from "public/images/e-commerce/home/car.svg";
-import call from "public/images/e-commerce/home/headphones.svg";
-import moneyBack from "public/images/e-commerce/home/Sync.svg";
 import arrowRight from "public/images/e-commerce/home/arrow-right.svg";
 
+import InfoBlock from 'components/e-commerce/InfoBlock';
+import InstagramWidget from 'components/e-commerce/Instagram';
 import article1 from "public/images/e-commerce/home/article1.png";
 import article2 from "public/images/e-commerce/home/article2.png";
 import article3 from "public/images/e-commerce/home/article3.png";
 
-import insta1 from "public/images/e-commerce/home/insta1.png";
-import insta2 from "public/images/e-commerce/home/insta2.png";
-import insta3 from "public/images/e-commerce/home/insta3.png";
-import insta4 from "public/images/e-commerce/home/insta4.png";
-import insta5 from "public/images/e-commerce/home/insta5.png";
-import insta6 from "public/images/e-commerce/home/insta6.png";
+
 import { toast, ToastContainer } from "react-toastify";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -565,111 +559,69 @@ const Index = ({ products: serverSideProducts }) => {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={6}>
-            <section className={`${s.top_first} img-fluid`}>
-              <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
-              <h2 className={"fw-bold"}>SPRING THINGS</h2>
-              <div className={s.stroke} />
-              <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
-            </section>
-          </Col>
+          <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1869">
+            <Col xs={12} md={6}>
+              <section className={`${s.top_first} img-fluid`}>
+                <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
+                <h2 className={"fw-bold"}>SPRING THINGS</h2>
+                <div className={s.stroke} />
+                <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
+              </section>
+            </Col>
+          </Link>
           <Col xs={12} md={6}>
             <Row>
               <Col xs={12} md={6} className={s.topMargin}>
-                <div className={`${s.top2} img-fluid`}>
-                  <div>
-                    <h6 className={"text-primary fw-bold"}>Online Exclusive</h6>
-                    <p>
-                      <u>shop now</u>
-                    </p>
+                <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1862">
+                  <div className={`${s.top2} img-fluid`}>
+                    <div>
+                      <h6 className={"text-primary fw-bold"}>Online Exclusive</h6>
+                      <p>
+                        <u>shop now</u>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className={`${s.top4} img-fluid`}>
-                  <div className={`${s.label}`}>
-                    <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
-                      spring sale
-                    </h6>
+                </Link>
+                <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1863">
+                  <div className={`${s.top4} img-fluid`}>
+                    <div className={`${s.label}`}>
+                      <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
+                        spring sale
+                      </h6>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </Col>
               <Col xs={12} md={6}>
-                <div className={`${s.top3} img-fluid`}>
-                  <div className={`${s.label}`}>
-                    <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
-                      70% SALE
-                    </h6>
-                  </div>
-                </div>
-                <div className={`${s.top5} img-fluid`}>
-                  <div>
-                    <div className={s.stroke} />
-                    <div>
-                      <p className={"mb-0"}>collection</p>
-                      <h5 className={"fw-bold text-primary text-uppercase"}>
-                        summer
-                      </h5>
+                <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1864">
+                  <div className={`${s.top3} img-fluid`}>
+                    <div className={`${s.label}`}>
+                      <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
+                        70% SALE
+                      </h6>
                     </div>
-                    <div className={s.stroke} />
                   </div>
-                </div>
+                </Link>
+                <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1865">
+                  <div className={`${s.top5} img-fluid`}>
+                    <div>
+                      <div className={s.stroke} />
+                      <div>
+                        <p className={"mb-0"}>collection</p>
+                        <h5 className={"fw-bold text-primary text-uppercase"}>
+                          summer
+                        </h5>
+                      </div>
+                      <div className={s.stroke} />
+                    </div>
+                  </div>
+                </Link>
               </Col>
             </Row>
           </Col>
         </Row>
       </Container>
-      <hr />
-      <div className={s.info}>
-        <Container className={"h-100"}>
-          <Row
-            className={
-              "h-100 justify-content-between flex-column flex-md-row align-items-center"
-            }
-          >
-            <Col
-              xs={12}
-              md={4}
-              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
-            >
-              <section className={"d-flex align-items-center"}>
-                <img src={car} className={"mr-3"} />
-                <div>
-                  <h5 className={"fw-bold text-uppercase"}>free shipping</h5>
-                  <p className={"text-muted mb-0"}>On all orders of $ 150</p>
-                </div>
-              </section>
-            </Col>
-            <Col
-              xs={12}
-              md={4}
-              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
-            >
-              <section className={"d-flex align-items-center"}>
-                <img src={call} className={"mr-3"} />
-                <div>
-                  <h5 className={"fw-bold text-uppercase"}>24/7 support</h5>
-                  <p className={"text-muted mb-0"}>Get help when you need it</p>
-                </div>
-              </section>
-            </Col>
-            <Col
-              xs={12}
-              md={4}
-              className={`h-100 d-flex align-items-center ${s.info__item} justify-content-center`}
-            >
-              <section className={"d-flex align-items-center"}>
-                <img src={moneyBack} className={"mr-3"} />
-                <div>
-                  <h5 className={"fw-bold text-uppercase"}>100% money back</h5>
-                  <p className={"text-muted mb-0"}>
-                    30 day money back guarantee
-                  </p>
-                </div>
-              </section>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-      <hr />
+      <InfoBlock />
       <Container style={{ marginTop: 80, marginBottom: 80 }}>
         <h3 className={"text-center fw-bold mb-4"}>From Our Blogs</h3>
         <Row className={"justify-content-center mb-2"}>
@@ -688,7 +640,7 @@ const Index = ({ products: serverSideProducts }) => {
             className={"mb-4 d-flex flex-column align-items-center"}
           >
             <div className={s.imgAnimation}>
-              <img src={article1} className={"img-fluid"} />
+              <Link href="/blog/article/07aeff53-31e5-4276-8307-f855b22b6436"><img src={article1} className={"img-fluid"} /></Link>
             </div>
             <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
             <h6
@@ -698,7 +650,7 @@ const Index = ({ products: serverSideProducts }) => {
               What is Lorem Ipsum?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
-              Read More
+            <Link href="/blog/article/07aeff53-31e5-4276-8307-f855b22b6436">Read More</Link>
             </h6>
           </Col>
           <Col
@@ -707,7 +659,7 @@ const Index = ({ products: serverSideProducts }) => {
             className={"mb-4 d-flex flex-column align-items-center"}
           >
             <div className={s.imgAnimation}>
-              <img src={article2} className={"img-fluid"} />
+            <Link href="/blog/article/c4245ff9-6a53-4b13-8539-0b69b442cfd1"><img src={article2} className={"img-fluid"} /></Link>
             </div>
             <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
             <h6
@@ -717,7 +669,7 @@ const Index = ({ products: serverSideProducts }) => {
               What is Lorem Ipsum?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
-              Read More
+            <Link href="/blog/article/c4245ff9-6a53-4b13-8539-0b69b442cfd1">Read More</Link>
             </h6>
           </Col>
           <Col
@@ -726,7 +678,7 @@ const Index = ({ products: serverSideProducts }) => {
             className={"mb-4 d-flex flex-column align-items-center"}
           >
             <div className={s.imgAnimation}>
-              <img src={article3} className={"img-fluid"} />
+            <Link href="/blog/article/57fbad3f-528a-43b2-83e8-32ba30708194"><img src={article3} className={"img-fluid"} /></Link>
             </div>
             <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
             <h6
@@ -736,7 +688,7 @@ const Index = ({ products: serverSideProducts }) => {
               What is Lorem Ipsum?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
-              Read More
+            <Link href="/blog/article/57fbad3f-528a-43b2-83e8-32ba30708194">Read More</Link>
             </h6>
           </Col>
         </Row>
@@ -752,29 +704,7 @@ const Index = ({ products: serverSideProducts }) => {
           </Link>
         </Row>
       </Container>
-      <section style={{ marginTop: 80, marginBottom: 80 }}>
-        <h3 className={"text-center fw-bold mb-4"}>Follow us on Instagram</h3>
-        <Row className={"no-gutters"}>
-          <Col md={2} xs={12}>
-            <img src={insta1} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta2} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta3} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta4} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta5} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta6} className={"w-100"} />
-          </Col>
-        </Row>
-      </section>
+      <InstagramWidget />
     </>
   );
 };

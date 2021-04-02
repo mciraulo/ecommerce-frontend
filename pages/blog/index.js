@@ -2,17 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Input } from "reactstrap";
 import axios from 'axios';
 import Link from "next/link";
-import img1 from "public/images/e-commerce/blog/img1.png";
-import img2 from "public/images/e-commerce/blog/img2.png";
 import article1 from "public/images/e-commerce/home/article1.png";
 import article2 from "public/images/e-commerce/home/article2.png";
-import article3 from "public/images/e-commerce/home/article3.png";
-import insta1 from "public/images/e-commerce/home/insta1.png";
-import insta2 from "public/images/e-commerce/home/insta2.png";
-import insta3 from "public/images/e-commerce/home/insta3.png";
-import insta4 from "public/images/e-commerce/home/insta4.png";
-import insta5 from "public/images/e-commerce/home/insta5.png";
-import insta6 from "public/images/e-commerce/home/insta6.png";
+import InstagramWidget from 'components/e-commerce/Instagram';
+
 import Head from "next/head";
 import s from './Blog.module.scss';
 
@@ -212,29 +205,7 @@ const Index = () => {
           </Col>
         </Row>
       </Container>
-      <section style={{ marginTop: 80, marginBottom: 80 }}>
-        <h3 className={"text-center fw-bold mb-4"}>Follow us on Instagram</h3>
-        <Row className={"no-gutters"}>
-          <Col md={2} xs={12}>
-            <img src={insta1} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta2} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta3} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta4} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta5} className={"w-100"} />
-          </Col>
-          <Col md={2} xs={12}>
-            <img src={insta6} className={"w-100"} />
-          </Col>
-        </Row>
-      </section>
+      <InstagramWidget />
     </>
   );
 };

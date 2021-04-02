@@ -90,3 +90,36 @@
     }
   }
 }
+
+.filterTitle {
+  display: flex;
+  justify-content: space-between;
+  span {
+    font-weight: bold;
+    color: var(--primary);
+    cursor: pointer;
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+}
+
+.filterColumn {
+  @media (max-width: 768px) {
+    display: none;
+    position: absolute;
+    z-index: 11;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 40px -14px;
+    padding: 20px;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 500px;
+    &.showFilter {
+      display: block;
+    }
+  }
+}

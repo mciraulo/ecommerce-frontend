@@ -32,7 +32,7 @@ const BreadcrumbHistory = ({ url }) => {
           .slice(1)
           .map((route, index) => {
             if (router.pathname.includes("category") && index === 1) {
-              return categoryName[0].toUpperCase() + categoryName.slice(1);
+              return categoryName ? (categoryName[0].toUpperCase() + categoryName.slice(1)) : 'furniture';
             } else {
               return route[0].toUpperCase() + route.slice(1);
             }
