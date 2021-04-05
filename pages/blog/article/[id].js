@@ -20,8 +20,7 @@ const Id = ({ post }) => {
       <img
         src={post.hero_image[0] && post.hero_image[0].publicUrl}
         alt={"header"}
-        className={"w-100"}
-        style={{ marginTop: 32, maxHeight: 440 }}
+        className={`${s.heroImage}`}
       />
       <Container className={"mb-5 mt-5 d-flex flex-column align-items-center"}>
         <Row style={{ maxWidth: 700 }}>

@@ -18,3 +18,11 @@
 .blogImage {
   max-height: 650px;
 }
+
+.heroImage {
+  width: 100%;
+  margin-top: 32px;
+  max-height: 440px;
+  object-fit: cover;
+  object-position: center center;
+}

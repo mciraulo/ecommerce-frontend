@@ -216,10 +216,21 @@
 }
 
 .carousel {
-  background-image: url("../public/images/e-commerce/home/bg.png");
   width: 100%;
   height: 600px;
   background-size: cover;
+  &.firstImg {
+    background-position: bottom;
+    background-image: url("../public/images/e-commerce/home/bg.png");
+  }
+  &.secondImg {
+    background-position: bottom;
+    background-image: url("../public/images/e-commerce/home/second_hero.jpg");
+  }
+  &.thirdImg {
+    background-position: bottom;
+    background-image: url("../public/images/e-commerce/home/first_hero.jpg");
+  }
 }
 
 .info {

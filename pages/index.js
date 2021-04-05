@@ -167,7 +167,7 @@ const Index = ({ products: serverSideProducts }) => {
       <ToastContainer />
       <Carousel prevLabel="prev" nextLabel="next">
         <Carousel.Item interval={1000}>
-          <section className={s.carousel}>
+          <section className={`${s.carousel} ${s.firstImg}`}>
             <Container className={"h-100"}>
               <Row className={"h-100"}>
                 <Col
@@ -209,7 +209,7 @@ const Index = ({ products: serverSideProducts }) => {
           </section>
         </Carousel.Item>
         <Carousel.Item interval={3000}>
-          <section className={s.carousel}>
+          <section className={`${s.carousel} ${s.secondImg}`}>
             <Container className={"h-100"}>
               <Row className={"h-100"}>
                 <Col
@@ -251,7 +251,7 @@ const Index = ({ products: serverSideProducts }) => {
           </section>
         </Carousel.Item>
         <Carousel.Item interval={5000}>
-          <section className={s.carousel}>
+          <section className={`${s.carousel} ${s.thirdImg}`}>
             <Container className={"h-100"}>
               <Row className={"h-100"}>
                 <Col
