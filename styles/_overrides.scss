@@ -615,23 +615,14 @@ h6,
   display: flex !important;
 }
 
-.modal-header {
-  border-bottom: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .modal-body {
   background: transparent !important;
-  padding: 0 !important;
 }
 
 .modal-dialog {
   margin: auto !important;
-  @media (min-width: 576px) {
-    max-width: 900px !important;
-  }
+  max-width: 900px !important;
+  width: 100%;
 }
 
 .modal-content {

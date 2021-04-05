@@ -18,7 +18,15 @@
     color: #9D9D9D!important;
   }
 }
+.linksRow {
+  @media (max-width: 768px) {
+    margin-top: 30px;
+  }
+}
 
+.socialLinks {
+  margin-top: 20px;
+}
 .navigationLink {
   color: $text-muted;
   cursor: pointer;

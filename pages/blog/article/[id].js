@@ -24,30 +24,31 @@ const Id = ({ post }) => {
         style={{ marginTop: 32, maxHeight: 440 }}
       />
       <Container className={"mb-5 mt-5 d-flex flex-column align-items-center"}>
-        <Row style={{ width: 700 }}>
-          <h1 className={"fw-bold mb-0"}>
-            {post.title && post.title}
-          </h1>
-          <blockquote
-            className={"d-flex"}
-            style={{ marginTop: 35, marginBottom: 40 }}
-          >
-            <div className={"d-flex flex-column"}>
-              <div
-                className={"d-flex align-items-center"}
-                style={{ marginBottom: 35 }}
-              >
-                <img src={post.author_avatar[0] && post.author_avatar[0].publicUrl} alt="person" className={"mr-3"} />
-                <p className={"text-uppercase fw-bold text-primary mb-0"}>
-                  By {post.author_name && post.author_name}
-                </p>
+        <Row style={{ maxWidth: 700 }}>
+          <Col md={12}>
+            <h1 className={"fw-bold mb-0"}>
+              {post.title && post.title}
+            </h1>
+            <blockquote
+              className={"d-flex"}
+              style={{ marginTop: 35, marginBottom: 40 }}
+            >
+              <div className={"d-flex flex-column"}>
+                <div
+                  className={"d-flex align-items-center"}
+                  style={{ marginBottom: 35 }}
+                >
+                  <img src={post.author_avatar[0] && post.author_avatar[0].publicUrl} alt="person" className={"mr-3"} />
+                  <p className={"text-uppercase fw-bold text-primary mb-0"}>
+                    By {post.author_name && post.author_name}
+                  </p>
+                </div>
+                <h5 className={"fw-bold mb-0"}>
+                  {post.epigraph && post.epigraph}
+                </h5>
               </div>
-              <h5 className={"fw-bold mb-0"}>
-                {post.epigraph && post.epigraph}
-              </h5>
-            </div>
-          </blockquote>
-       
+            </blockquote>
+          </Col>
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
@@ -57,10 +58,12 @@ const Id = ({ post }) => {
             </p>
           </Col>
         </Row>
-        <Row style={{ width: 700 }} className={"mt-5"}>
-          <h5>
-            {post.first_paragraph && post.first_paragraph}
-          </h5>
+        <Row style={{ maxWidth: 700 }} className={"mt-5"}>
+          <Col md={12}>
+            <h5>
+              {post.first_paragraph && post.first_paragraph}
+            </h5>
+          </Col>
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
@@ -70,10 +73,12 @@ const Id = ({ post }) => {
             </p>
           </Col>
         </Row>
-        <Row style={{ width: 700 }} className={"mt-5"}>
-          <h5>
-            {post.second_paragraph && post.second_paragraph}
-          </h5>
+        <Row style={{ maxWidth: 700 }} className={"mt-5"}>
+          <Col md={12}>
+            <h5>
+              {post.second_paragraph && post.second_paragraph}
+            </h5>
+          </Col>
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
@@ -83,87 +88,91 @@ const Id = ({ post }) => {
             </p>
           </Col>
         </Row>
-        <Row style={{ width: 700 }} className={"mt-5"}>
-          <h5>
-            {post.third_paragraph && post.third_paragraph}
-          </h5>
+        <Row style={{ maxWidth: 700 }} className={"mt-5"}>
+          <Col md={12}>
+            <h5>
+              {post.third_paragraph && post.third_paragraph}
+            </h5>
+          </Col>
         </Row>
-        <Row style={{ width: 700 }} className={"mt-5"}>
-          <hr className={"mt-5"} />
+        <Row style={{ maxWidth: 700 }} className={"mt-5"}>
+          <Col md={12}>
+            <hr className={"mt-5"} />
 
-          <div className={"d-flex flex-column w-100"}>
-          {post.point_one_title && (
-            <div className={"d-flex justify-content-center mt-4"}>
-            <div className={s.number}>{post.point_one_title && 1}</div>
-            <div style={{ width: 600 }}>
-              <h6 className={"fw-bold mb-4"}>
-              {post.point_one_title && post.point_one_title}
-              </h6>
-              <p>
-              {post.point_one_description && post.point_one_description}
-              </p>
+            <div className={"d-flex flex-column w-100"}>
+            {post.point_one_title && (
+              <div className={"d-flex justify-content-center mt-4"}>
+              <div className={s.number}>{post.point_one_title && 1}</div>
+              <div style={{ maxWidth: 600 }}>
+                <h6 className={"fw-bold mb-4"}>
+                {post.point_one_title && post.point_one_title}
+                </h6>
+                <p>
+                {post.point_one_description && post.point_one_description}
+                </p>
+              </div>
             </div>
-          </div>
-          )}
-          
-            {post.point_two_title && (
-            <div className={"d-flex justify-content-center mt-4"}>
-              <div className={s.number}>{post.point_two_title && 2}</div>
-              <div style={{ width: 600 }}>
+            )}
+            
+              {post.point_two_title && (
+              <div className={"d-flex justify-content-center mt-4"}>
+                <div className={s.number}>{post.point_two_title && 2}</div>
+                <div style={{ maxWidth: 600 }}>
+                  <h6 className={"fw-bold mb-4"}>
+                  {post.point_two_title && post.point_two_title}
+                  </h6>
+                  <p>
+                  {post.point_two_description && post.point_two_description}
+                  </p>
+                </div>
+              </div>              
+              )}
+
+              {post.point_three_title && (
+              <div className={"d-flex justify-content-center mt-4"}>
+                <div className={s.number}>{post.point_three_title && 3}</div>
+                <div style={{ maxWidth: 600 }}>
+                  <h6 className={"fw-bold mb-4"}>
+                  {post.point_three_title && post.point_three_title}
+                  </h6>
+                  <p>
+                  {post.point_three_description && post.point_three_description}
+                  </p>
+                </div>
+              </div>              
+              )}
+
+              {post.point_four_title && (
+              <div className={"d-flex justify-content-center mt-4"}>
+              <div className={s.number}>{post.point_four_title && 4}</div>
+              <div style={{ maxWidth: 600 }}>
                 <h6 className={"fw-bold mb-4"}>
-                {post.point_two_title && post.point_two_title}
+                {post.point_four_title && post.point_four_title}
                 </h6>
                 <p>
-                {post.point_two_description && post.point_two_description}
+                {post.point_four_description && post.point_four_description}
                 </p>
               </div>
-            </div>              
-            )}
-
-            {post.point_three_title && (
-            <div className={"d-flex justify-content-center mt-4"}>
-              <div className={s.number}>{post.point_three_title && 3}</div>
-              <div style={{ width: 600 }}>
-                <h6 className={"fw-bold mb-4"}>
-                {post.point_three_title && post.point_three_title}
-                </h6>
-                <p>
-                {post.point_three_description && post.point_three_description}
-                </p>
-              </div>
-            </div>              
-            )}
-
-            {post.point_four_title && (
-            <div className={"d-flex justify-content-center mt-4"}>
-            <div className={s.number}>{post.point_four_title && 4}</div>
-            <div style={{ width: 600 }}>
-              <h6 className={"fw-bold mb-4"}>
-              {post.point_four_title && post.point_four_title}
-              </h6>
-              <p>
-              {post.point_four_description && post.point_four_description}
-              </p>
             </div>
-          </div>
-            )}
+              )}
 
-            {post.point_four_title && (
-            <div className={"d-flex justify-content-center mt-4"}>
-              <div className={s.number}>{post.point_four_title && 5}</div>
-              <div style={{ width: 600 }}>
-                <h6 className={"fw-bold mb-4"}>
-                {post.point_five_title && post.point_five_title}
-                </h6>
-                <p>
-                {post.point_five_description && post.point_five_description}
-                </p>
-              </div>
-            </div>              
-            )}
+              {post.point_four_title && (
+              <div className={"d-flex justify-content-center mt-4"}>
+                <div className={s.number}>{post.point_four_title && 5}</div>
+                <div style={{ maxWidth: 600 }}>
+                  <h6 className={"fw-bold mb-4"}>
+                  {post.point_five_title && post.point_five_title}
+                  </h6>
+                  <p>
+                  {post.point_five_description && post.point_five_description}
+                  </p>
+                </div>
+              </div>              
+              )}
 
-          </div>
-          <hr />
+            </div>
+            <hr />
+          </Col>
         </Row>
       </Container>
       <Container style={{ marginTop: 80, marginBottom: 80 }}>
@@ -235,14 +244,16 @@ const Id = ({ post }) => {
         style={{ marginTop: 80, marginBottom: 80 }}
         className={"d-flex flex-column align-items-center"}
       >
-        <Row style={{ width: 700 }}>
-          <h5>
-            {post.fourth_paragraph && post.fourth_paragraph}
-          </h5>
+        <Row style={{ maxWidth: 700 }}>
+          <Col md={12}>
+            <h5>
+              {post.fourth_paragraph && post.fourth_paragraph}
+            </h5>
 
-          <h5 className={"mt-5"}>
-            {post.fifth_paragraph && post.fifth_paragraph}
-          </h5>
+            <h5 className={"mt-5"}>
+              {post.fifth_paragraph && post.fifth_paragraph}
+            </h5>
+          </Col>
         </Row>
       </Container>
     </>

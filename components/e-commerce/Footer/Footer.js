@@ -10,26 +10,19 @@ import linkedin from "public/images/e-commerce/linkedin.svg";
 import facebook from "public/images/e-commerce/facebook.svg";
 
 const Footer = () => {
-  const [innerWidth, setInnerWidth] = React.useState(1440);
-
-  React.useEffect(() => {
-    typeof window !== "undefined" && window.addEventListener("resize", () => {
-      setInnerWidth(window.innerWidth);
-    });
-  }, []);
 
   return (
     <footer className={s.footer}>
       <Container>
         <Row className={"justify-content-between"}>
-          <Col sm={5}>
+          <Col xl={5} md={5}>
             <h5 className={"text-white fw-bold"}>Many desktop publishing</h5>
             <p className={"text-muted mt-3"}>
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout.
             </p>
           </Col>
-          <Col sm={5} className={"d-flex align-items-center"}>
+          <Col xl={5} md={7} className={"d-flex align-items-center"}>
             <Input
               type={"email"}
               placeholder={"Enter your email"}
@@ -41,12 +34,12 @@ const Footer = () => {
             </Button>
           </Col>
         </Row>
-        {innerWidth >= 768 && (
           <>
             <hr className={s.footer__hr} />
             <Row className={"my-5 justify-content-between"}>
               <Col
-                sm={5}
+                xl={5}
+                md={3}
                 className={"d-flex flex-column justify-content-between"}
               >
                 <div>
@@ -56,7 +49,7 @@ const Footer = () => {
                     since the 1500s,
                   </p>
                 </div>
-                <div>
+                <div className={s.socialLinks}>
                 <Link href="https://flatlogic.com/">
                   <a className={s.socialLink} target="_blank" rel="noopener noreferrer">
                     <img src={google} alt="google" className={"mr-4"} />
@@ -79,9 +72,9 @@ const Footer = () => {
                   </Link>
                 </div>
               </Col>
-              <Col sm={7}>
-                <Row className={"justify-content-end flex-nowrap"}>
-                  <Col sm={"auto"}>
+              <Col md={9} xl={7} sm={12}>
+                <Row className={s.linksRow}>
+                  <Col md={4} sm={6} xs={12}>
                     <h5 className={"text-white fw-bold text-uppercase mb-4"}>
                       company
                     </h5>
@@ -90,7 +83,7 @@ const Footer = () => {
                     <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Latest Posts</h6></Link>
                     <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>FAQs</h6></Link>
                   </Col>
-                  <Col sm={"auto"}>
+                  <Col md={4} sm={6} xs={12}>
                     <h5 className={"text-white fw-bold text-uppercase mb-4"}>
                       my account
                     </h5>
@@ -99,7 +92,7 @@ const Footer = () => {
                     <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Order Tracking</h6></Link>
                     <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Support</h6></Link>
                   </Col>
-                  <Col sm={"auto"}>
+                  <Col md={4} sm={6} xs={12}>
                     <h5
                       className={
                         "text-white fw-bold text-uppercase text-nowrap mb-4"
@@ -116,7 +109,6 @@ const Footer = () => {
               </Col>
             </Row>
           </>
-        )}
         <hr className={`${s.footer__hr} mb-0`} />
         <Row style={{ padding: "30px 0" }}>
           <Col sm={12}>

@@ -23,43 +23,45 @@ const Blog = () => {
         style={{ marginTop: 32, maxHeight: 440 }}
       />
       <Container className={"mb-5 mt-5 d-flex flex-column align-items-center"}>
-        <Row style={{ width: 700 }}>
-          <h1 className={"fw-bold mb-0"}>
-            The beauty of astronomy is that anybody can do it
-          </h1>
-          <blockquote
-            className={"d-flex"}
-            style={{ marginTop: 35, marginBottom: 40 }}
-          >
-            <div className={"d-flex flex-column"}>
-              <div
-                className={"d-flex align-items-center"}
-                style={{ marginBottom: 35 }}
-              >
-                <img src={person} alt="person" className={"mr-3"} />
-                <p className={"text-uppercase fw-bold text-primary mb-0"}>
-                  By James Lee Cooper
-                </p>
+        <Row style={{ maxWidth: 700 }}>
+          <Col md={12}>
+            <h1 className={"fw-bold mb-0"}>
+              The beauty of astronomy is that anybody can do it
+            </h1>
+            <blockquote
+              className={"d-flex"}
+              style={{ marginTop: 35, marginBottom: 40 }}
+            >
+              <div className={"d-flex flex-column"}>
+                <div
+                  className={"d-flex align-items-center"}
+                  style={{ marginBottom: 35 }}
+                >
+                  <img src={person} alt="person" className={"mr-3"} />
+                  <p className={"text-uppercase fw-bold text-primary mb-0"}>
+                    By James Lee Cooper
+                  </p>
+                </div>
+                <h5 className={"fw-bold mb-0"}>
+                  The universe is a constantly changing and moving. Some would say
+                  it’s a living thing because you never know what you are going to
+                  see on any given night of stargazing.
+                </h5>
               </div>
-              <h5 className={"fw-bold mb-0"}>
-                The universe is a constantly changing and moving. Some would say
-                it’s a living thing because you never know what you are going to
-                see on any given night of stargazing.
-              </h5>
-            </div>
-          </blockquote>
-          <h5>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
-          </h5>
+            </blockquote>
+            <h5>
+              There is a lot of exciting stuff going on in the stars above us that
+              makes astronomy so much fun. The universe is constantly changing and
+              moving. Some would say it’s a living thing because you never know
+              what you are going to see on any given night of stargazing. Of the
+              many celestial phenomenons, there is probably none as exciting as
+              when you see your first asteroid on the move in the heavens. To call
+              asteroids the “rock stars” of astronomy is both a bad joke and an
+              accurate depiction of how astronomy fans view them. Unlike suns,
+              planets, and moons, asteroids are on the move, ever changing and, if
+              they appear in the night sky, they are exciting and dynamic.
+            </h5>
+          </Col>
         </Row>
         <Row className={"mt-5"}>
           <Col xs={12}>
@@ -69,53 +71,55 @@ const Blog = () => {
             </p>
           </Col>
         </Row>
-        <Row style={{ width: 700 }} className={"mt-5"}>
-          <h5>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
-          </h5>
-          <hr className={"mt-5"} />
-          <div className={"d-flex flex-column w-100"}>
-            <div className={"d-flex justify-content-center mt-4"}>
-              <div className={s.number}>1</div>
-              <div style={{ width: 600 }}>
-                <h6 className={"fw-bold mb-4"}>
-                  Unmatched Toner Cartridge Quality
-                </h6>
-                <p>
-                  There is a lot of exciting stuff going on in the stars above
-                  us that makes astronomy so much fun. The universe is
-                  constantly changing and moving. Some would say it’s a “living”
-                  thing because you never know what you are going to see on any
-                  given night of stargazing.
-                </p>
+        <Row style={{ maxWidth: 700 }} className={"mt-5"}>
+          <Col md={12}>
+            <h5>
+              There is a lot of exciting stuff going on in the stars above us that
+              makes astronomy so much fun. The universe is constantly changing and
+              moving. Some would say it’s a living thing because you never know
+              what you are going to see on any given night of stargazing. Of the
+              many celestial phenomenons, there is probably none as exciting as
+              when you see your first asteroid on the move in the heavens. To call
+              asteroids the “rock stars” of astronomy is both a bad joke and an
+              accurate depiction of how astronomy fans view them. Unlike suns,
+              planets, and moons, asteroids are on the move, ever changing and, if
+              they appear in the night sky, they are exciting and dynamic.
+            </h5>
+            <hr className={"mt-5"} />
+            <div className={"d-flex flex-column w-100"}>
+              <div className={"d-flex justify-content-center mt-4"}>
+                <div className={s.number}>1</div>
+                <div style={{ maxWidth: 600 }}>
+                  <h6 className={"fw-bold mb-4"}>
+                    Unmatched Toner Cartridge Quality
+                  </h6>
+                  <p>
+                    There is a lot of exciting stuff going on in the stars above
+                    us that makes astronomy so much fun. The universe is
+                    constantly changing and moving. Some would say it’s a “living”
+                    thing because you never know what you are going to see on any
+                    given night of stargazing.
+                  </p>
+                </div>
+              </div>
+              <div className={"d-flex justify-content-center mt-5"}>
+                <div className={s.number}>2</div>
+                <div style={{ maxWidth: 600 }}>
+                  <h6 className={"fw-bold mb-4"}>
+                    Unmatched Toner Cartridge Quality
+                  </h6>
+                  <p>
+                    There is a lot of exciting stuff going on in the stars above
+                    us that makes astronomy so much fun. The universe is
+                    constantly changing and moving. Some would say it’s a “living”
+                    thing because you never know what you are going to see on any
+                    given night of stargazing.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className={"d-flex justify-content-center mt-5"}>
-              <div className={s.number}>2</div>
-              <div style={{ width: 600 }}>
-                <h6 className={"fw-bold mb-4"}>
-                  Unmatched Toner Cartridge Quality
-                </h6>
-                <p>
-                  There is a lot of exciting stuff going on in the stars above
-                  us that makes astronomy so much fun. The universe is
-                  constantly changing and moving. Some would say it’s a “living”
-                  thing because you never know what you are going to see on any
-                  given night of stargazing.
-                </p>
-              </div>
-            </div>
-          </div>
-          <hr />
+            <hr />
+          </Col>
         </Row>
       </Container>
       <Container style={{ marginTop: 80, marginBottom: 80 }}>
@@ -187,32 +191,34 @@ const Blog = () => {
         style={{ marginTop: 80, marginBottom: 80 }}
         className={"d-flex flex-column align-items-center"}
       >
-        <Row style={{ width: 700 }}>
-          <h5>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
-          </h5>
+        <Row style={{ maxWidth: 700 }}>
+          <Col md={12}>
+            <h5>
+              There is a lot of exciting stuff going on in the stars above us that
+              makes astronomy so much fun. The universe is constantly changing and
+              moving. Some would say it’s a living thing because you never know
+              what you are going to see on any given night of stargazing. Of the
+              many celestial phenomenons, there is probably none as exciting as
+              when you see your first asteroid on the move in the heavens. To call
+              asteroids the “rock stars” of astronomy is both a bad joke and an
+              accurate depiction of how astronomy fans view them. Unlike suns,
+              planets, and moons, asteroids are on the move, ever changing and, if
+              they appear in the night sky, they are exciting and dynamic.
+            </h5>
 
-          <h5 className={"mt-5"}>
-            There is a lot of exciting stuff going on in the stars above us that
-            makes astronomy so much fun. The universe is constantly changing and
-            moving. Some would say it’s a living thing because you never know
-            what you are going to see on any given night of stargazing. Of the
-            many celestial phenomenons, there is probably none as exciting as
-            when you see your first asteroid on the move in the heavens. To call
-            asteroids the “rock stars” of astronomy is both a bad joke and an
-            accurate depiction of how astronomy fans view them. Unlike suns,
-            planets, and moons, asteroids are on the move, ever changing and, if
-            they appear in the night sky, they are exciting and dynamic.
-          </h5>
+            <h5 className={"mt-5"}>
+              There is a lot of exciting stuff going on in the stars above us that
+              makes astronomy so much fun. The universe is constantly changing and
+              moving. Some would say it’s a living thing because you never know
+              what you are going to see on any given night of stargazing. Of the
+              many celestial phenomenons, there is probably none as exciting as
+              when you see your first asteroid on the move in the heavens. To call
+              asteroids the “rock stars” of astronomy is both a bad joke and an
+              accurate depiction of how astronomy fans view them. Unlike suns,
+              planets, and moons, asteroids are on the move, ever changing and, if
+              they appear in the night sky, they are exciting and dynamic.
+            </h5>
+          </Col>
         </Row>
       </Container>
     </>
