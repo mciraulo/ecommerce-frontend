@@ -4,10 +4,10 @@ import { Container, Row, Col, Input, Button } from "reactstrap";
 import Link from 'next/link'
 
 import logo from "public/images/e-commerce/logo-white.svg";
-import google from "public/images/e-commerce/google.svg";
-import twitter from "public/images/e-commerce/twitter.svg";
-import linkedin from "public/images/e-commerce/linkedin.svg";
-import facebook from "public/images/e-commerce/facebook.svg";
+import Google from "public/images/e-commerce/Google";
+import Twitter from "public/images/e-commerce/Twitter";
+import Linkedin from "public/images/e-commerce/Linkedin";
+import Facebook from "public/images/e-commerce/Facebook";
 
 const Footer = () => {
 
@@ -52,22 +52,22 @@ const Footer = () => {
                 <div className={s.socialLinks}>
                 <Link href="https://flatlogic.com/">
                   <a className={s.socialLink} target="_blank" rel="noopener noreferrer">
-                    <img src={google} alt="google" className={"mr-4"} />
+                    <Google />
                   </a>
                   </Link>
                   <Link href="https://twitter.com/flatlogic">
                     <a className={s.socialLink} target="_blank" rel="noopener noreferrer">
-                      <img src={twitter} alt="twitter" className={"mr-4"} />
+                      <Twitter />
                     </a>
                   </Link>
                   <Link href="https://www.linkedin.com/company/flatlogic/">
                     <a className={s.socialLink} target="_blank" rel="noopener noreferrer">
-                      <img src={linkedin} alt="linkedin" className={"mr-4"} />
+                      <Linkedin />
                     </a>
                   </Link>
                   <Link href="https://www.facebook.com/flatlogic/">
                     <a className={s.socialLink} target="_blank" rel="noopener noreferrer">
-                      <img src={facebook} alt="facebook" className={"mr-4"} />
+                      <Facebook />
                     </a>
                   </Link>
                 </div>
