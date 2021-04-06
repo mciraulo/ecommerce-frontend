@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Link from 'next/link';
 import { Container, Row, Col } from "reactstrap";
 import headerImg from "public/images/e-commerce/blog/article/header.png";
 import articleImg from "public/images/e-commerce/blog/article/article-image.png";
@@ -25,7 +26,7 @@ const Id = ({ post }) => {
       <Container className={"mb-5 mt-5 d-flex flex-column align-items-center"}>
         <Row style={{ maxWidth: 700 }}>
           <Col md={12}>
-            <h1 className={"fw-bold mb-0"}>
+            <h1 className={`${s.title} fw-bold mb-0`}>
               {post.title && post.title}
             </h1>
             <blockquote
@@ -38,11 +39,11 @@ const Id = ({ post }) => {
                   style={{ marginBottom: 35 }}
                 >
                   <img src={post.author_avatar[0] && post.author_avatar[0].publicUrl} alt="person" className={"mr-3"} />
-                  <p className={"text-uppercase fw-bold text-primary mb-0"}>
+                  <p className={`${s.author_name} text-uppercase fw-bold text-primary mb-0`}>
                     By {post.author_name && post.author_name}
                   </p>
                 </div>
-                <h5 className={"fw-bold mb-0"}>
+                <h5 className={`${s.epigraph} fw-bold mb-0`}>
                   {post.epigraph && post.epigraph}
                 </h5>
               </div>
@@ -59,9 +60,9 @@ const Id = ({ post }) => {
         </Row>
         <Row style={{ maxWidth: 700 }} className={"mt-5"}>
           <Col md={12}>
-            <h5>
+            <p className={s.paragraph}>
               {post.first_paragraph && post.first_paragraph}
-            </h5>
+            </p>
           </Col>
         </Row>
         <Row className={"mt-5"}>
@@ -74,9 +75,9 @@ const Id = ({ post }) => {
         </Row>
         <Row style={{ maxWidth: 700 }} className={"mt-5"}>
           <Col md={12}>
-            <h5>
+            <p className={s.paragraph}>
               {post.second_paragraph && post.second_paragraph}
-            </h5>
+            </p>
           </Col>
         </Row>
         <Row className={"mt-5"}>
@@ -89,16 +90,16 @@ const Id = ({ post }) => {
         </Row>
         <Row style={{ maxWidth: 700 }} className={"mt-5"}>
           <Col md={12}>
-            <h5>
+            <p className={s.paragraph}>
               {post.third_paragraph && post.third_paragraph}
-            </h5>
+            </p>
           </Col>
         </Row>
         <Row style={{ maxWidth: 700 }} className={"mt-5"}>
           <Col md={12}>
             <hr className={"mt-5"} />
 
-            <div className={"d-flex flex-column w-100"}>
+            <div  className={`${s.bulletPoints} d-flex flex-column w-100`}>
             {post.point_one_title && (
               <div className={"d-flex justify-content-center mt-4"}>
               <div className={s.number}>{post.point_one_title && 1}</div>
@@ -191,7 +192,9 @@ const Id = ({ post }) => {
             md={4}
             className={"mb-4 d-flex flex-column align-items-center"}
           >
-            <img src={article1} className={"img-fluid"} />
+            <Link href="/blog/article/07aeff53-31e5-4276-8307-f855b22b6436">
+              <img src={article1} className={"img-fluid"} />
+            </Link>
             <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
             <h6
               className={"fw-bold font-size-base mt-1"}
@@ -200,7 +203,7 @@ const Id = ({ post }) => {
               What is Lorem Ipsum?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
-              Read More
+              <Link href="/blog/article/07aeff53-31e5-4276-8307-f855b22b6436">Read More</Link>
             </h6>
           </Col>
           <Col
@@ -208,7 +211,9 @@ const Id = ({ post }) => {
             md={4}
             className={"mb-4 d-flex flex-column align-items-center"}
           >
-            <img src={article2} className={"img-fluid"} />
+            <Link href="/blog/article/c4245ff9-6a53-4b13-8539-0b69b442cfd1">
+              <img src={article2} className={"img-fluid"} />
+            </Link>
             <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
             <h6
               className={"fw-bold font-size-base mt-1"}
@@ -217,7 +222,7 @@ const Id = ({ post }) => {
               What is Lorem Ipsum?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
-              Read More
+              <Link href="/blog/article/c4245ff9-6a53-4b13-8539-0b69b442cfd1">Read More</Link>
             </h6>
           </Col>
           <Col
@@ -225,7 +230,7 @@ const Id = ({ post }) => {
             md={4}
             className={"mb-4 d-flex flex-column align-items-center"}
           >
-            <img src={article3} className={"img-fluid"} />
+            <Link href="/blog/article/57fbad3f-528a-43b2-83e8-32ba30708194"><img src={article3} className={"img-fluid"} /></Link>
             <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
             <h6
               className={"fw-bold font-size-base mt-1"}
@@ -234,7 +239,7 @@ const Id = ({ post }) => {
               What is Lorem Ipsum?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
-              Read More
+              <Link href="/blog/article/57fbad3f-528a-43b2-83e8-32ba30708194">Read More</Link>
             </h6>
           </Col>
         </Row>
@@ -245,13 +250,13 @@ const Id = ({ post }) => {
       >
         <Row style={{ maxWidth: 700 }}>
           <Col md={12}>
-            <h5>
+            <p className={s.paragraph}>
               {post.fourth_paragraph && post.fourth_paragraph}
-            </h5>
+            </p>
 
-            <h5 className={"mt-5"}>
+            <p className={`${s.paragraph} mt-5`}>
               {post.fifth_paragraph && post.fifth_paragraph}
-            </h5>
+            </p>
           </Col>
         </Row>
       </Container>
