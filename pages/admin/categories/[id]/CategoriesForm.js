@@ -49,6 +49,25 @@ class CategoriesForm extends Component {
                   autoFocus
                 />
 
+                
+                <InputFormItem name={"meta_description"} schema={categoriesFields} />
+
+                <InputFormItem name={"keywords"} schema={categoriesFields} />
+
+                <InputFormItem name={"meta_author"} schema={categoriesFields} />
+
+                <InputFormItem name={"meta_og_title"} schema={categoriesFields} />
+
+                <InputFormItem name={"meta_og_url"} schema={categoriesFields} />
+
+                <InputFormItem name={"meta_og_image"} schema={categoriesFields} />
+
+                <InputFormItem name={"meta_fb_id"} schema={categoriesFields} />
+
+                <InputFormItem name={"meta_og_sitename"} schema={categoriesFields} />
+
+                <InputFormItem name={"post_twitter"} schema={categoriesFields} />
+
               </form>
             );
           }}

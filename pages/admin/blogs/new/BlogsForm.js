@@ -184,6 +184,24 @@ class BlogsForm extends Component {
                   mode="multiple"
                 />
 
+                <InputFormItem name={"meta_description"} schema={blogsFields} />
+
+                <InputFormItem name={"keywords"} schema={blogsFields} />
+
+                <InputFormItem name={"meta_author"} schema={blogsFields} />
+
+                <InputFormItem name={"meta_og_title"} schema={blogsFields} />
+
+                <InputFormItem name={"meta_og_url"} schema={blogsFields} />
+
+                <InputFormItem name={"meta_og_image"} schema={blogsFields} />
+
+                <InputFormItem name={"meta_fb_id"} schema={blogsFields} />
+
+                <InputFormItem name={"meta_og_sitename"} schema={blogsFields} />
+
+                <InputFormItem name={"post_twitter"} schema={blogsFields} />
+
                 <RadioFormItem name={"status"} schema={blogsFields} />
 
                 <div className="form-buttons">

@@ -17,6 +17,24 @@ const Id = ({ post }) => {
       <Head>
         <title>{post.title && post.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <meta name="description" content={`${post.meta_description || 'Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development'}`}  />
+        <meta name="keywords" content={`${post.keywords || "flatlogic, react templates"}`} />
+        <meta name="author" content={`${post.meta_author || "Flatlogic LLC."}`} />
+        <meta charSet="utf-8" />
+
+
+        <meta property="og:title" content={`${post.meta_og_title || "Flatlogic - React, Vue, Angular and Bootstrap Templates and Admin Dashboard Themes"}`} />
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content={`${post.meta_og_url || "https://flatlogic-ecommerce.herokuapp.com/"}`} />
+        <meta property="og:image" content={`${post.meta_og_image || "https://flatlogic-ecommerce-backend.herokuapp.com/images/blogs/content_image_six.jpg"}`} />
+        <meta property="og:description" content={`${post.metadescription || 'Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development'}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta property="fb:app_id" content={`${post.meta_fb_id || "712557339116053"}`} />
+
+        <meta property="og:site_name" content={`${post.meta_og_sitename || "Flatlogic"}`} />
+        <meta name="twitter:site" content={`${post.post_twitter || "@flatlogic"}`} />
       </Head>
       <img
         src={post.hero_image[0] && post.hero_image[0].publicUrl}

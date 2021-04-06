@@ -92,6 +92,24 @@ class ProductsForm extends Component {
                   mode="multiple"
                 />
 
+                <InputFormItem name={"meta_description"} schema={productsFields} />
+
+                <InputFormItem name={"keywords"} schema={productsFields} />
+
+                <InputFormItem name={"meta_author"} schema={productsFields} />
+
+                <InputFormItem name={"meta_og_title"} schema={productsFields} />
+
+                <InputFormItem name={"meta_og_url"} schema={productsFields} />
+
+                <InputFormItem name={"meta_og_image"} schema={productsFields} />
+
+                <InputFormItem name={"meta_fb_id"} schema={productsFields} />
+
+                <InputFormItem name={"meta_og_sitename"} schema={productsFields} />
+
+                <InputFormItem name={"post_twitter"} schema={productsFields} />
+
                 <InputNumberFormItem name={"rating"} schema={productsFields} />
 
                 <RadioFormItem name={"status"} schema={productsFields} />

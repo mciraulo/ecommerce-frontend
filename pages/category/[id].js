@@ -22,7 +22,7 @@ import { useRouter } from "next/router";
 
 let categoriesList = [], brandsList = [];
 
-const Index = ({ categoryId }) => {
+const Index = ({ categoryId, categoryData }) => {
   const router = useRouter();
   const openReducer = (state, action) => {
     switch (action.type) {
@@ -189,12 +189,30 @@ const Index = ({ categoryId }) => {
       setProducts([...res.data.rows]);
     });
   }
-
+  console.log(categoryData)
   return (
     <>
       <Head>
         <title>{categoryName} Category</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <meta name="description" content={`${categoryData.meta_description || 'Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development'}`}  />
+        <meta name="keywords" content={`${categoryData.keywords || "flatlogic, react templates"}`} />
+        <meta name="author" content={`${categoryData.meta_author || "Flatlogic LLC."}`} />
+        <meta charSet="utf-8" />
+
+
+        <meta property="og:title" content={`${categoryData.meta_og_title || "Flatlogic - React, Vue, Angular and Bootstrap Templates and Admin Dashboard Themes"}`} />
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content={`${categoryData.meta_og_url || "https://flatlogic-ecommerce.herokuapp.com/"}`} />
+        <meta property="og:image" content={`${categoryData.meta_og_image || "https://flatlogic-ecommerce-backend.herokuapp.com/images/blogs/content_image_six.jpg"}`} />
+        <meta property="og:description" content={`${categoryData.meta_description || 'Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development'}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta property="fb:app_id" content={`${categoryData.meta_fb_id || "712557339116053"}`} />
+
+        <meta property="og:site_name" content={`${categoryData.meta_og_sitename || "Flatlogic"}`} />
+        <meta name="twitter:site" content={`${categoryData.post_twitter || "@flatlogic"}`} />
       </Head>
       <Container className={"mb-5"} style={{ marginTop: 21 }}>
         <Row>
@@ -435,12 +453,11 @@ const Index = ({ categoryId }) => {
 };
 
 export async function getServerSideProps(context) {
-  // const res = await axios.get(`/products/${context.query.id}`);
-  // const product = res.data.rows;
-  console.log(context.query)
+  const res = await axios.get(`/categories/${context.query.id}`);
+  const category = res.data;
 
   return {
-    props: { categoryId: context.query.id }, // will be passed to the page component as props
+    props: { categoryId: context.query.id, categoryData: category }, // will be passed to the page component as props
   };
 }
 

@@ -192,6 +192,24 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
       <Head>
         <title>{product.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <meta name="description" content={`${product.meta_description || 'Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development'}`}  />
+        <meta name="keywords" content={`${product.keywords || "flatlogic, react templates"}`} />
+        <meta name="author" content={`${product.meta_author || "Flatlogic LLC."}`} />
+        <meta charSet="utf-8" />
+
+
+        <meta property="og:title" content={`${product.meta_og_title || "Flatlogic - React, Vue, Angular and Bootstrap Templates and Admin Dashboard Themes"}`} />
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content={`${product.meta_og_url || "https://flatlogic-ecommerce.herokuapp.com/"}`} />
+        <meta property="og:image" content={`${product.meta_og_image || "https://flatlogic-ecommerce-backend.herokuapp.com/images/blogs/content_image_six.jpg"}`} />
+        <meta property="og:description" content={`${product.meta_description || 'Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development'}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta property="fb:app_id" content={`${product.meta_fb_id || "712557339116053"}`} />
+
+        <meta property="og:site_name" content={`${product.meta_og_sitename || "Flatlogic"}`} />
+        <meta name="twitter:site" content={`${product.post_twitter || "@flatlogic"}`} />
       </Head>
       <ToastContainer />
       <Container>
