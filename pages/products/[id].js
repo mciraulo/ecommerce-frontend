@@ -199,7 +199,8 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
             <div style={{height: 480}} className={"d-flex justify-content-center align-items-center"}>
               <img src={preloaderImg} alt={"fetching"}/>
           </div>
-            ) : (          <Row className={"mb-5"} style={{marginTop: 32}}>
+            ) : (
+                <Row className={"mb-5"} style={{marginTop: 32}}>
             <Col
                 xs={12}
                 lg={product.image.length > 1 ? 7 : 6}
@@ -218,6 +219,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                 }
               }}
               className={`${product.image.length && 'mr-3'}`}
+              enlargedImagePosition={"over"}
               />
               {product.image.length > 1 ? (
                   <div
@@ -235,6 +237,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                 lg={product.image.length > 1 ? 5 : 6}
                 className={"d-flex flex-column justify-content-between"}
             >
+              <div className={"d-flex flex-column justify-content-between"} style={{height: 320}}>
               <h6 className={`text-muted ${s.detailCategory}`}>
                 {product.categories[0].title[0].toUpperCase() +
                 product.categories[0].title.slice(1)}
@@ -294,7 +297,8 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                   <h6 className={"fw-bold"}>{product.price}$</h6>
                 </div>
               </div>
-              <div className={"d-flex mt-5"}>
+              </div>
+              <div className={"d-flex"}>
                 <Button
                     outline
                     color={"primary"}

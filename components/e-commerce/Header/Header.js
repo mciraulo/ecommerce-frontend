@@ -71,28 +71,6 @@ class Header extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.currentUser) {
-  //     axios
-  //       .get(`/orders?user=${this.props.currentUser.id}&status=in+cart`)
-  //       .then((res) => {
-  //         this.setState({
-  //           count: res.data.count,
-  //         });
-  //       });
-  //     return;
-  //   } else if (
-  //     typeof window !== "undefined" &&
-  //     localStorage.getItem("products") &&
-  //     !this.props.currentUser &&
-  //     this.props.products !== prevProps.products
-  //   ) {
-  //     this.setState({
-  //       count: JSON.parse(localStorage.getItem("products")).length,
-  //     });
-  //   }
-  // }
-
   toggle = (e) => {
     this.setState({ [e.target.name]: true });
   };
