@@ -5,6 +5,9 @@ import { withRouter } from 'next/router'
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Hammer from "rc-hammerjs";
 import Header from "../Header";
+import ErrorPage from "../../../pages/404";
+import HeaderComp from 'components/e-commerce/Header';
+import FooterComp from 'components/e-commerce/Footer';
 import Helper from "../Helper";
 import Sidebar from "../Sidebar";
 import {
@@ -60,6 +63,17 @@ class Layout extends React.Component {
   }
 
   render() {
+
+    if (!this.props.currentUser) {
+      return (
+        <>
+          <HeaderComp />
+            <ErrorPage />
+          <FooterComp />
+        </>
+      )
+    }
+
     return (
       <div
         className={[
@@ -113,6 +127,7 @@ function mapStateToProps(store) {
     dashboardTheme: store.layout.dashboardTheme,
     sidebarType: store.layout.sidebarType,
     currentUser: store.auth.currentUser,
+    loadingInit: store.auth.loadingInit,
   };
 }
 

@@ -59,6 +59,7 @@ class Index extends React.Component {
     };
 
   componentDidMount() {
+
     typeof window !== 'undefined' && window.addEventListener("resize", this.forceUpdate);
   }
 
@@ -94,19 +95,24 @@ class Index extends React.Component {
   }
 
   render() {
-    if (!this.props.loadingInit) {
-      if (this.props.currentUser) {
-        if (this.props.currentUser.role !== 'admin') {
-          if (typeof window !== 'undefined') { window.location.href = "/error" } 
-        }
-      } else {
-        if (typeof window !== 'undefined') { window.location.href = "/error" } 
-      }
-    } else {
-      return (
-        <div>loading</div>
-      )
-    }
+    // if (!this.props.loadingInit) {
+    //   if (this.props.currentUser) {
+    //     if (this.props.currentUser.role !== 'admin') {
+    //       if (typeof window !== 'undefined') { window.location.href = "/error" } 
+    //     }
+    //   } else {
+    //     if (typeof window !== 'undefined') { window.location.href = "/error" } 
+    //   }
+    // } else {
+    //   return (
+    //     <div>loading</div>
+    //   )
+    // }
+
+    // if (!this.props.currentUser || this.props.currentUser.role !== 'admin') {
+    //   console.log(this.props.currentUser)
+    //   this.props.router.push('/error');
+    // }
 
       return (
         <div className={s.root}>
