@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from 'next/router';
 import { Container, Row, Col, Label, Input, FormGroup } from "reactstrap";
 
 import Header from "components/e-commerce/Header";
 import Head from "next/head";
 
 const Index = () => {
+  const router = useRouter()
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+        router.push({
+          pathname: '/search-results',
+          query: { searchValue: value },
+        })
+    }
+  }
+  const handleClick = () => {
+    if (value && value.length >= 3) {
+        router.push({
+          pathname: '/search-results',
+          query: { searchValue: value },
+        })
+    }
+  }
+  const [value, setValue] = useState('');
   return (
     <div className={"h-100"}>
       <Head>
@@ -20,7 +39,11 @@ const Index = () => {
         >
           <FormGroup style={{ width: 880 }}>
             <Input
+              onKeyDown={handleKeyDown}
+              onClick={handleClick}
               type="text"
+              value={value}
+              onChange={event => setValue(event.target.value)}
               name="text"
               id="exampleEmail"
               className="search w-100"
