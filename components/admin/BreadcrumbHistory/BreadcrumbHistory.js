@@ -7,9 +7,9 @@ import axios from "axios";
 
 const BreadcrumbHistory = ({ url }) => {
   const router = useRouter();
+  const [route, setRoute] = React.useState([]);
 
   const renderBreadCrumbs = () => {
-    const [route, setRoute] = React.useState([]);
     React.useEffect(() => {
       if (router.pathname.includes("products")) {
         const { id } = router.query;
@@ -36,16 +36,6 @@ const BreadcrumbHistory = ({ url }) => {
             } else {
               return route[0].toUpperCase() + route.slice(1);
             }
-            // return route
-            //     .split(" ")
-            //     .map((word, index) => {
-            //
-            //       if (router.pathname.includes("category") && index === 1) {
-            //         return categoryName;
-            //       }
-            //       return word[0].toUpperCase() + word.slice(1);
-            //     })
-            //     .join(" ")
           });
         setRoute(newUrl);
       }
@@ -66,26 +56,30 @@ const BreadcrumbHistory = ({ url }) => {
         }`;
       }
       return (
-        <BreadcrumbItem key={uuid()}>
-          {length === index + 1 ? (
-            item
-          ) : (
-            <Link href={middlewareUrl}>{item}</Link>
-          )}
-        </BreadcrumbItem>
+          <>
+            { length > 1 &&
+              <BreadcrumbItem key={uuid()}>
+                {length === index + 1 ? (
+                    item
+                ) : (
+                    <Link href={middlewareUrl}>{item}</Link>
+                )}
+              </BreadcrumbItem>
+            }
+            </>
       );
     });
   };
   return (
     <div>
       <Breadcrumb
-        tag="nav"
-        listTag="div"
-        style={{
-          marginTop: router.pathname.includes("admin") ? 0 : 85,
-          borderBottom: "1px solid #d9d9d9",
-          marginBottom: router.pathname.includes("admin") ? 32 : 0,
-        }}
+          tag="nav"
+          listTag="div"
+          style={{
+            marginTop: router.pathname.includes("admin") ? 0 : (route.length > 1 ? 85 : 60),
+            borderBottom: route.length > 1 && "1px solid #d9d9d9",
+            marginBottom: router.pathname.includes("admin") ? 32 : 0,
+          }}
       >
         {renderBreadCrumbs()}
       </Breadcrumb>
