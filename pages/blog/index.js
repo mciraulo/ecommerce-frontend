@@ -31,26 +31,28 @@ const Index = () => {
             <h3 className="fw-bold mb-5">Blog</h3>
             {blogs.length > 0 && blogs.map(post => {
             return (
-              <div key={post.id}>
-                <Link href={`blog/article/${post.id}`}>
-              <a>
-                <img src={post.hero_image[0].publicUrl} alt="img1" className="mb-4 img-fluid" />
-              </a>
-            </Link>
-            <h6 className="fw-bold text-primary mb-3 text-uppercase mt-3">
-              {post.author_name}
-            </h6>
-            <Link href={`blog/article/${post.id}`}>
-              <a className={"text-dark"}>
-                <h4 className="fw-bold mb-4">
-                  {post.title}
-                </h4>
-              </a>
-            </Link>
-            <p>
-              {post.epigraph}{" "}
-            </p>
-            <p className={"text-muted mt-2"}>{post.createdAt.toString().slice(0, 10)}</p>
+              <div className={s.blogPost}>
+                <div key={post.id}>
+                  <Link href={`blog/article/${post.id}`}>
+                <a className={s.blogPostImgWrap}>
+                  <img src={post.hero_image[0].publicUrl} alt="img1" className="mb-4 img-fluid" />
+                </a>
+              </Link>
+              <h6 className={`${s.author_name}`}>
+                {post.author_name}
+              </h6>
+              <Link href={`blog/article/${post.id}`}>
+                <a className={`text-dark ${s.post_title}`}>
+                  <h4 className="fw-bold">
+                    {post.title}
+                  </h4>
+                </a>
+              </Link>
+              <p className={`${s.post_epigraph}`}>
+                {post.epigraph}{" "}
+              </p>
+              <p className={`${s.post_date}`}>{post.createdAt.toString().slice(0, 10)}</p>
+                </div>
               </div>
             )
           })}
