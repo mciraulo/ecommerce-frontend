@@ -64,7 +64,6 @@ class Layout extends React.Component {
   }
 
   render() {
-    console.log(this.props.currentUser, this.props.loadingInit)
     if (!this.props.currentUser) {
       if (this.props.loadingInit) return <Loader />
       return (

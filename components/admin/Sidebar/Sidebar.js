@@ -220,13 +220,14 @@ class Sidebar extends React.Component {
                 }
                 activeItem={this.props.activeItem}
                 header="Documentation"
-                link="/documentation"
+                link="/admin/documentation/overview"
                 isHeader
                 iconType="node"
                 iconName={<SettingsIcon />}
                 index="documentation"
                 labelColor="success"
                 target="_blank"
+                
             />
           </ul>
         </nav>

@@ -75,7 +75,7 @@
     "react-scrollspy": "^3.4.3",
     "react-select": "3.1.0",
     "react-sparklines": "^1.7.0",
-    "react-syntax-highlighter": "15.2.1",
+    "react-syntax-highlighter": "10.1.2",
     "react-test-render": "1.1.2",
     "react-toastify": "^6.0.9",
     "react-tooltip": "4.2.10",

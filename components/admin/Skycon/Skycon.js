@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import ReactDOM from "react-dom";
 
-const Skycons = require("skycons")(window || {});
+const Skycons = require("skycons")(typeof window !== 'undefined' && window || {});
 
 class Skycon extends React.Component {
   static propTypes = {
