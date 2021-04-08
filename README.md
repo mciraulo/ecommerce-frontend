@@ -1,6 +1,6 @@
 # 🤘 Flatlogic Ecommerce 
 
-Free and open-source admin dashboard template built with Vue and Vuetify. Developed with ❤️ by [Flatlogic](https://flatlogic.com/). If you love our project please star ⭐️ our repo!
+Flatlogic Ecommerce is ecommerce template made with React, NextJS and supplied with admin dashboard. Developed with ❤️ by [Flatlogic](https://flatlogic.com/). If you love our project please star ⭐️ our repo!
 
 [View Demo](https://flatlogic-ecommerce.herokuapp.com/) | [Download](https://github.com/flatlogic/ecommerce-frontend/archive/refs/heads/master.zip) | [More templates](https://flatlogic.com/templates) | [Support forum](https://flatlogic.com/forum)
 
@@ -8,7 +8,7 @@ Free and open-source admin dashboard template built with Vue and Vuetify. Develo
 
 ## Features
 
-Flatlogic Ecommerce is a great template to quick-start development of SAAS, CMS, IoT Dashboard, E-Commerce apps, etc  
+Flatlogic Ecommerce is a great template to quick-start development of E-Commerce, SAAS, CMS apps, etc  
 Lite version of a Flatlogic Ecommerce includes following features and pages:
 
 * React Bootstrap
