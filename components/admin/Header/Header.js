@@ -173,7 +173,7 @@ class Header extends React.Component {
               </InputGroupAddon>
               <Input
                 id="search-input"
-                placeholder="Index Index"
+                placeholder="Search input"
                 className={cx({ focus: !!focus })}
               />
             </InputGroup>

@@ -64,8 +64,8 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
             currency: 'eur',
             quantity: 1,
           },
-          successUrl: 'https://example.com/success',
-          cancelUrl: 'https://example.com/cancel',
+          successUrl: 'https://flatlogic-ecommerce.herokuapp.com/',
+          cancelUrl: 'https://flatlogic-ecommerce.herokuapp.com/error',
         }
     );
 

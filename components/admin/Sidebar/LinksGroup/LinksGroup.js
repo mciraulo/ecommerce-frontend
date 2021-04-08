@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
-import ActiveLink from 'components/admin/ActiveLink/ActiveLink'
-import { withRouter } from "next/router";
 import { Collapse, Badge } from "reactstrap";
-import { Route } from "react-router";
 import classnames from "classnames";
-import { connect } from "react-redux";
+import Link from 'next/link'
+import { withRouter } from 'next/router';
 
 import s from "./LinksGroup.module.scss";
 
 class LinksGroup extends Component {
   /* eslint-disable */
   static propTypes = {
-    header: PropTypes.node.isRequired,
-    link: PropTypes.string.isRequired,
-    iconType: PropTypes.string.isRequired,
     childrenLinks: PropTypes.array,
-    iconName: PropTypes.oneOfType([ PropTypes.string, PropTypes.node ]),
+    iconName: PropTypes.string,
     className: PropTypes.string,
     badge: PropTypes.string,
     label: PropTypes.string,
@@ -27,7 +21,6 @@ class LinksGroup extends Component {
     deep: PropTypes.number,
     onActiveSidebarItemChange: PropTypes.func,
     labelColor: PropTypes.string,
-    exact: PropTypes.bool,
   };
   /* eslint-enable */
 
@@ -39,7 +32,6 @@ class LinksGroup extends Component {
     deep: 0,
     activeItem: "",
     label: "",
-    exact: true,
   };
 
   constructor(props) {
@@ -56,7 +48,7 @@ class LinksGroup extends Component {
     this.setState({
       headerLinkWasClicked:
         !this.state.headerLinkWasClicked ||
-        (this.props.activeItem &&
+        ((this.props.activeItem || link) &&
           !this.props.activeItem.includes(this.props.index)),
     });
   }
@@ -66,8 +58,6 @@ class LinksGroup extends Component {
       this.props.activeItem &&
       this.props.activeItem.includes(this.props.index) &&
       this.state.headerLinkWasClicked;
-
-    const { exact } = this.props.exact;
 
     if (!this.props.childrenLinks) {
       if (this.props.isHeader) {
@@ -79,12 +69,7 @@ class LinksGroup extends Component {
               this.props.className
             )}
           >
-            <ActiveLink
-              href={this.props.link}
-              activeClassName={s.headerLinkActive}
-              exact={exact}
-              target={this.props.target}
-            >
+            <Link href={this.props.link}>
               <a>
               {this.props.iconType === "text" ? (
                 <span className={classnames("icon", s.icon)}>
@@ -93,7 +78,7 @@ class LinksGroup extends Component {
               ) : (
                 <span className={s.iconWrapper}>{this.props.iconName}</span>
               )}
-              {this.props.header}
+              {this.props.header}{" "}
               {this.props.label && (
                 <sup
                   className={`${s.headerLabel} ${s.headerUpdate} text-${
@@ -109,23 +94,19 @@ class LinksGroup extends Component {
                 </Badge>
               )}
               </a>
-            </ActiveLink>
+            </Link>
           </li>
         );
       }
       return (
         <li>
-          <ActiveLink
-            href={this.props.link}
-            activeClassName={s.headerLinkActive}
-            style={{ paddingLeft: `${26 + 10 * (this.props.deep - 1)}px` }}
-            onClick={(e) => {
-              // able to go to link is not available(for Demo)
-              if (this.props.link.includes("menu")) {
-                e.preventDefault();
-              }
-            }}
-            exact={exact}
+          <Link href={this.props.link}
+                onClick={(e) => {
+                  // able to go to link is not available(for Demo)
+                  if (this.props.link.includes("menu")) {
+                    e.preventDefault();
+                  }
+                }}
           >
             <a>
             {this.props.header}{" "}
@@ -139,17 +120,13 @@ class LinksGroup extends Component {
               </sup>
             )}
             </a>
-          </ActiveLink>
+          </Link>
         </li>
       );
     }
     /* eslint-disable */
     return (
-      <Route
-        path={this.props.link}
-        children={(params) => {
-          const { match } = params;
-          return (
+
             <li
               className={classnames(
                 "link-wrapper",
@@ -159,22 +136,24 @@ class LinksGroup extends Component {
             >
               <a
                 className={classnames(
-                  { [s.headerLinkActive]: match },
+                  { [s.headerLinkActive]: false },
                   { [s.collapsed]: isOpen },
                   "d-flex"
                 )}
                 style={{
                   paddingLeft: `${
-                    this.props.deep == 0 ? 50 : 26 + 10 * (this.props.deep - 1)
+                    this.props.deep == 0 ? 24 : 26 + 10 * (this.props.deep - 1)
                   }px`,
                 }}
                 onClick={() => this.togglePanelCollapse(this.props.link)}
               >
-                {this.props.isHeader ? (
-                  <span className={classnames("icon", s.icon)}>
-                    <i className={`fi ${this.props.iconName}`} />
-                  </span>
-                ) : null}
+              {this.props.iconType === "text" ? (
+                <span className={classnames("icon", s.icon)}>
+                  <i className={`la ${this.props.iconName}`} />
+                </span>
+              ) : (
+                <span className={s.iconWrapper}>{this.props.iconName}</span>
+              )}
                 {this.props.header}{" "}
                 {this.props.label && (
                   <sup
@@ -210,9 +189,8 @@ class LinksGroup extends Component {
             </li>
           );
         }}
-      />
-    );
-  }
-}
+      
+        <div/>
 
-export default withRouter(connect()(LinksGroup));
+
+export default LinksGroup;

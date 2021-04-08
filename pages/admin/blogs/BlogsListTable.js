@@ -136,21 +136,18 @@ class BlogsListTable extends Component {
               <span className="fs-sm">Title</span>
             </TableHeaderColumn>
 
-            <TableHeaderColumn dataField="price" dataSort>
-              <span className="fs-sm">Price</span>
-            </TableHeaderColumn>
-
             <TableHeaderColumn
-              dataField="categories"
+              dataField="author_avatar"
               dataSort
-              dataFormat={categoriesDataFormat.listFormatter}
+              dataFormat={dataFormat.imageFormatter}
             >
-              <span className="fs-sm">Categories</span>
+              <span className="fs-sm">Author avatar</span>
             </TableHeaderColumn>
 
-            <TableHeaderColumn dataField="rating" dataSort>
-              <span className="fs-sm">Rating</span>
+            <TableHeaderColumn dataField="author_name" dataSort>
+              <span className="fs-sm">Author name</span>
             </TableHeaderColumn>
+
 
             <TableHeaderColumn dataField="status" dataSort>
               <span className="fs-sm">Status</span>

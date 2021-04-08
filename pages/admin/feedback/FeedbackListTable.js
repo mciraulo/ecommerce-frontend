@@ -134,20 +134,12 @@ class FeedbackListTable extends Component {
               <span className="fs-sm">Order date</span>
             </TableHeaderColumn>
 
-            <TableHeaderColumn
-              dataField="product"
-              dataSort
-              dataFormat={productsDataFormat.listFormatter}
-            >
-              <span className="fs-sm">Product</span>
+            <TableHeaderColumn dataField="firstname" dataSort>
+              <span className="fs-sm">First name</span>
             </TableHeaderColumn>
 
-            <TableHeaderColumn
-              dataField="user"
-              dataSort
-              dataFormat={usersDataFormat.listFormatter}
-            >
-              <span className="fs-sm">User</span>
+            <TableHeaderColumn dataField="review" dataSort>
+              <span className="fs-sm">Review</span>
             </TableHeaderColumn>
 
             <TableHeaderColumn dataField="rating" dataSort>

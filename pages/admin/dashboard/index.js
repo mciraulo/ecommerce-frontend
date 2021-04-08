@@ -258,11 +258,11 @@ class Index extends React.Component {
             </div>
             </Col>
           </Row>
-          {/*<Row>*/}
-          {/*  <Col lg={9}>*/}
-          {/*    <HomePageWidget />*/}
-          {/*  </Col>*/}
-          {/*</Row>*/}
+          <Row>
+            <Col lg={9}>
+              <HomePageWidget />
+            </Col>
+          </Row>
         </div>
     )
   }

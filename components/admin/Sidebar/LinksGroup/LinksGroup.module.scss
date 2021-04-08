@@ -146,6 +146,7 @@
 }
 
 .panel {
+
   border: none;
   box-shadow: none;
   margin: 0;
@@ -162,7 +163,7 @@
 
   ul {
     background: var(--sidebar-action-bg);
-    padding: $spacer;
+    padding: 0;
 
     li {
       list-style: none;

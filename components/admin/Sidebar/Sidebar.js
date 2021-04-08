@@ -227,7 +227,17 @@ class Sidebar extends React.Component {
                 index="documentation"
                 labelColor="success"
                 target="_blank"
-                
+                childrenLinks={[
+                  {
+                    header: 'Overview', link: '/admin/documentation/overview',
+                  },
+                  {
+                    header: 'Quick Start', link: '/admin/documentation/quick-start',
+                  },
+                  {
+                    header: 'Licences', link: '/admin/documentation/licences',
+                  },
+                ]}
             />
           </ul>
         </nav>
