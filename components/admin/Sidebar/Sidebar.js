@@ -211,7 +211,7 @@ class Sidebar extends React.Component {
                 link="/admin/password"
                 isHeader
                 iconType="node"
-                iconName={<GiftIcon />}
+                iconName={<SettingsIcon />}
             />
 
             <LinksGroup
@@ -223,7 +223,7 @@ class Sidebar extends React.Component {
                 link="/admin/documentation/overview"
                 isHeader
                 iconType="node"
-                iconName={<SettingsIcon />}
+                iconName={<GiftIcon />}
                 index="documentation"
                 labelColor="success"
                 target="_blank"
@@ -233,6 +233,9 @@ class Sidebar extends React.Component {
                   },
                   {
                     header: 'Quick Start', link: '/admin/documentation/quick-start',
+                  },
+                  {
+                    header: 'What is inside', link: '/admin/documentation/whats-inside',
                   },
                   {
                     header: 'Licences', link: '/admin/documentation/licences',

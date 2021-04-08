@@ -338,7 +338,7 @@ small {
 }
 
 .btn.btn-outline-primary:focus {
-  color: theme-color("primary")
+  color: theme-color("primary")!important;
 }
 
 .dropdown-menu-right {
