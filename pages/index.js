@@ -10,9 +10,9 @@ import arrowRight from "public/images/e-commerce/home/arrow-right.svg";
 
 import InfoBlock from 'components/e-commerce/InfoBlock';
 import InstagramWidget from 'components/e-commerce/Instagram';
-import article1 from "public/images/e-commerce/home/article1.png";
-import article2 from "public/images/e-commerce/home/article2.png";
-import article3 from "public/images/e-commerce/home/article3.png";
+import article1 from "public/images/e-commerce/home/article1.jpg";
+import article2 from "public/images/e-commerce/home/article2.jpg";
+import article3 from "public/images/e-commerce/home/article3.jpg";
 
 
 import { toast, ToastContainer } from "react-toastify";

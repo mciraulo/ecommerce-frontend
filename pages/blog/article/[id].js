@@ -6,9 +6,9 @@ import headerImg from "public/images/e-commerce/blog/article/header.png";
 import articleImg from "public/images/e-commerce/blog/article/article-image.png";
 import person from "public/images/e-commerce/blog/article/person.svg";
 import s from "./Article.module.scss";
-import article1 from "public/images/e-commerce/home/article1.png";
-import article2 from "public/images/e-commerce/home/article2.png";
-import article3 from "public/images/e-commerce/home/article3.png";
+import article1 from "public/images/e-commerce/home/article1.jpg";
+import article2 from "public/images/e-commerce/home/article2.jpg";
+import article3 from "public/images/e-commerce/home/article3.jpg";
 import Head from "next/head";
 
 const Id = ({ post }) => {

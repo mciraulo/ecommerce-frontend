@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Input } from "reactstrap";
 import axios from 'axios';
 import Link from "next/link";
-import article1 from "public/images/e-commerce/home/article1.png";
-import article2 from "public/images/e-commerce/home/article2.png";
+import article1 from "public/images/e-commerce/home/article1.jpg";
+import article2 from "public/images/e-commerce/home/article2.jpg";
 import InstagramWidget from 'components/e-commerce/Instagram';
 
 import Head from "next/head";

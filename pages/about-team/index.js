@@ -1,17 +1,18 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import person1 from "public/images/e-commerce/team/person1.png";
-import person2 from "public/images/e-commerce/team/person2.png";
-import person3 from "public/images/e-commerce/team/person3.png";
-import person4 from "public/images/e-commerce/team/person4.png";
-import person5 from "public/images/e-commerce/team/person5.png";
-import person6 from "public/images/e-commerce/team/person6.png";
-import person7 from "public/images/e-commerce/team/person7.png";
-import person8 from "public/images/e-commerce/team/person8.png";
+import person1 from "public/images/e-commerce/team/person1.jpg";
+import person2 from "public/images/e-commerce/team/person2.jpg";
+import person3 from "public/images/e-commerce/team/person3.jpg";
+import person4 from "public/images/e-commerce/team/person4.jpg";
+import person5 from "public/images/e-commerce/team/person5.jpg";
+import person6 from "public/images/e-commerce/team/person6.jpg";
+import person7 from "public/images/e-commerce/team/person7.jpg";
+import person8 from "public/images/e-commerce/team/person8.jpg";
 import googleImg from "public/images/e-commerce/team/google.svg";
 import facebookImg from "public/images/e-commerce/team/facebook.svg";
 import behanceImg from "public/images/e-commerce/team/behance.svg";
 import InstagramWidget from 'components/e-commerce/Instagram';
+import s from './Team.module.scss';
 
 import Head from "next/head";
 
@@ -49,8 +50,8 @@ const Index = () => {
           </Col>
         </Row>
         <Row className={"mt-5"}>
-          <Col xs={3}>
-            <img src={person1} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person1} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -64,8 +65,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person2} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person2} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -79,8 +80,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person3} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person3} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -94,8 +95,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person4} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person4} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -109,8 +110,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person5} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person5} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -124,8 +125,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person6} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person6} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -139,8 +140,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person7} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person7} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer
@@ -154,8 +155,8 @@ const Index = () => {
               <img src={behanceImg} />
             </div>
           </Col>
-          <Col xs={3}>
-            <img src={person8} />
+          <Col lg={3} md={4} sm={6} xs={12}>
+            <img className={s.img} src={person8} />
             <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
             <p className={"text-muted text-center"}>
               Graphic designer, UX/UI Designer

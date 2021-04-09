@@ -2,12 +2,12 @@ import React from 'react';
 import { Row, Col } from "reactstrap";
 
 import s from './Instagram.module.scss';
-import insta1 from "public/images/e-commerce/home/insta1.png";
-import insta2 from "public/images/e-commerce/home/insta2.png";
-import insta3 from "public/images/e-commerce/home/insta3.png";
-import insta4 from "public/images/e-commerce/home/insta4.png";
-import insta5 from "public/images/e-commerce/home/insta5.png";
-import insta6 from "public/images/e-commerce/home/insta6.png";
+import insta1 from "public/images/e-commerce/home/insta1.jpg";
+import insta2 from "public/images/e-commerce/home/insta2.jpg";
+import insta3 from "public/images/e-commerce/home/insta3.jpg";
+import insta4 from "public/images/e-commerce/home/insta4.jpg";
+import insta5 from "public/images/e-commerce/home/insta5.jpg";
+import insta6 from "public/images/e-commerce/home/insta6.jpg";
 
 const InstagramWidget = () => (
     <section style={{ marginTop: 80, marginBottom: 80 }}>
