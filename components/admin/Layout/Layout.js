@@ -64,7 +64,7 @@ class Layout extends React.Component {
   }
 
   render() {
-    if (!this.props.currentUser) {
+    if (!this.props.currentUser && !this.props.router.pathname.includes('documentation')) {
       if (this.props.loadingInit) return <Loader />
       return (
         <>

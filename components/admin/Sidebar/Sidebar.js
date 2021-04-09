@@ -94,7 +94,7 @@ class Sidebar extends React.Component {
                 }
                 activeItem={this.props.activeItem}
                 header="Home"
-                link="/admin/dashboard"
+                link={`${this.props.currentUser ? '/admin/dashboard' : '/'}`}
                 isHeader
                 iconType="node"
                 iconName={<HomeIcon />}
@@ -189,7 +189,7 @@ class Sidebar extends React.Component {
                     iconName={<BarIcon />}
                 />
             )}
-
+            {this.props.currentUser && (
             <LinksGroup
                 onActiveSidebarItemChange={(activeItem) =>
                     this.props.dispatch(changeActiveSidebarItem(activeItem))
@@ -201,7 +201,8 @@ class Sidebar extends React.Component {
                 iconType="node"
                 iconName={<FileIcon />}
             />
-
+            )}
+            {this.props.currentUser && (
             <LinksGroup
                 onActiveSidebarItemChange={(activeItem) =>
                     this.props.dispatch(changeActiveSidebarItem(activeItem))
@@ -213,14 +214,14 @@ class Sidebar extends React.Component {
                 iconType="node"
                 iconName={<SettingsIcon />}
             />
-
+            )}
             <LinksGroup
                 onActiveSidebarItemChange={(activeItem) =>
                     this.props.dispatch(changeActiveSidebarItem(activeItem))
                 }
                 activeItem={this.props.activeItem}
                 header="Documentation"
-                link="/admin/documentation/overview"
+                link="/documentation/overview"
                 isHeader
                 iconType="node"
                 iconName={<GiftIcon />}
@@ -229,16 +230,16 @@ class Sidebar extends React.Component {
                 target="_blank"
                 childrenLinks={[
                   {
-                    header: 'Overview', link: '/admin/documentation/overview',
+                    header: 'Overview', link: '/documentation/overview',
                   },
                   {
-                    header: 'Quick Start', link: '/admin/documentation/quick-start',
+                    header: 'Quick Start', link: '/documentation/quick-start',
                   },
                   {
-                    header: 'What is inside', link: '/admin/documentation/whats-inside',
+                    header: 'What is inside', link: '/documentation/whats-inside',
                   },
                   {
-                    header: 'Licences', link: '/admin/documentation/licences',
+                    header: 'Licences', link: '/documentation/licences',
                   },
                 ]}
             />
