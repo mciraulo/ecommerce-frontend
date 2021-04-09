@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'reactstrap';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
-import Scrollspy from '../ScrollSpy';
 
 import screenshot from 'public/images/screenshot.png';
 import blogScreenshot from 'public/images/documentation/Screenshot_1.png';
@@ -117,17 +116,6 @@ const Overview = () => (
           </Widget>
         </Col>
       </Row>
-    </Col>
-    <Col lg={3}>
-      <Scrollspy
-        title="OVERVIEW"
-        prefix="getting-started/overview"
-        ids={[
-          'Overview',
-          'Features',
-          'Support'
-        ]}
-      />
     </Col>
   </Row>
 );

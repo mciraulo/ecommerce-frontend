@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col, Table } from 'reactstrap';
 
 import Widget from 'components/admin/Widget/Widget';
-import Scrollspy from "../ScrollSpy";
 
 const Licences = () => (
   <Row>
@@ -73,16 +72,6 @@ const Licences = () => (
         In case if you need any clarifications considering licenses feel free
         to contact us via email: <a className="text-warning" href="mailto:support@flatlogic.com">support@flatlogic.com</a>.
       </p>
-    </Col>
-    <Col lg={3}>
-      <Scrollspy
-        title="LICENCES"
-        prefix="getting-started/licences"
-        ids={[
-        'Licences',
-        'Single',
-        'Extended',
-      ]} />
     </Col>
   </Row>
 );
