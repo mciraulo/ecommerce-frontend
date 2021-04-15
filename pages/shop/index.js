@@ -602,8 +602,8 @@ const Index = () => {
                     isOpen={openState[`open${index}`]}
                     toggle={() => dispatch({ type: `open${index}` })}
                   >
-                    <div className={"d-flex"}>
-                      <div style={{ width: "50%" }}>
+                    <div className={s.modalWidndow}>
+                      <div className={s.image}>
                         <img
                           src={item.image[0].publicUrl}
                           width={"100%"}
@@ -612,9 +612,9 @@ const Index = () => {
                       </div>
                       <div
                         className={
-                          "p-4 d-flex flex-column justify-content-between"
+                          `${s.content} p-4 d-flex flex-column justify-content-between`
                         }
-                        style={{ width: "50%" }}
+                      
                       >
                         <Link href={`/products/${item.id}`}>
                           <a className={"fw-semi-bold"}>

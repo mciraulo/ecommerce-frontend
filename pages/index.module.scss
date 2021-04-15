@@ -287,6 +287,30 @@
   }
 }
 
+.modalWidndow {
+  display: flex;
+  div.image, div.content {
+    width: 50%;
+    button {
+      @media (max-width: 900px) {
+        padding: 10px;
+      }    
+    }
+    @media (max-width: 900px) {
+      width: auto
+    }
+  }
+  & > div > img {
+    @media (max-width: 900px) {
+      max-width: 500px
+    }
+  }
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .product {
   .product__actions {
     @media (max-width: 576px) {
