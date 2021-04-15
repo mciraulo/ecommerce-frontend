@@ -126,7 +126,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
               onClick={() => setSelected(1)}
               className={`mr-4 fw-bold ${s.btn}`}
             >
-              <img src={heartIcon} className={"mr-3"} />
+              <img src={heartIcon} />
               Credit Card
             </Button>
             <Button
@@ -136,7 +136,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
               onClick={() => setSelected(2)}
               className={"mr-4 fw-bold"}
             >
-              <img src={heartIcon} className={"mr-3"} />
+              <img src={heartIcon} />
               PayPal
             </Button>
             <Button
@@ -146,7 +146,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
               onClick={() => setSelected(3)}
               className={"mr-4 fw-bold"}
             >
-              <img src={heartIcon} className={"mr-3"} />
+              <img src={heartIcon} />
               Cash
             </Button>
             <Button
@@ -156,7 +156,7 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
               onClick={() => setSelected(4)}
               className={"fw-bold"}
             >
-              <img src={heartIcon} className={"mr-3"} />
+              <img src={heartIcon} />
               Other
             </Button>
           </ButtonGroup>

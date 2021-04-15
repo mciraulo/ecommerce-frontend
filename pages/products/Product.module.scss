@@ -21,6 +21,17 @@
   }
 }
 
+.buttonsWrapper {
+  .btn {
+    @media (max-width: 576px) {
+      padding: 14px;
+    }
+  }
+  @media (max-width: 992px) {
+    margin-top: 25px;
+  }
+}
+
 .reviewImg {
   width: 132px;
   height: 132px;
@@ -60,6 +71,7 @@
 }
 
 .product {
+  min-width: 180px;
   &:hover {
     a {
       color: theme-color("primary")

@@ -57,9 +57,14 @@ const products = [
 
 const Categories = () => {
 
+  const [width, setWidth] = React.useState(null);
 
-
-
+  React.useEffect(() => {
+    typeof window !== "undefined" &&
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
+  }, [])
   return (
     <>
       <Head>
@@ -152,7 +157,7 @@ const Categories = () => {
           <h2 className={s.relatedTitle}>You may also like:</h2>
           <CarouselProvider
               totalSlides={8}
-              visibleSlides={4}
+              visibleSlides={width > 992 ? 4 : width > 576 ? 2 : 1}
               style={{width: '100%'}}
               infinite
               dragEnabled

@@ -97,6 +97,7 @@ const products = [
 
 const Id = ({ product: serverSideProduct, currentProductId }) => {
   const [isOpen, setOpen] = React.useState(false);
+  const [width, setWidth] = React.useState(null);
   const currentUser = useSelector((state) => state.auth.currentUser);
   const feedbackList = useSelector((state) => state.feedback.list.rows)
   const [starsSelected, setStarsSelected] = React.useState(0)
@@ -112,7 +113,11 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
 
   React.useEffect(() => {
     dispatch(feedbackActions.doFetch({}))
-    window.setTimeout(() => {
+    typeof window !== "undefined" &&
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
+    typeof window !== "undefined" && window.setTimeout(() => {
       setFetching(false)
     }, 1000)
   }, [])
@@ -316,7 +321,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                 </div>
               </div>
               </div>
-              <div className={"d-flex"}>
+              <div className={`${s.buttonsWrapper} d-flex`}>
                 <Button
                     outline
                     color={"primary"}
@@ -548,7 +553,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
         <Row className={"mb-5"} style={{ position: "relative" }}>
           <CarouselProvider
               totalSlides={8}
-              visibleSlides={4}
+              visibleSlides={width > 992 ? 4 : width > 576 ? 2 : 1}
               style={{width: '100%'}}
               infinite
               dragEnabled

@@ -189,7 +189,6 @@ const Index = ({ categoryId, categoryData }) => {
       setProducts([...res.data.rows]);
     });
   }
-  console.log(categoryData)
   return (
     <>
       <Head>
@@ -365,7 +364,7 @@ const Index = ({ categoryId, categoryData }) => {
             <Row>
               {products.map((c, index) => {
                 return (
-                  <Col xs={6} md={4} className={`mb-4 ${s.product}`}>
+                  <Col xs={12} md={6} sm={6} lg={4} className={`mb-4 ${s.product}`}>
                     <Modal
                       isOpen={openState[`open${index}`]}
                       toggle={() => dispatch({ type: `open${index}` })}

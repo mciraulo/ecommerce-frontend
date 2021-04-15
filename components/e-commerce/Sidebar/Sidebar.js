@@ -18,7 +18,7 @@ class Sidebar extends React.Component {
     activeItem: PropTypes.string,
     location: PropTypes.shape({
       pathname: PropTypes.string,
-    }).isRequired,
+    }),
   };
 
   static defaultProps = {

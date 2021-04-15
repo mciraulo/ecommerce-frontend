@@ -36,17 +36,17 @@ const Index = () => {
       </Head>
     <Container className={"mb-5"} style={{ marginTop: 32 }}>
       <Row>
-        <Col xs={8}>
+        <Col xl={8} lg={8} xs={12}>
           <h3 className={"fw-bold mb-4"}>My Account</h3>
           <Row>
-            <Col xs={6}>
+            <Col xl={6} lg={6} md={6} xs={12}>
               <section className={s.promo1}>
                 <h3 className={"text-muted fw-bold mb-0"}>sale up to</h3>
                 <h1 className={"text-primary fw-bold mb-3"}>30%</h1>
                 <p className={"fw-bold"}>Read More</p>
               </section>
             </Col>
-            <Col xs={6}>
+            <Col xl={6} lg={6} md={6} xs={12}>
               <section className={s.promo2}>
                 <h3 className={"text-muted fw-bold mb-0"}>sale up to</h3>
                 <h1 className={"text-primary fw-bold mb-3"}>30%</h1>
@@ -55,9 +55,9 @@ const Index = () => {
             </Col>
           </Row>
           <Row className={"mt-5"}>
-            <Col xs={12}>
+            <Col xl={12} lg={12} xs={12} style={{overflow: 'auto'}}>
               <h3 className={"fw-bold mb-4"}>My Orders</h3>
-              <Table borderless>
+              <Table className={s.accountTable} borderless>
                 <thead>
                   <tr style={{ borderBottom: "1px solid #D9D9D9" }}>
                     <th className={"bg-transparent text-dark px-0"}>Date</th>
@@ -134,7 +134,7 @@ const Index = () => {
             </Col>
           </Row>
         </Col>
-        <Col xs={4}>
+        <Col xl={4} lg={4} xs={12}>
           <section className={s.profile}>
             <Button className={"bg-transparent border-0 p-0"}>
             <img src={settings} alt={"settings"} className={s.settingsIcon} />

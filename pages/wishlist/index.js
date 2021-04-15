@@ -108,9 +108,9 @@ const Cart = () => {
       <Container>
         <ToastContainer />
         <Row className={"mb-5"} style={{ marginTop: 32 }}>
-          <Col xs={12}>
+          <Col xs={12} style={{ overflow: 'auto' }}>
             <h2 className={"fw-bold mt-4 mb-4"}>Wishlist</h2>
-            <Table borderless>
+            <Table className={s1.wishListTable} borderless>
               <thead>
                 <tr style={{ borderBottom: "1px solid #D9D9D9" }}>
                   <th className={"bg-transparent text-dark px-0"}>Product</th>

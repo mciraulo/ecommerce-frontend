@@ -51,6 +51,19 @@
 }
 
 .product {
+  .product__actions {
+    @media (max-width: 576px) {
+      opacity: 1 !important;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      max-width: 245px;
+      width: 100%;
+      margin: 0 auto;
+      transform: translateX(35%);
+    }
+  }
   &:hover {
     h6:first-child {
         color: theme-color("primary")

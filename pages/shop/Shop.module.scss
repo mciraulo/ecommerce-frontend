@@ -87,6 +87,14 @@
   .product__actions {
     @media (max-width: 576px) {
       opacity: 1 !important;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      max-width: 245px;
+      width: 100%;
+      margin: 0 auto;
+      transform: translateX(35%);
     }
   }
   &:hover {
@@ -135,6 +143,8 @@
     display: flex;
     flex-direction: column;
     align-items:flex-start;
+    max-width: 245px;
+    margin: 0 auto;
     justify-content: flex-start;
   }
 }
@@ -150,13 +160,6 @@
   background-position: center center;
   &:hover {
     transform: scale(1.03) translate(-0px, -0px);
-  }
-  @media (max-width: 768px) {
-    background-size: cover;
-  }
-  @media (max-width: 380px) {
-    background-size: contain;
-    background-color: #f6f6f6;
   }
 }
 

@@ -11,6 +11,7 @@ import {
 } from "reactstrap";
 import img from "public/images/e-commerce/contact/img.png";
 
+import s from './Contact.module.scss';
 import InstagramWidget from 'components/e-commerce/Instagram';
 import Head from "next/head";
 
@@ -41,7 +42,7 @@ const Index = () => {
       </Head>
       <Container>
         <Row className={"mb-5"} style={{ marginTop: 32 }}>
-          <Col sm={6} className="d-flex flex-column justify-content-between">
+          <Col lg={6} sm={12} className="d-flex flex-column justify-content-between">
             <div>
               <h2 className={"fw-bold"}>Contact Us</h2>
               <h6 className={"text-muted"}>
@@ -98,7 +99,7 @@ const Index = () => {
             </FormGroup>
             </Form>
           </Col>
-          <Col sm={6} className="d-flex justify-content-end">
+          <Col lg={6} sm={12} className={s.contactVisual}>
             <img src={img} alt="" />
           </Col>
         </Row>

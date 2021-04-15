@@ -32,7 +32,7 @@ const Index = () => {
       </Head>
       <Container className={"mb-5"} style={{ marginTop: 32 }}>
         <Row>
-          <Col sm={7}>
+          <Col lg={7} md={7} xs={12}>
             <h3 className="fw-bold mb-5">About Us</h3>
             <div style={{ position: "relative" }} className="mb-5">
               <h1
@@ -134,9 +134,9 @@ const Index = () => {
               </div>
             </div>
           </Col>
-          <Col sm={5} className="d-flex flex-column">
-            <img src={img1} alt="img1" className="flex-fill mb-5" />
-            <img src={img2} alt="img2" className="flex-fill" />
+          <Col lg={5} md={5} xs={12} className="d-flex flex-column">
+          <img src={img1} alt="img1" className={`${s.aboutImg} mb-5`} />
+            <img src={img2} alt="img2" className={s.aboutImg} />
           </Col>
         </Row>
       </Container>

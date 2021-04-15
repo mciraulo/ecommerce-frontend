@@ -597,7 +597,7 @@ const Index = () => {
             )}
             <Row>
               {products.map((item, index) => (
-                <Col xs={6} lg={4} className={`mb-4 ${s.product}`} key={index}>
+                <Col md={6} lg={4} xs={12} className={`mb-4 ${s.product}`} key={index}>
                   <Modal
                     isOpen={openState[`open${index}`]}
                     toggle={() => dispatch({ type: `open${index}` })}
