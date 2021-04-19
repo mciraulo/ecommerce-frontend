@@ -341,6 +341,10 @@ small {
   color: theme-color("primary")!important;
 }
 
+.Toastify .Toastify__toast-body {
+  margin-right: 1em!important;
+}
+
 .dropdown-menu-right {
   left: auto;
   right: 0;
