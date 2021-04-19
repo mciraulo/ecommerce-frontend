@@ -97,7 +97,7 @@ const products = [
 
 const Id = ({ product: serverSideProduct, currentProductId }) => {
   const [isOpen, setOpen] = React.useState(false);
-  const [width, setWidth] = React.useState(null);
+  const [width, setWidth] = React.useState(1440);
   const currentUser = useSelector((state) => state.auth.currentUser);
   const feedbackList = useSelector((state) => state.feedback.list.rows)
   const [starsSelected, setStarsSelected] = React.useState(0)

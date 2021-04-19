@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Container,
   Row,
@@ -15,6 +15,7 @@ import s from "./Billing.module.scss";
 import heartIcon from "public/images/e-commerce/heart.svg";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import countryList from 'react-select-country-list'
 import MaskInput from "react-maskinput";
 import scriptLoader from 'react-async-script-loader';
 
@@ -28,6 +29,7 @@ import Head from "next/head";
 import Checkbox from "react-custom-checkbox";
 
 const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
+  const options = useMemo(() => countryList().getData(), [])
   const [mask, setMask] = React.useState("0000-0000-0000-0000");
   const onChange = (e) => {
     if (
@@ -182,13 +184,19 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
                 <Label for="exampleEmail" className="fw-bold">
                   Country*
                 </Label>
-                <Input type="select" name="text" id="exampleEmail" />
+                {console.log(options)}
+                <Input type="select" name="text" id="exampleEmail" style={{ paddingTop: 0, paddingBottom: 0 }}>
+                  {options.map((item, idx) => (
+                    <option key={idx}>{item.label}</option> 
+                  ))}
+                
+                </Input>
               </div>
               <div className="flex-fill">
                 <Label for="exampleEmail" className="fw-bold">
                   City*
                 </Label>
-                <Input type="select" name="text" id="exampleEmail" />
+                <Input type="text" name="text" id="exampleEmail" />
               </div>
             </FormGroup>
             <FormGroup className="d-flex">
@@ -314,12 +322,14 @@ const Index = ({ isScriptLoaded, isScriptLoadSucceed }) => {
                     CVV
                   </Label>
                   <Input
+                    title="Do not show this to anybody"
+                    maxLength={3}
                     type="text"
                     name="text"
                     id="exampleEmail"
                     placeholder={"123"}
                     className={"info"}
-                    style={{ maxWidth: "78%", minWidth: "78%" }}
+                    style={{ maxWidth: "110px", minWidth: "110px" }}
                   />
                 </div>
                 <Label check className={"d-flex align-items-center"}>

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import { Container, Row, Col, Button } from "reactstrap";
 import img from "public/images/e-commerce/404/404.png";
 import s from "pages/error/Error.module.scss";
@@ -30,9 +31,11 @@ const Index = () => {
                                         Lorem Ipsum is simply dummy text of the printing and
                                         typesetting industry
                                     </p>
-                                    <Button outline color={"primary"} className={"fw-bold"}>
-                                        TAKE ME AWAY
-                                    </Button>
+                                    <Link href="/">
+                                        <Button outline color={"primary"} className={"fw-bold"}>
+                                            TAKE ME AWAY
+                                        </Button>
+                                    </Link>
                                 </Col>
                             </Row>
                         </Container>

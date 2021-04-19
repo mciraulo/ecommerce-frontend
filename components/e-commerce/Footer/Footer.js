@@ -78,19 +78,19 @@ const Footer = () => {
                     <h5 className={"text-white fw-bold text-uppercase mb-4"}>
                       company
                     </h5>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>What We Do</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Available Services</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Latest Posts</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>FAQs</h6></Link>
+                    <Link href="/about"><h6 className={`mb-3 ${s.navigationLink}`}>What We Do</h6></Link>
+                    <Link href="/shop"><h6 className={`mb-3 ${s.navigationLink}`}>Available Services</h6></Link>
+                    <Link href="/blog"><h6 className={`mb-3 ${s.navigationLink}`}>Latest Posts</h6></Link>
+                    <Link href="/faq"><h6 className={`mb-3 ${s.navigationLink}`}>FAQs</h6></Link>
                   </Col>
                   <Col md={4} sm={6} xs={12}>
                     <h5 className={"text-white fw-bold text-uppercase mb-4"}>
                       my account
                     </h5>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Sign In</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>View Cart</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Order Tracking</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Support</h6></Link>
+                    <Link href="/login"><h6 className={`mb-3 ${s.navigationLink}`}>Sign In</h6></Link>
+                    <Link href="/cart"><h6 className={`mb-3 ${s.navigationLink}`}>View Cart</h6></Link>
+                    <Link href="account/"><h6 className={`mb-3 ${s.navigationLink}`}>Order Tracking</h6></Link>
+                    <Link href="/faq"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Support</h6></Link>
                   </Col>
                   <Col md={4} sm={6} xs={12}>
                     <h5
@@ -100,10 +100,10 @@ const Footer = () => {
                     >
                       customer service
                     </h5>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Contact Us</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Returns & Refunds</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Online Stores</h6></Link>
-                    <Link href="/"><h6 className={`mb-3 ${s.navigationLink}`}>Terms & Conditions</h6></Link>
+                    <Link href="/contact"><h6 className={`mb-3 ${s.navigationLink}`}>Help & Contact Us</h6></Link>
+                    <Link href="/account"><h6 className={`mb-3 ${s.navigationLink}`}>Returns & Refunds</h6></Link>
+                    <Link href="/shop"><h6 className={`mb-3 ${s.navigationLink}`}>Online Stores</h6></Link>
+                    <Link href="/about-team"><h6 className={`mb-3 ${s.navigationLink}`}>Terms & Conditions</h6></Link>
                   </Col>
                 </Row>
               </Col>

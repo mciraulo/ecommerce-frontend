@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -16,6 +16,20 @@ import InstagramWidget from 'components/e-commerce/Instagram';
 import Head from "next/head";
 
 const Index = () => {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+
+  const updateForm = (e) => {
+    e.preventDefault();
+    setName('');
+    setEmail('');
+    setPhone('');
+    setMessage('');
+  }
+
   return (
     <>
       <Head>
@@ -59,6 +73,7 @@ const Index = () => {
                   name="text"
                   id="exampleEmail"
                   className="w-100"
+                  value={name} onChange={(e) => setName(e.target.value)}
                 />
               </FormGroup>
               <FormGroup className="d-flex">
@@ -66,13 +81,13 @@ const Index = () => {
                   <Label for="exampleEmail" className="fw-bold text-muted">
                     Email
                   </Label>
-                  <Input type="email" name="email" id="exampleEmail1" />
+                  <Input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} id="exampleEmail1" />
                 </div>
                 <div className="flex-fill">
                   <Label for="exampleEmail" className="fw-bold text-muted">
                     Phone
                   </Label>
-                  <Input type="phone" name="text" id="exampleEmail" />
+                  <Input type="phone" name="text" id="exampleEmail" value={phone} onChange={(e) => setPhone(e.target.value)} />
                 </div>
               </FormGroup>
               <FormGroup>
@@ -80,6 +95,7 @@ const Index = () => {
                   Your Message
                 </Label>
                 <Input
+                  value={message} onChange={(e) => setMessage(e.target.value)}
                   type="textarea"
                   name="text"
                   id="exampleEmail"
@@ -92,7 +108,7 @@ const Index = () => {
               color="primary"
               className="text-uppercase fw-bold align-self-start"
               type={"submit"}
-              onClick={e => e.preventDefault()}
+              onClick={updateForm}
             >
               send message
             </Button>

@@ -39,7 +39,7 @@ const Index = () => {
         <Row className="d-flex justify-content-between">
           <Col sm={3} style={{position: 'sticky', top: 100, height: '100%'}}>
             <h1 className="fw-bold text-uppercase mb-4">faq</h1>
-            <p className="mb-5">
+            <p className={`${s.pageSubtitle} mb-5`}>
               Successful brands get into the mind slowly. A blurb in a magazine.
               A mention in a newspaper. A comment from a friend. A display in a
               retail
@@ -56,10 +56,10 @@ const Index = () => {
           </Col>
           <Col sm={8}>
             <div id={"company"}>
-              <h6 className="text-primary text-uppercase mb-3 fw-bold">
+              <h6 className={`${s.categoryTitle} text-primary text-uppercase mb-3 fw-bold`}>
                 company Policies
               </h6>
-              <h4 className="fw-bold mb-4">
+              <h4 className={`${s.faqTitle} fw-bold mb-4`}>
                 Differentiate Yourself And Attract More Attention, Sales, And
                 Profits
               </h4>
@@ -73,10 +73,10 @@ const Index = () => {
             </div>
             <hr className="mb-5" />
             <div id={"payment"}>
-              <h6 className="text-primary text-uppercase mb-3 fw-bold">
+              <h6 className={`${s.categoryTitle} text-primary text-uppercase mb-3 fw-bold`}>
                 payment options
               </h6>
-              <h4 className="fw-bold mb-4">
+              <h4 className={`${s.faqTitle} fw-bold mb-4`}>
                 Differentiate Yourself And Attract More Attention, Sales, And
                 Profits
               </h4>
@@ -90,10 +90,10 @@ const Index = () => {
             </div>
             <hr className="mb-5" />
             <div id={"terms"}>
-              <h6 className="text-primary text-uppercase mb-3 fw-bold">
+              <h6 className={`${s.categoryTitle} text-primary text-uppercase mb-3 fw-bold`}>
                 terms & conditions
               </h6>
-              <h4 className="fw-bold mb-4">
+              <h4 className={`${s.faqTitle} fw-bold mb-4`}>
                 Differentiate Yourself And Attract More Attention, Sales, And
                 Profits
               </h4>
@@ -107,10 +107,10 @@ const Index = () => {
             </div>
             <hr className="mb-5" />
             <div id={"delivery"}>
-              <h6 className="text-primary text-uppercase mb-3 fw-bold">
+              <h6 className={`${s.categoryTitle} text-primary text-uppercase mb-3 fw-bold`}>
                 delivery job
               </h6>
-              <h4 className="fw-bold mb-4">
+              <h4 className={`${s.faqTitle} fw-bold mb-4`}>
                 Differentiate Yourself And Attract More Attention, Sales, And
                 Profits
               </h4>

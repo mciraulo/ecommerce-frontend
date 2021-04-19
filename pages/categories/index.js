@@ -57,7 +57,7 @@ const products = [
 
 const Categories = () => {
 
-  const [width, setWidth] = React.useState(null);
+  const [width, setWidth] = React.useState(1440);
 
   React.useEffect(() => {
     typeof window !== "undefined" &&
@@ -93,7 +93,7 @@ const Categories = () => {
       <Container className={s.bannersContainer}>
         <Row>
           <Col md={12}>
-            <Link href="/">
+            <Link href="/shop">
               <div className={s.mainBanner}>
                 <img src={mainBanner} alt="banner" />
                 <h2>NEW ARRIVALS</h2>
