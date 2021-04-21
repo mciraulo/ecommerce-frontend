@@ -131,8 +131,8 @@ class UsersListTable extends Component {
               <span className="fs-sm">Last Name</span>
             </TableHeaderColumn>
 
-            <TableHeaderColumn dataField="phoneNumber" dataSort>
-              <span className="fs-sm">Phone Number</span>
+            <TableHeaderColumn dataField="emailVerified" dataSort>
+              <span className="fs-sm">Email Verified</span>
             </TableHeaderColumn>
 
             <TableHeaderColumn dataField="email" dataSort>

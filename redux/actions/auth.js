@@ -112,6 +112,7 @@ export function loginUser(creds) {
 
 export function verifyEmail(token) {
   return (dispatch) => {
+    console.log(token, 'TIOKEN')
     axios
       .put("/auth/verify-email", { token })
       .then((verified) => {
@@ -123,7 +124,7 @@ export function verifyEmail(token) {
         toast.error(err.response.data);
       })
       .finally(() => {
-        dispatch(push("/login"));
+         if (typeof window !== 'undefined') { window.location.href = "/login" }
       });
   };
 }
@@ -140,7 +141,7 @@ export function resetPassword(token, password) {
           type: RESET_SUCCESS,
         });
         toast.success("Password has been updated");
-        dispatch(push("/login"));
+         if (typeof window !== 'undefined') { window.location.href = "/login" }
       })
       .catch((err) => {
         dispatch(authError(err.response.data));
@@ -160,7 +161,7 @@ export function sendPasswordResetEmail(email) {
           type: PASSWORD_RESET_EMAIL_SUCCESS,
         });
         toast.success("Email with resetting instructions has been sent");
-        dispatch(push("/login"));
+         if (typeof window !== 'undefined') { window.location.href = "/login" }
       })
       .catch((err) => {
         dispatch(authError(err.response.data));
@@ -173,7 +174,7 @@ export function registerUser(creds) {
     dispatch({
       type: REGISTER_REQUEST,
     });
-
+    console.log('sdf')
     if (creds.email.length > 0 && creds.password.length > 0) {
       axios
         .post("/auth/signup", creds)
@@ -184,7 +185,7 @@ export function registerUser(creds) {
           toast.success(
             "You've been registered successfully. Please check your email for verification link"
           );
-          dispatch(push("/login"));
+           if (typeof window !== 'undefined') { window.location.href = "/login" }
         })
         .catch((err) => {
           dispatch(authError(err.response.data));

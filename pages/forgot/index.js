@@ -38,11 +38,11 @@ class Index extends React.Component {
         <Container>
           <h5 className="auth-logo">
             <i className="la la-circle text-gray" />
-            React UM
+            Flatlogic Ecommerce
             <i className="la la-circle text-warning" />
           </h5>
           <Widget
-            className="widget-auth mx-auto"
+            className="widget-auth mx-auto text-center"
             title={<h3 className="mt-0">Forgot password?</h3>}
           >
             <p className="widget-auth-info">Please fill your email below</p>
@@ -65,21 +65,21 @@ class Index extends React.Component {
               </div>
               <Button
                 type="submit"
-                color="inverse"
+                color={"primary"}
                 className="auth-btn mb-3"
                 size="sm"
               >
                 {this.props.isFetching ? "Loading..." : "Send"}
               </Button>
             </form>
-            <p className="widget-auth-info">Need to Login?</p>
+            <p className="widget-auth-info mt-5">Need to Login?</p>
             <Link className="d-block text-center" href="/login">
               Enter the account
             </Link>
           </Widget>
         </Container>
         <footer className="auth-footer">
-          {new Date().getFullYear()} &copy; React User Management.
+          {new Date().getFullYear()} &copy; React Ecommerce.
         </footer>
       </div>
     );

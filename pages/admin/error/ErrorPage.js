@@ -33,7 +33,7 @@ class ErrorPage extends React.Component {
             </Form>
           </div>
           <footer className={s.pageFooter}>
-            {new Date().getFullYear()} &copy; React User Management.
+            {new Date().getFullYear()} &copy; React Ecommerce.
           </footer>
         </Container>
       </div>

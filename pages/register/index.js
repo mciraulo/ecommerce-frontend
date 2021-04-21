@@ -85,6 +85,7 @@ class Index extends React.Component {
     if (!this.isPasswordValid()) {
       this.checkPassword();
     } else {
+      console.log('registre')
       this.props.dispatch(
         registerUser({
           email: this.state.email,

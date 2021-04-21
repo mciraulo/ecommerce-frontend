@@ -161,9 +161,9 @@ class Login extends React.Component {
                   <Link href={"#"} className={"fw-bold text-dark"}>
                     Privacy Policy
                   </Link>
-                  <Link href={"#"} className={"fw-bold text-dark"}>
-                    Help
-                  </Link>
+                  <Link href={"/forgot"} className={"fw-bold text-dark"}>
+                      Forgot password
+                    </Link>
                 </footer>
               </Col>
             </Row>
