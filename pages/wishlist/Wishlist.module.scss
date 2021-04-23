@@ -1,6 +1,10 @@
 @import "styles/app";
 
 .addToCartBtn {
+  font-weight: bold;
+  height: 50px;
+  padding-left: 15px!important;
+  padding-right: 15px!important;
   .addToCart {
     background: url('../../public/images/e-commerce/shopping-cart.svg');
     width: 24px;
