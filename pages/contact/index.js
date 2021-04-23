@@ -56,7 +56,7 @@ const Index = () => {
       </Head>
       <Container>
         <Row className={"mb-5"} style={{ marginTop: 32 }}>
-          <Col lg={6} sm={12} className="d-flex flex-column justify-content-between">
+          <Col lg={6} sm={12} className="d-flex flex-column justify-content-center">
             <div>
               <h2 className={"fw-bold"}>Contact Us</h2>
               <h6 className={"text-muted"}>
