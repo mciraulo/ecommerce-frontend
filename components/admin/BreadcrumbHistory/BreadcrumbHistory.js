@@ -9,6 +9,9 @@ const BreadcrumbHistory = ({ url }) => {
   const router = useRouter();
   const [route, setRoute] = React.useState([]);
 
+  const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
+  
+
   const renderBreadCrumbs = () => {
     React.useEffect(() => {
       if (router.pathname.includes("products")) {
@@ -17,8 +20,8 @@ const BreadcrumbHistory = ({ url }) => {
           axios.get(`/products/${id}`).then((res) => {
             setRoute([
               "Products",
-              res.data.categories[0].title[0].toUpperCase() +
-                res.data.categories[0].title.slice(1),
+              res.data.categories[0].id + '__' +
+                res.data.categories[0].title,
               res.data.title,
             ]);
           });
@@ -51,9 +54,11 @@ const BreadcrumbHistory = ({ url }) => {
       if (router.pathname.includes("products") && index === 0) {
         middlewareUrl = "/shop";
       } else if (router.pathname.includes("products") && index === 1) {
+        console.log(route[1])
         middlewareUrl = `/category/${
-          route[1][0].toLowerCase() + route[1].slice(1)
+          route[1].split('__')[0]
         }`;
+        item = capitalizeFirstLetter(route[1].split('__')[1]);
       }
       return (
           <>

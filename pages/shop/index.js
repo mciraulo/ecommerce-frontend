@@ -769,10 +769,12 @@ const Index = () => {
                   </div>
                   <div className={s.productInfo}>
                     <div>
-                      <p className={"mt-3 text-muted mb-0"}>
+                      <Link href={`/category/${item.categories[0].id}`}>
+                        <a className={"mt-3 text-muted mb-0  d-inline-block"} >
                         {item.categories[0].title[0].toUpperCase() +
                           item.categories[0].title.slice(1)}
-                      </p>
+                        </a>
+                      </Link>
                       <Link href={`/products/${item.id}`}>
                         <a>
                           <h6
