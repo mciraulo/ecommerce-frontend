@@ -7,7 +7,7 @@ const ApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 import { chartData, splineArea } from './chartsMock';
 import SimpleLine from './widget';
-import Widget from "../../../components/admin/Widget";
+import Head from 'next/head';
 import HomePageWidget from "../widgets/HomePageWidget";
 
 import s from "./Dashboard.module.scss";
@@ -95,26 +95,30 @@ class Index extends React.Component {
   }
 
   render() {
-    // if (!this.props.loadingInit) {
-    //   if (this.props.currentUser) {
-    //     if (this.props.currentUser.role !== 'admin') {
-    //       if (typeof window !== 'undefined') { window.location.href = "/error" } 
-    //     }
-    //   } else {
-    //     if (typeof window !== 'undefined') { window.location.href = "/error" } 
-    //   }
-    // } else {
-    //   return (
-    //     <div>loading</div>
-    //   )
-    // }
-
-    // if (!this.props.currentUser || this.props.currentUser.role !== 'admin') {
-    //   console.log(this.props.currentUser)
-    //   this.props.router.push('/error');
-    // }
-
       return (
+        <>
+        <Head>
+          <title>Ecommerce dashboard</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+          <meta name="description" content="Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development" />
+          <meta name="keywords" content="flatlogic, react templates" />
+          <meta name="author" content="Flatlogic LLC." />
+          <meta charSet="utf-8" />
+
+
+          <meta property="og:title" content="Flatlogic - React, Vue, Angular and Bootstrap Templates and Admin Dashboard Themes"/>
+          <meta property="og:type" content="website"/>
+          <meta property="og:url" content="https://flatlogic-ecommerce.herokuapp.com/"/>
+          <meta property="og:image" content="https://flatlogic-ecommerce-backend.herokuapp.com/images/blogs/content_image_six.jpg"/>
+          <meta property="og:description" content="Beautifully designed web application template built with React and Bootstrap to create modern apps and speed up development"/>
+          <meta name="twitter:card" content="summary_large_image" />
+
+          <meta property="fb:app_id" content="712557339116053" />
+
+          <meta property="og:site_name" content="Flatlogic"/>
+          <meta name="twitter:site" content="@flatlogic" />
+        </Head>
         <div className={s.root}>
           <h1 className="page-title">
             Welcome,{" "}
@@ -264,6 +268,7 @@ class Index extends React.Component {
             </Col>
           </Row>
         </div>
+        </>
     )
   }
 }
