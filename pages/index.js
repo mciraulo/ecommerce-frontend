@@ -316,9 +316,7 @@ const Index = ({ products: serverSideProducts }) => {
         <Row className={"justify-content-center mb-2"}>
           <Col sm={8}>
             <p className={"text-center text-muted mb-4"}>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum
+            Check out our new furniture collection! Cozy sofa, fancy chair, wooden casket, and many more. The new collection brings an informal elegance to your home.
             </p>
           </Col>
         </Row>
@@ -572,9 +570,7 @@ const Index = ({ products: serverSideProducts }) => {
         <Row className={"justify-content-center mb-2"}>
           <Col sm={8}>
             <p className={"text-center text-muted mb-4"}>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum
+            These furniture sets will become an essential part of an ecosystem of elements in your home. Your domestic space will easily embrace these tables, chairs, and bookshelves.
             </p>
           </Col>
         </Row>
@@ -647,9 +643,7 @@ const Index = ({ products: serverSideProducts }) => {
         <Row className={"justify-content-center mb-2"}>
           <Col sm={8}>
             <p className={"text-center text-muted mb-4"}>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum
+            Design your home interior story! Here are the latest trends, tips, and design tricks to help you out. 
             </p>
           </Col>
         </Row>
@@ -667,7 +661,8 @@ const Index = ({ products: serverSideProducts }) => {
               className={"fw-bold font-size-base mt-1"}
               style={{ fontSize: 16 }}
             >
-              What is Lorem Ipsum?
+              
+What is Shabby Chic?
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
             <Link href="/blog/article/07aeff53-31e5-4276-8307-f855b22b6436">Read More</Link>
@@ -686,7 +681,7 @@ const Index = ({ products: serverSideProducts }) => {
               className={"fw-bold font-size-base mt-1"}
               style={{ fontSize: 16 }}
             >
-              What is Lorem Ipsum?
+              Best Examples of Maximalism
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
             <Link href="/blog/article/c4245ff9-6a53-4b13-8539-0b69b442cfd1">Read More</Link>

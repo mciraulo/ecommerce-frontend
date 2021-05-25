@@ -53,15 +53,10 @@ const Index = () => {
                   Technology
                 </h6>
                 <h4 className="fw-bold mb-4" style={{ width: "80%" }}>
-                  Differentiate Yourself And Attract More Attention, Sales, And
-                  Profits
+                Sustainable Furniture Rocks This World! Check Out New Minimalistic Wooden Collection
                 </h4>
                 <p className={`${s.text}`}>
-                  There is no denying that the success of an advertisement lies
-                  mostly in the headline. The headline should catch the reader’s
-                  attention and make him read the rest of the advertisement. the
-                  reader’s attention and make him read the rest of the
-                  advertisement.{" "}
+                There is no denying that eco-friendly materials can easily conquer the market. But can we produce enough to fulfill the growing demands? Can we create an astonishing look for the new collection of eco-friendly furniture? That is a tough question. But did make an effort!{" "}
                 </p>
                 <div className={`${s.borderLine}`} />
                 <hr className="mt-4" />
@@ -83,18 +78,13 @@ const Index = () => {
               </h1>
               <div style={{ paddingLeft: 67, paddingTop: 28 }}>
                 <h6 className="text-primary text-uppercase mb-3 fw-bold">
-                  Technology
+                  Interior
                 </h6>
                 <h4 className="fw-bold mb-4" style={{ width: "80%" }}>
-                  Differentiate Yourself And Attract More Attention, Sales, And
-                  Profits
+                Primary Palette Can Allow You To Be Bold! Give Your Interior Artistic Edge
                 </h4>
                 <p className="text-muted" style={{ width: "93%" }}>
-                  There is no denying that the success of an advertisement lies
-                  mostly in the headline. The headline should catch the reader’s
-                  attention and make him read the rest of the advertisement. the
-                  reader’s attention and make him read the rest of the
-                  advertisement.{" "}
+                Use this well-known tip for mixing two primary colors with a trendy muted palette. Neutral spaces with wooden furniture can be changed within a minutes using the right set of vibrant colors. Such interior design helps you to stand out from ordinary palettes.{" "}
                 </p>
                 <div className={`${s.borderLine}`} />
                 <hr className="mt-4" />
@@ -116,18 +106,13 @@ const Index = () => {
               </h1>
               <div style={{ paddingLeft: 67, paddingTop: 28 }}>
                 <h6 className="text-primary text-uppercase mb-3 fw-bold">
-                  Technology
+                  Design
                 </h6>
                 <h4 className="fw-bold mb-4" style={{ width: "80%" }}>
-                  Differentiate Yourself And Attract More Attention, Sales, And
-                  Profits
+                Check Out The Latest Design Trends! Minimalism, Stripes, and Sculptural Furniture
                 </h4>
                 <p className="text-muted" style={{ width: "93%" }}>
-                  There is no denying that the success of an advertisement lies
-                  mostly in the headline. The headline should catch the reader’s
-                  attention and make him read the rest of the advertisement. the
-                  reader’s attention and make him read the rest of the
-                  advertisement.{" "}
+                Let's mix stripes and checks - everyone's favorite patterns. New-season colors add the right balance to this awesome mix. Even in bedroom decor you can use this fun new trend along with classic cushions and delicate color scheme or love colorful decoration.{" "}
                 </p>
                 <div className={`${s.borderLine}`} />
                 <hr className="mt-4" />

@@ -18,8 +18,7 @@ const Footer = () => {
           <Col xl={5} md={5}>
             <h5 className={"text-white fw-bold"}>Many desktop publishing</h5>
             <p className={"text-muted mt-3"}>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout.
+            Do you want to receive exclusive email offers? Subscribe to our newsletter! You will receive a unique promo code which gives you a 20% discount on all our products in 10 minutes.
             </p>
           </Col>
           <Col xl={5} md={7} className={"d-flex align-items-center"}>

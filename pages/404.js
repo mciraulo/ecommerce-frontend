@@ -28,8 +28,7 @@ const Index = () => {
                                     <h3 className={"fw-bold text-primary mb-3"}>OOPS!</h3>
                                     <h2 className={"fw-bold mb-4"}>Something’s Missing</h2>
                                     <p style={{ width: 300 }} className={"mb-5"}>
-                                        Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry
+                                    Unfortunately, we cannot find the page you are looking for. Thought, we tried...
                                     </p>
                                     <Link href="/">
                                         <Button outline color={"primary"} className={"fw-bold"}>

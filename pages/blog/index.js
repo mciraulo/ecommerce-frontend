@@ -206,7 +206,7 @@ const Index = () => {
                       className={"fw-bold font-size-base mt-1"}
                       style={{ fontSize: 16, color: "#232323" }}
                     >
-                      What is Lorem Ipsum?
+                      Best Examples of Maximalism
                     </h6>
                   </a>
                 </Link>

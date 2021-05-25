@@ -52,9 +52,9 @@ const Index = () => {
         <Row className={"mt-5"}>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person1} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Andreas Walter</h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            CEO / Art & Creative Manager
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -67,9 +67,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person2} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Phoenix Houston</h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Founder / World Traveler
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -82,9 +82,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person3} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Maria Lennon </h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Design Consultant
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -97,9 +97,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person4} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>John-James Mosley</h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Digital Marketing Guru
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -112,9 +112,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person5} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Daryl Peters </h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Director of Operations
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -127,9 +127,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person6} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Arianne Savage</h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Project Manager / Technical Lead
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -142,9 +142,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person7} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Anisa Devine</h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Director of Showroom Design
             </p>
             <div
               className={"d-flex justify-content-center"}
@@ -157,9 +157,9 @@ const Index = () => {
           </Col>
           <Col lg={3} md={4} sm={6} xs={12}>
             <img className={s.img} src={person8} />
-            <h6 className={"fw-bold text-center mt-3"}>John Doe</h6>
+            <h6 className={"fw-bold text-center mt-3"}>Ashwin Chaney</h6>
             <p className={"text-muted text-center"}>
-              Graphic designer, UX/UI Designer
+            Customer Service Manager
             </p>
             <div
               className={"d-flex justify-content-center"}

@@ -60,7 +60,7 @@ const Index = () => {
             <div>
               <h2 className={"fw-bold"}>Contact Us</h2>
               <h6 className={"text-muted"}>
-                Choose a payment option below and fill out
+              If you have any questions please fill out the form
               </h6>
             </div>
             <Form>

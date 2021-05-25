@@ -218,7 +218,7 @@ const Id = ({ post }) => {
               className={"fw-bold font-size-base mt-1"}
               style={{ fontSize: 16 }}
             >
-              What is Lorem Ipsum?
+              What is Shabby Chic? 
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
               <Link href="/blog/article/07aeff53-31e5-4276-8307-f855b22b6436">Read More</Link>
@@ -237,7 +237,7 @@ const Id = ({ post }) => {
               className={"fw-bold font-size-base mt-1"}
               style={{ fontSize: 16 }}
             >
-              What is Lorem Ipsum?
+              Best Examples of Maximalism
             </h6>
             <h6 style={{ fontSize: 16 }} className={"fw-bold text-primary"}>
               <Link href="/blog/article/c4245ff9-6a53-4b13-8539-0b69b442cfd1">Read More</Link>

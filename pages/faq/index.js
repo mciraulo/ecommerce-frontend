@@ -60,15 +60,10 @@ const Index = () => {
                 company Policies
               </h6>
               <h4 className={`${s.faqTitle} fw-bold mb-4`}>
-                Differentiate Yourself And Attract More Attention, Sales, And
-                Profits
+              You Can Learn About Company Policies Gide, Some Rules, and Useful Info
               </h4>
               <p className="text-muted">
-                There is no denying that the success of an advertisement lies
-                mostly in the headline. The headline should catch the reader’s
-                attention and make him read the rest of the advertisement. the
-                reader’s attention and make him read the rest of the
-                advertisement.{" "}
+              Company policies guide is useful information for clients. You can learn about company rules regarding payment methods, shipping, support, etc. If you have questions you can always study this guide to find necessary answers for you, or use a contact form.{" "}
               </p>
             </div>
             <hr className="mb-5" />
@@ -77,15 +72,10 @@ const Index = () => {
                 payment options
               </h6>
               <h4 className={`${s.faqTitle} fw-bold mb-4`}>
-                Differentiate Yourself And Attract More Attention, Sales, And
-                Profits
+              Do You Want To Know More About Payment Options? Here Is All You Need to Know
               </h4>
               <p className="text-muted">
-                There is no denying that the success of an advertisement lies
-                mostly in the headline. The headline should catch the reader’s
-                attention and make him read the rest of the advertisement. the
-                reader’s attention and make him read the rest of the
-                advertisement.{" "}
+              Here is some useful information about payment options. You can use your PayPal account to make a purchase. You need to know the email address to make a payment. You can also use your credit card to make a purchase. You can make a payment anywhere you want.{" "}
               </p>
             </div>
             <hr className="mb-5" />
@@ -94,15 +84,10 @@ const Index = () => {
                 terms & conditions
               </h6>
               <h4 className={`${s.faqTitle} fw-bold mb-4`}>
-                Differentiate Yourself And Attract More Attention, Sales, And
-                Profits
+              The Terms of this Agreement Concerns Everyone Who Has Access to the Website
               </h4>
               <p className="text-muted">
-                There is no denying that the success of an advertisement lies
-                mostly in the headline. The headline should catch the reader’s
-                attention and make him read the rest of the advertisement. the
-                reader’s attention and make him read the rest of the
-                advertisement.{" "}
+              Everyone who has access to the website need to be aware of these terms. You need to maintain your rights and obligations. Some guidelines facilitate the use of this wonderful website. Learning these guidelines can have some benefits.{" "}
               </p>
             </div>
             <hr className="mb-5" />
@@ -111,15 +96,10 @@ const Index = () => {
                 delivery job
               </h6>
               <h4 className={`${s.faqTitle} fw-bold mb-4`}>
-                Differentiate Yourself And Attract More Attention, Sales, And
-                Profits
+              Learn More About the Delivery Job We Provide. This Can Be Useful Information
               </h4>
               <p className="text-muted">
-                There is no denying that the success of an advertisement lies
-                mostly in the headline. The headline should catch the reader’s
-                attention and make him read the rest of the advertisement. the
-                reader’s attention and make him read the rest of the
-                advertisement.{" "}
+              Delivery is an important part of our daily routine. The key to success is the right timing. We pay attention to the speed, but what is most important, we care about the quality of our job. We can assure you that your order will be delivered in time.{" "}
               </p>
             </div>
             <hr />
