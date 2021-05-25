@@ -35,7 +35,7 @@ const Index = () => {
         <meta property="og:site_name" content="Flatlogic"/>
         <meta name="twitter:site" content="@flatlogic" />
       </Head>
-      <Container className={"mb-5"} style={{ marginTop: 32 }}>
+      <Container className={"mb-5"} style={{ paddingTop: 32 }}>
         <Row className="d-flex justify-content-between">
           <Col sm={3} style={{position: 'sticky', top: 100, height: '100%'}}>
             <h1 className="fw-bold text-uppercase mb-4">faq</h1>
