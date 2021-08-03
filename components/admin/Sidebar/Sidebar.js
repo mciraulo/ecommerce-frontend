@@ -221,7 +221,7 @@ class Sidebar extends React.Component {
                 }
                 activeItem={this.props.activeItem}
                 header="Documentation"
-                link="/documentation/overview"
+                link="/admin/documentation/overview"
                 isHeader
                 iconType="node"
                 iconName={<GiftIcon />}
@@ -230,16 +230,16 @@ class Sidebar extends React.Component {
                 target="_blank"
                 childrenLinks={[
                   {
-                    header: 'Overview', link: '/documentation/overview',
+                    header: 'Overview', link: '/admin/documentation/overview',
                   },
                   {
-                    header: 'Quick Start', link: '/documentation/quick-start',
+                    header: 'Quick Start', link: '/admin/documentation/quick-start',
                   },
                   {
-                    header: 'What is inside', link: '/documentation/whats-inside',
+                    header: 'What is inside', link: '/admin/documentation/whats-inside',
                   },
                   {
-                    header: 'Licences', link: '/documentation/licences',
+                    header: 'Licences', link: '/admin/documentation/licences',
                   },
                 ]}
             />
