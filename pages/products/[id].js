@@ -78,7 +78,7 @@ const products = [
     img: product4,
   },
   {
-    id: 3,
+    id: 7,
     img: product1,
   },
   {
@@ -221,7 +221,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
         { fetching ? (
             <div style={{height: 480}} className={"d-flex justify-content-center align-items-center"}>
               <img src={preloaderImg} alt={"fetching"}/>
-          </div>
+            </div>
             ) : (
                 <Row className={"mb-5"} style={{marginTop: 32}}>
             <Col
@@ -249,9 +249,9 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                       className={`d-flex flex-column h-100 justify-content-between ${s.dMdNone}`}
                       style={{width: 160}}
                   >
-                    <img src={productRight} width={160}/>
-                    <img src={productCenter} width={160}/>
-                    <img src={productLeft} width={160}/>
+                    <img src={productRight} width={160} alt='productRight'/>
+                    <img src={productCenter} width={160} alt='productCenter'/>
+                    <img src={productLeft} width={160} alt='productLeft'/>
                   </div>
               ) : null}
             </Col>
@@ -361,7 +361,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                 style={{ padding: "15px 15px" }}
                 onClick={() => setOpen((prevState) => !prevState)}
               >
-                <img src={closeIcon} />
+                <img src={closeIcon} alt={'closeIcon'} />
               </Button>
             </div>
             <ModalBody>
@@ -374,6 +374,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                     src={product.image[0].publicUrl}
                     width={100}
                     className={"mr-4"}
+                    alt={"img"}
                   />
                   <div>
                     <h6 className={"text-muted"}>
@@ -510,11 +511,12 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
             feedbackList && feedbackList.map((item, idx) => {
               if (item.status === "visible") {
                 return (
-                  <Col sm={12} className={"d-flex mt-5"}>
+                  <Col sm={12} className={"d-flex mt-5"} key={idx}>
                     <img
                       src={item.image[0].publicUrl || person2}
                       style={{ borderRadius: 65 }}
                       className={`mr-5 ${s.reviewImg}`}
+                      alt={"img"}
                     />
                     <div
                       className={`d-flex flex-column justify-content-between align-items-start`}
@@ -561,11 +563,11 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
               naturalSlideWidth={300}
           >
             <ButtonBack style={{position: 'absolute', top: '35%', zIndex: 99, left: -20}} className={"btn bg-transparent border-0 p-0"}>
-              <img src={chevronLeftIcon}/>
+              <img src={chevronLeftIcon} alt={'chevronLeftIcon'}/>
             </ButtonBack>
             <Slider>
               {products.map((c, index) => (
-                  <Slide index={index}>
+                  <Slide index={index} key={index}>
                     <Col className={`${s.product}`}>
                       <Link href={`/products/afaf98d5-4060-4408-967b-c4f4af3d186${index + 1}`}>
                         <a>
@@ -573,6 +575,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
                               src={c.img}
                               className={"img-fluid"}
                               style={{ width: "100%" }}
+                              alt={'img'}
                           />
                         </a>
                       </Link>
@@ -593,7 +596,7 @@ const Id = ({ product: serverSideProduct, currentProductId }) => {
               ))}
             </Slider>
             <ButtonNext style={{position: 'absolute', top: '35%', zIndex: 99, right: -20}} className={"btn bg-transparent border-0 p-0"}>
-              <img src={chevronRightIcon}/>
+              <img src={chevronRightIcon} alt={'chevronRightIcon'}/>
             </ButtonNext>
           </CarouselProvider>
         </Row>

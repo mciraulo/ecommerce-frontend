@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps, sidebarStatic }) {
           {router.pathname === "/" ? null : (
             <>
               <Container>
-                <BreadcrumbHistory url={router.pathname} />
+                <BreadcrumbHistory url={router.pathname}/>
               </Container>
             </>
           )}

@@ -124,19 +124,20 @@ class Header extends React.Component {
     return (
       <Navbar className={s.header}>
         <Container>
+
           {this.state.innerWidth <= 768 && (
-            <Button
-              className={"bg-transparent border-0 p-0"}
-              onClick={() => this.switchSidebar()}
-            >
-              <img src={menuImg} />
-            </Button>
+                <Button
+                    className={"bg-transparent border-0 p-0"}
+                    onClick={() => this.switchSidebar()}
+                >
+                  <img src={menuImg} alt={'menu'} />
+                </Button>
           )}
+
           <NavbarBrand>
-            <Link href={"/"}>
-              <span className={s.logoStyle}>Flatlogic</span>
-            </Link>
+            <Link href={"/"}><span className={s.logoStyle}>Flatlogic</span></Link>
           </NavbarBrand>
+
           {this.state.innerWidth >= 768 && (
             <nav className={s.nav}>
               <ul className={s.nav__menu}>
@@ -256,27 +257,32 @@ class Header extends React.Component {
               </ul>
             </nav>
           )}
+
           <Nav>
             <NavItem className={"d-flex align-items-center"}>
               {this.state.innerWidth >= 768 && (
                 <>
                   <Link href={"/search"}>
-                    <Button className={`bg-transparent border-0 p-3`}>
-                      {this.props.router.pathname.includes("search") ? (
-                          <div className={s.headerSearchIconActive} />
-                      ) : (
-                          <div className={s.headerSearchIcon} />
-                      )}
-                    </Button>
+                    <a>
+                      <Button className={`bg-transparent border-0 p-3`}>
+                        {this.props.router.pathname.includes("search") ? (
+                            <div className={s.headerSearchIconActive} />
+                        ) : (
+                            <div className={s.headerSearchIcon} />
+                        )}
+                      </Button>
+                    </a>
                   </Link>
                   <Link href={"/login"}>
-                    <Button className={`bg-transparent border-0 p-3`}>
-                      {this.props.router.pathname.includes("account") ? (
-                          <div className={s.headerLoginIconActive} />
-                      ) : (
-                          <div className={s.headerLoginIcon} />
-                      )}
-                    </Button>
+                    <a>
+                      <Button className={`bg-transparent border-0 p-3`}>
+                        {this.props.router.pathname.includes("account") ? (
+                            <div className={s.headerLoginIconActive} />
+                        ) : (
+                            <div className={s.headerLoginIcon} />
+                        )}
+                      </Button>
+                    </a>
                   </Link>
                 </>
               )}

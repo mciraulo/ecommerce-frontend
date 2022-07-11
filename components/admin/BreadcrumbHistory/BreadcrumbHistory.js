@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
-import uuid from "uuid/v4";
+import { v4 as uuid } from 'uuid';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-const BreadcrumbHistory = ({ url }) => {
+const BreadcrumbHistory = ({ url, key }) => {
   const router = useRouter();
   const [route, setRoute] = React.useState([]);
 
-  const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
+  const capitalizeFirstLetter = string => string?.charAt(0).toUpperCase() + string?.slice(1);
   
 
   const renderBreadCrumbs = () => {

@@ -339,11 +339,11 @@ const Index = ({ products: serverSideProducts }) => {
                       src={item.image[0].publicUrl}
                       width={"100%"}
                       height={"100%"}
+                      alt="img"
                     />
                   </div>
                   <div
                     className={`${s.content} p-4 d-flex flex-column justify-content-between`}
-                    
                   >
                     <Link href={`/products/${item.id}`}>
                       <a className={"fw-semi-bold"}>
@@ -361,7 +361,7 @@ const Index = ({ products: serverSideProducts }) => {
                     </h6>
                     <h4 className={"fw-bold"}>{item.title}</h4>
                     <div className={"d-flex align-items-center"}>
-                      <img src={rating} />
+                      <img src={rating} alt={'rating'} />
                       <p className={"text-primary ml-3 mb-0"}>12 reviews</p>
                     </div>
                     <p>
@@ -575,37 +575,43 @@ const Index = ({ products: serverSideProducts }) => {
           </Col>
         </Row>
         <Row>
-          <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1869">
-            <Col xs={12} md={6}>
-              <section className={`${s.top_first} img-fluid`}>
-                <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
-                <h2 className={"fw-bold"}>SPRING THINGS</h2>
-                <div className={s.stroke} />
-                <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
-              </section>
-            </Col>
+          <Link href={"/products/afaf98d5-4060-4408-967b-c4f4af3d1869"}>
+            <a>
+              <Col xs={12} md={6}>
+                <section className={`${s.top_first} img-fluid`}>
+                  <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
+                  <h2 className={"fw-bold"}>SPRING THINGS</h2>
+                  <div className={s.stroke} />
+                  <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
+                </section>
+              </Col>
+            </a>
           </Link>
           <Col xs={12} md={6}>
             <Row>
               <Col xs={12} md={6} className={s.topMargin}>
                 <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1862">
-                  <div className={`${s.top2} img-fluid`}>
-                    <div>
-                      <h6 className={"text-primary fw-bold"}>Online Exclusive</h6>
-                      <p>
-                        <u>shop now</u>
-                      </p>
+                  <a>
+                    <div className={`${s.top2} img-fluid`}>
+                      <div>
+                        <h6 className={"text-primary fw-bold"}>Online Exclusive</h6>
+                        <p>
+                          <u>shop now</u>
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </Link>
                 <Link href="/products/afaf98d5-4060-4408-967b-c4f4af3d1863">
-                  <div className={`${s.top4} img-fluid`}>
-                    <div className={`${s.label}`}>
-                      <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
-                        spring sale
-                      </h6>
+                  <a>
+                    <div className={`${s.top4} img-fluid`}>
+                      <div className={`${s.label}`}>
+                        <h6 className={"fw-bold text-uppercase mb-0 text-white"}>
+                          spring sale
+                        </h6>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </Link>
               </Col>
               <Col xs={12} md={6}>
