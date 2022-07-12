@@ -97,13 +97,13 @@
     top: 7%;
     right: unset;
     margin-left: 20px;
-    width: $sidebar-width-open / 4;
+    width: calc(#{$sidebar-width-open} / 4);
     transform: translateX(-76px);
     margin-top: -($widget-padding-vertical);
     cursor: pointer;
     z-index: 0;
     border-radius: 50% 0 0 50%;
-    padding: $spacer * 0.8 $spacer / 2 $spacer * 0.8 $spacer;
+    padding: $spacer * 0.8 calc(#{$spacer} / 2) $spacer * 0.8 $spacer;
     &,
     &:not(.active) {
       box-shadow: $widget-shadow-designated !important;

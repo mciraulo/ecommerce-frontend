@@ -213,21 +213,23 @@ class Header extends React.Component {
                     className={`${s.nav__submenu}`}
                     height={heightThree}
                   >
-                    <DropdownItem className={s.dropdownMenuItem}>
-                      <ActiveLink href={"/shop"}>
-                        <a>Shop</a>
-                      </ActiveLink>
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem}>
-                      <ActiveLink href={"/categories"}>
-                        <a>Categories</a>
-                      </ActiveLink>
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem}>
-                      <ActiveLink href={"/account"}>
-                        <a>Account</a>
-                      </ActiveLink>
-                    </DropdownItem>
+                    <UncontrolledDropdown>
+                      <DropdownItem className={s.dropdownMenuItem}>
+                        <ActiveLink href={"/shop"}>
+                          <a>Shop</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                      <DropdownItem className={s.dropdownMenuItem}>
+                        <ActiveLink href={"/categories"}>
+                          <a>Categories</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                      <DropdownItem className={s.dropdownMenuItem}>
+                        <ActiveLink href={"/account"}>
+                          <a>Account</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                    </UncontrolledDropdown>
                   </AnimateHeight>
                 </li>
                 <li className={s.nav__menuItem}>
@@ -242,16 +244,18 @@ class Header extends React.Component {
                     className={`${s.nav__submenu}`}
                     height={heightFour}
                   >
-                    <DropdownItem className={s.dropdownMenuItem}>
-                      <ActiveLink href={"/blog"}>
-                        <a>Blog</a>
-                      </ActiveLink>
-                    </DropdownItem>
-                    <DropdownItem className={s.dropdownMenuItem}>
-                      <ActiveLink href={"/blog/article"}>
-                        <a>Blog Article</a>
-                      </ActiveLink>
-                    </DropdownItem>
+                    <UncontrolledDropdown>
+                      <DropdownItem className={s.dropdownMenuItem}>
+                        <ActiveLink href={"/blog"}>
+                          <a>Blog</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                      <DropdownItem className={s.dropdownMenuItem}>
+                        <ActiveLink href={"/blog/article"}>
+                          <a>Blog Article</a>
+                        </ActiveLink>
+                      </DropdownItem>
+                    </UncontrolledDropdown>
                   </AnimateHeight>
                 </li>
               </ul>

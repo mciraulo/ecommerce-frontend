@@ -3,6 +3,8 @@
 // Util Components
 // ----------------------------
 
+@use "sass:math";
+
 .transition-height {
   @include transition(height 0.15s ease-in-out);
 }
@@ -93,7 +95,7 @@ $z-index-variants: (
 }
 
 .circle-o {
-  border: #{$line-height-base/5}em solid transparent;
+  border: #calc(#{$line-height-base} / 5)em solid transparent;
 
   // stylelint-disable
   &.circle-o-danger {
@@ -534,10 +536,10 @@ $z-index-variants: (
 
 $margin-vertical-variants: (
   xlg: 40px,
-  lg: $spacer * 3/2,
+  lg: $spacer * 1.5,
   md: $spacer,
-  sm: $spacer/2,
-  xs: $spacer/4,
+  sm: math.div($spacer, 2),
+  xs: math.div($spacer, 4),
   0: 0,
 );
 $margin-horizontal-variants: (
@@ -555,10 +557,10 @@ $margin-horizontal-variants: (
 
 $padding-vertical-variants: (
   xlg: 40px,
-  lg: $spacer * 3/2,
+  lg: $spacer * 1.5,
   md: $spacer,
-  sm: $spacer/2,
-  xs: $spacer/4,
+  sm: math.div($spacer,2),
+  xs: math.div($spacer,4),
   0: 0,
 );
 $padding-horizontal-variants: (
