@@ -575,18 +575,18 @@ const Index = ({ products: serverSideProducts }) => {
           </Col>
         </Row>
         <Row>
-          <Link href={"/products/afaf98d5-4060-4408-967b-c4f4af3d1869"}>
-            <a>
-              <Col xs={12} md={6}>
-                <section className={`${s.top_first} img-fluid`}>
-                  <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
-                  <h2 className={"fw-bold"}>SPRING THINGS</h2>
-                  <div className={s.stroke} />
-                  <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
-                </section>
-              </Col>
-            </a>
-          </Link>
+          <Col xs={12} md={6}>
+            <Link href={"/products/afaf98d5-4060-4408-967b-c4f4af3d1869"}>
+              <a>
+                  <section className={`${s.top_first} img-fluid`}>
+                    <h6 className={"text-uppercase text-primary fw-bold"}>All new</h6>
+                    <h2 className={"fw-bold"}>SPRING THINGS</h2>
+                    <div className={s.stroke} />
+                    <h6 className={"text-muted mt-4"}>Save up to 30%</h6>
+                  </section>
+              </a>
+            </Link>
+          </Col>
           <Col xs={12} md={6}>
             <Row>
               <Col xs={12} md={6} className={s.topMargin}>

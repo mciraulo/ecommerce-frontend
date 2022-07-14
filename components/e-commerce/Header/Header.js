@@ -62,7 +62,8 @@ class Header extends React.Component {
           this.setState({
             count: res.data.count,
           });
-        });
+        })
+        .catch(e => console.log(e));
       return;
     } else if (localStorage.getItem("products") && !this.props.currentUser) {
       this.setState({

@@ -24,7 +24,7 @@ const BreadcrumbHistory = ({ url, key }) => {
                 res.data.categories[0].title,
               res.data.title,
             ]);
-          });
+          }).catch(e => console.log(e));
         }
       } else {
         if (router.pathname.includes("category")) {

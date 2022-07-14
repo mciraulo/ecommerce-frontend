@@ -16,7 +16,7 @@ const Index = () => {
   useEffect(() => {
     axios.get("/blogs").then((res) => {
       setBlogs([...res.data.rows]);
-    });
+    }).catch(e => console.log(e));
   }, []);
 
   return (
@@ -47,22 +47,22 @@ const Index = () => {
         <Row>
           <Col xs={12} lg={8}>
             <h3 className="fw-bold mb-5">Blog</h3>
-            {blogs.length > 0 && blogs.map(post => {
+            {blogs.length > 0 && blogs?.map(post => {
             return (
               <div className={s.blogPost}>
                 <div key={post.id}>
                   <Link href={`blog/article/${post.id}`}>
                 <a className={s.blogPostImgWrap}>
-                  <img src={post.hero_image[0].publicUrl} alt="img1" className="mb-4 img-fluid" />
+                  <img src={post?.hero_image[0]?.publicUrl} alt="img1" className="mb-4 img-fluid" />
                 </a>
               </Link>
               <h6 className={`${s.author_name}`}>
-                {post.author_name}
+                {post?.author_name}
               </h6>
               <Link href={`blog/article/${post.id}`}>
                 <a className={`text-dark ${s.post_title}`}>
                   <h4 className="fw-bold">
-                    {post.title}
+                    {post?.title}
                   </h4>
                 </a>
               </Link>
@@ -164,7 +164,7 @@ const Index = () => {
               <Col xs={12} className={"mb-4 d-flex flex-column"}>
                 <Link href={"/blog/article"}>
                   <a>
-                    <img src={article1} className={"img-fluid"} />
+                    <img src={article1} className={"img-fluid"} alt={'article'} />
                   </a>
                 </Link>
                 <p className={"mt-3 text-muted mb-0"}>March 12, 2020</p>
@@ -192,7 +192,7 @@ const Index = () => {
               <Col xs={12} className={"mb-4 d-flex flex-column"}>
                 <Link href={"/blog/article"}>
                   <a>
-                    <img src={article2} className={"img-fluid"} />
+                    <img src={article2} className={"img-fluid"} alt={'article2'}/>
                   </a>
                 </Link>
                 <Link href={"/blog/article"}>
