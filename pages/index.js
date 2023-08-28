@@ -336,7 +336,7 @@ const Index = ({ products: serverSideProducts }) => {
                 <div className={s.modalWidndow}>
                   <div className={s.image}>
                     <img
-                      src={item.image[0].publicUrl}
+                      src={item.image[0]?.publicUrl}
                       width={"100%"}
                       height={"100%"}
                       alt="img"
@@ -446,7 +446,7 @@ const Index = ({ products: serverSideProducts }) => {
                   <a>
                     <div
                       style={{
-                        background: `url(${item.image[0].publicUrl}) no-repeat center`,
+                        background: `url(${item.image[0]?.publicUrl}) no-repeat center`,
                         backgroundSize: "contain",
                         transition: "all .65s ease",
                       }}
