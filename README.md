@@ -1,108 +1,114 @@
-# 🤘 Flatlogic Ecommerce 
+# 🚀 Flatlogic Ecommerce React - A Free E-commerce Template!
 
-Flatlogic Ecommerce is ecommerce template made with React, NextJS and supplied with admin dashboard. Developed with ❤️ by [Flatlogic](https://flatlogic.com/). If you love our project please star ⭐️ our repo!
+[View Demo](https://flatlogic.com/templates/ecommerce-react-template/demo) | [Download](https://github.com/flatlogic/ecommerce-frontend/archive/refs/heads/master.zip) | [More Templates](https://flatlogic.com/templates) | [Discord Community](https://discord.gg/flatlogic-community) | [Support Forum](https://flatlogic.com/forum)
 
-[View Demo](https://flatlogic-ecommerce.herokuapp.com/) | [Download](https://github.com/flatlogic/ecommerce-frontend/archive/refs/heads/master.zip) | [More templates](https://flatlogic.com/templates) | [Support forum](https://flatlogic.com/forum)
+**Originally a premium product priced at $119+, made available for free in January 2025!** 🎉
 
-[![image](https://github.com/flatlogic/ecommerce-frontend/blob/master/public/images/screenshot.png)](https://templates-flatlogic.herokuapp.com/vue-material/)
+Looking for a perfect codebase generator for your Startup? Try [Flatlogic AI Web App Generator](https://flatlogic.com/generator) - our new tool, sort of a template++.
 
-## Features
+---
 
-Flatlogic Ecommerce is a great template to quick-start development of E-Commerce, SAAS, CMS apps, etc  
-Lite version of a Flatlogic Ecommerce includes following features and pages:
+## 🎯 Why Flatlogic Ecommerce React?
+- **Ex-Premium**: This template was previously paid. Enjoy it for free now. 😉
+- **Fully Functional Store**: Includes product pages, categories, and user authentication.
+- **Join the Community**: [Flatlogic Discord](https://discord.gg/flatlogic-community) is where the action happens.
+- **Free Node.js Backend**: Pair it up with [ecommerce react backend](https://github.com/flatlogic/ecommerce-backend) to go full-stack.
 
-* React Bootstrap
-* Responsive layout
-* Next JS (SSR)
-* Simple login / logout 
-* Error page
-* Styled components like buttons, modals, etc
+---
 
-## Pages
-We have implemented some basic pages, so you can see our template in action.
+## 🚀 Quick Start
 
-* Dashboard sample
-* Typography
-* Tables
-* Notifications
-* Charts
-* Icons
-* Login
-* Error page
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/flatlogic/ecommerce-frontend.git
+   cd ecommerce-frontend
+   ```
+2. **Install dependencies**  
+   ```bash
+   yarn install  # Or npm install
+   ```
+3. **Run the app**  
+   ```bash
+   yarn start
+   ```
+   Navigate to http://localhost:3000/.
 
-## Instalation 
+4. **Build for production**  
+   ```bash
+   yarn build
+   ```
 
-1. Clone repository
-```shell
-git clone https://github.com/flatlogic/ecommerce-frontend.git
-```
-2. Get in the project folder
-```shell
-cd ecommerce-frontend
-```
-3. Install dependencies via npm or yarn
-```shell
-yarn
-```
+---
 
-## Quick start
-First, run the development server:
+## 🧩 Features
 
-```bash
-npm run start
-# or
-yarn start
-```
+- Product Listing & Filtering
+- Server-side Rendering (Next.js)
+- SEO Module
+- Blog & CMS Integration
+- User Authentication (email/password)
+- Stripe Integration
+- Responsive Layout
+- Checkout Page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🛠 Built With
+- React 16
+- Next.js
+- Bootstrap
+- Node.js
+- PostgreSQL
+- Sequelize ORM
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 📦 Pages
+- Product Listings
+- Product Page
+- Categories
+- Dashboard
+- Blog (CMS)
+- Checkout
+- Login / Registration
+- Error Page
 
-## Support
-For any additional information please refer to [Flatlogic homepage](https://flatlogic.com).
+---
 
-## How can I support developers?
-- Star our GitHub repo :star:
-- [Tweet about it](https://twitter.com/intent/tweet?text=Amazing%20dashboard%20built%20with%20%23VueJS%20and%20%23Bootstrap!&url=https://github.com/flatlogic/light-blue-vue-admin&via=flatlogic).
-- Create pull requests, submit bugs, suggest new features or documentation updates :wrench:
-- Follow [@flatlogic on Twitter](https://twitter.com/flatlogic).
-- Subscribe to Flatlogic newsletter at [flatlogic.com](https://flatlogic.com/)
-- Like our page on [Facebook](https://www.facebook.com/flatlogic/) :thumbsup:
+## 🌍 Available Variants
 
-## More from Flatlogic
-- [Awesome Bootstrap Checkboxes & Radios](https://github.com/flatlogic/awesome-bootstrap-checkbox) - ✅ Pure css way to make inputs look prettier
-- [React Native Starter](https://github.com/flatlogic/react-native-starter) - 🚀 A powerful react native starter template that bootstraps development of your mobile application
-- [React Dashboard](https://github.com/flatlogic/react-dashboard) - 🔥 React Dashboard - isomorphic admin dashboard template with GraphQL
-- [Sing App](https://github.com/flatlogic/sing-app) - 💥 Free and open-source admin dashboard template built with Bootstrap 4
-- [Light Blue Dashboard](https://github.com/flatlogic/light-blue-dashboard) - 💦 Free and open-source (no frameworks) admin dashboard template built with Bootstrap
-
-## Premium themes
-Looking for premium themes and templates? Check out our other template at [flatlogic.com](https://flatlogic.com/admin-dashboards).
-
-## License
-
-Flatlogic One React Template version is [MIT](https://github.com/flatlogic/one-react-template/blob/master/LICENCE)-licensed.
-
-* that's a joke actually, but we would really appreciate if you support us by buying a premium version. Anyways free is just free and is limited to only few components, while premium one has more and comes with premium support.
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+|               | **Material**                                              | **Transparent**                                         | **Classic**                                          | **Sofia**                                          | **Flatlogic**                                      |
+|---------------|-----------------------------------------------------------|---------------------------------------------------------|-------------------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
+| **React**     | [React Material Admin](https://github.com/flatlogic/react-material-admin-full) | [Light Blue React](https://github.com/flatlogic/light-blue-react) | [Sing App React](https://github.com/flatlogic/sing-app-react) | [Sofia React](https://github.com/flatlogic/sofia-react) | [One React](https://github.com/flatlogic/one-react) |
+| **Angular**   | [Angular Material Admin](https://github.com/flatlogic/angular-material-admin-full) | [Light Blue Angular](https://github.com/flatlogic/light-blue-angular) | [Sing App Angular](https://github.com/flatlogic/sing-app-angular) | - | - |
+| **Vue**       | [Material Vue](https://github.com/flatlogic/material-vue-full) | [Light Blue Vue](https://github.com/flatlogic/light-blue-vue) | [Sing App Vue](https://github.com/flatlogic/sing-app-vue) | - | - |
+| **Bootstrap** | - | [Light Blue HTML5](https://github.com/flatlogic/light-blue-html5) | [Sing App HTML5](https://github.com/flatlogic/sing-app-html5) | - | [One Bootstrap](https://github.com/flatlogic/one-bootstrap-template-full) |
 
 
-## Learn More
+Additionally, these templates are tailored for specific business needs:
+- [E-Commerce Frontend (React)](https://github.com/flatlogic/ecommerce-frontend) - A complete e-commerce solution.
+- [Bookkeeper UI (React)](https://github.com/flatlogic/bookkeeper-ui) - Accounting dashboard for finance management.
+- [User Management Template (React)](https://github.com/flatlogic/user-management-template) - User authentication and management.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 How to Contribute
+- **Star this repo ⭐** - show some love.
+- **Report bugs** - but be nice.
+- **Join the [Discord](<insert-discord-invite-link>)** - meet fellow devs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔥 About Flatlogic
+[Flatlogic AI Software Engineer](https://flatlogic.com/ai-software-development-agent) builds modern business software so you don't have to. Our AI Software Development Agent helps you generate, deploy, and maintain enterprise applications with minimal effort.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📜 License
+This template is free to use. Modify it, break it, make it your own. Just don’t try to sell it back to us. 😎
+
+---
+
+> **Questions or feedback?**  
+> Join our [Flatlogic Community Discord](https://discord.gg/flatlogic-community) or visit our [support forum](https://flatlogic.com/forum). We might even reply!
+
